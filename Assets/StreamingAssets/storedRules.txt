@@ -1,0 +1,9 @@
+define character Player;
+define forniture Cube;
+
+
+the forniture Cube has a interactable;
+
+when the character Player interacts with the forniture Cube 
+then the forniture Cube hides ;
+
