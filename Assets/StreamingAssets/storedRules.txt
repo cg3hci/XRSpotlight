@@ -1,9 +1,123 @@
 define character Player;
-define forniture Cube;
+define object SkeletonDummy;
+define video TV;
+define prop RotatingStool;
+define light Light1;
+define clothing PinkShirt12;
+define clothing PinkShoesCherry;
+define clothing TryHat;
+define clothing BrownShirt1;
+define clothing PinkShirt16;
+define image infoVanxOld;
+define clothing SummerHat;
+define light WinterLight;
+define clothing VanxOld;
+define clothing PinkHeelsShoes;
+define clothing VanxStool;
+define object Stool;
+define clothing PinkShirt8;
+define image infoVanxVintage;
+define clothing VanxVintage;
+define clothing WinterPants;
+define clothing BrownShirt13;
+define clothing TryShirt;
+define button SummerButton;
+define clothing BlackVanx;
+define clothing BlackShoes;
+define clothing BrownShirt9;
+define clothing WinterShirt;
+define clothing BrownShirt5;
+define mannequin Mannequin;
+define clothing T-Shirt;
+define image infoPinkHeelsShoes;
+define image infoPinkShoesCherry;
+define clothing SummerPants;
+define light SummerLight;
+define button WinterButton;
+define image infoVanxShoes;
+define image infoBlackHeelsShoes;
+define scene StoreDemo;
+define clothing PinkShirt4;
+define image infoBlackShoes;
+define clothing BlackHeelsShoes;
+define clothing VanxShoes;
+define image infoBlackVanx;
 
 
-the forniture Cube has a interactable;
+the video TV has a interactable;
+the clothing PinkShoesCherry has a interactable;
+the clothing VanxOld has a interactable;
+the clothing PinkHeelsShoes has a interactable;
+the object Stool has a placeholder;
+the clothing VanxVintage has a interactable;
+the button SummerButton has a interactable;
+the clothing BlackVanx has a interactable;
+the clothing BlackShoes has a interactable;
+the button WinterButton has a interactable;
+the clothing BlackHeelsShoes has a interactable;
+the clothing VanxShoes has a interactable;
 
-when the character Player interacts with the forniture Cube 
-then the forniture Cube hides ;
+when the character Player interacts with the button SummerButton 
+then the mannequin Mannequin wears the clothing TryShirt ;
+the mannequin Mannequin wears the clothing SummerHat ;
+the mannequin Mannequin wears the clothing SummerPants ;
+the light SummerLight turns on ;
+the light WinterLight turns off ;
 
+when the character Player interacts with the button WinterButton 
+then the mannequin Mannequin wears the clothing WinterShirt ;
+the mannequin Mannequin wears the clothing WinterPants ;
+the mannequin Mannequin wears the clothing TryHat ;
+the light SummerLight turns off ;
+the light WinterLight turns on ;
+
+when the character Player interacts with the clothing BlackShoes 
+then the image infoBlackShoes shows ;
+
+when the character Player stops-interacting with the clothing BlackShoes 
+then the image infoBlackShoes hides ;
+
+when the character Player interacts with the clothing VanxShoes 
+then the image infoVanxShoes shows ;
+
+when the character Player stops-interacting with the clothing VanxShoes 
+then the image infoVanxShoes hides ;
+
+when the character Player interacts with the clothing VanxOld 
+then the image infoVanxOld shows ;
+
+when the character Player stops-interacting with the clothing VanxOld 
+then the image infoVanxOld hides ;
+
+when the character Player interacts with the clothing PinkShoesCherry 
+then the image infoPinkShoesCherry shows ;
+
+when the character Player stops-interacting with the clothing PinkShoesCherry 
+then the image infoPinkShoesCherry hides ;
+
+when the character Player interacts with the clothing BlackHeelsShoes 
+then the image infoBlackHeelsShoes shows ;
+
+when the character Player stops-interacting with the clothing BlackHeelsShoes 
+then the image infoBlackHeelsShoes hides ;
+
+when the character Player interacts with the clothing BlackVanx 
+then the image infoBlackVanx shows ;
+
+when the character Player stops-interacting with the clothing BlackVanx 
+then the image infoBlackVanx hides ;
+
+when the character Player interacts with the clothing VanxVintage 
+then the image infoVanxVintage shows ;
+
+when the character Player stops-interacting with the clothing VanxVintage 
+then the image infoVanxVintage hides ;
+
+when the character Player interacts with the clothing PinkHeelsShoes 
+then the image infoPinkHeelsShoes shows ;
+
+when the character Player stops-interacting with the clothing PinkHeelsShoes 
+then the image infoPinkHeelsShoes hides ;
+
+when the button SummerButton activates 
+then the clothing BlackHeelsShoes hides ;
