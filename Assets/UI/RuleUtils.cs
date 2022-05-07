@@ -787,7 +787,7 @@ public class RuleUtils : MonoBehaviour
         ruleParser.ReadRuleFile(path);
         
         // For each rule in the RuleEngine, add it to the RuleList (UI)
-        foreach (Rule rule in RuleEngine.GetInstance().Rules())
+        /*foreach (Rule rule in RuleEngine.GetInstance().Rules())
         {
             GameObject prefab = ButtonsHandle.CreateRuleRow(null, rule);
             string newRuleUuid = Guid.NewGuid().ToString();
@@ -799,11 +799,11 @@ public class RuleUtils : MonoBehaviour
                 // Need the UUID, the RuleStruct (prefab, rule, ruleString)
                 GameObject ruleString2 = prefab.transform.GetChild(0).gameObject;
                 string textRule = ruleString2.GetComponent<Text>().text;
-                ButtonsHandle.RuleString ruleString = ConvertRuleObjectToRuleString(rule, textRule);
-                rulesDictionary.Add(newRuleUuid, new RulesStruct(prefab, rule, ruleString));
+               // ButtonsHandle.RuleString ruleString = ConvertRuleObjectToRuleString(rule, textRule);
+                //rulesDictionary.Add(newRuleUuid, new RulesStruct(prefab, rule, ruleString));
             }
             
-        }
+        }*/
         
         // Add to rulesDictionary
         // Need the UUID, the RuleStruct (prefab, rule, ruleString) [The ruleString will be temporarily null]
