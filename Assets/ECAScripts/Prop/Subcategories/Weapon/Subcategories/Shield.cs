@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 /// <summary>
 /// <b>Shield</b> class allows to create a shield for defending from a <see cref="Weapon"/>.

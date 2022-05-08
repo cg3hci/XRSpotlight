@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 
 /// <summary>

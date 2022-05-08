@@ -1,10 +1,9 @@
 ﻿using System;
+using EcaRules;
 using UnityEngine;
-using ECARules4All;
-using ECARules4All.RuleEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace ECARules4All
+namespace EcaRules
 {
     public class ECAObjectXRLoader : MonoBehaviour
     {

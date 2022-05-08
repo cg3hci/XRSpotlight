@@ -5,7 +5,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime.Misc;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts;
 using UnityEngine;
 using UnityEngine.UI;

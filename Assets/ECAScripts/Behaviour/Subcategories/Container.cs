@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 using Object = UnityEngine.Object;
 /// <summary>
 /// <b>Container</b> is a <see cref="Behaviour">Behaviour</see> that enables the object to hold other objects.

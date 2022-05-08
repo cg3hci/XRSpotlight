@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 /// <summary>
 /// <b>Bullet</b>: this class it is a type of <see cref="Weapon"/> that is usually expelled from another object in the scene, usually a <see cref="Firearm"/> object

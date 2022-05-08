@@ -2,10 +2,10 @@
 using System.Collections;
 using System.IO;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
 using UnityEngine.Networking;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 using System.IO;
 using UnityEngine.Networking;
 
@@ -140,7 +140,8 @@ public class Sound : MonoBehaviour
     public void ChangesSource(string newSource)
     {
         source = newSource;
-        sourcePath = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Audios", source)));
+        sourcePath = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, 
+            System.IO.Path.Combine("Inventory", System.IO.Path.Combine("Audios", source)));
         StartCoroutine(ChangeAudioSource());
     }
 
@@ -187,7 +188,7 @@ public class Sound : MonoBehaviour
 
         if (source != null)
         {
-            sourcePath = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Audios", source)));
+            sourcePath = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, System.IO.Path.Combine("Inventory", System.IO.Path.Combine("Audios", source)));
             StartCoroutine(ChangeAudioSource());
             duration = player.clip.length;
         }

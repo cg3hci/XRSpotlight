@@ -1,6 +1,5 @@
 ﻿using System.Collections;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 /// <summary>
 /// The <b>Terrestrial animal</b> class is a subclass of the <see cref="Animal"/> class.

@@ -4,7 +4,7 @@ using ECAScripts.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     /// <summary>
     /// <b>ECAObject</b> is the base class for all objects that can be used in the rule engine.

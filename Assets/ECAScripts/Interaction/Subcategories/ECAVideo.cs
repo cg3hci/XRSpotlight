@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
 using UnityEngine;
 using UnityEngine.Video;
@@ -155,7 +155,8 @@ public class ECAVideo : MonoBehaviour
     public void ChangesSource(string newSource)
     {
         source = newSource;
-        player.url = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Videos", source)));
+        player.url = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, 
+            System.IO.Path.Combine("Inventory", System.IO.Path.Combine("Videos", source)));
         duration = player.length;
     }
 
@@ -173,7 +174,8 @@ public class ECAVideo : MonoBehaviour
         player = GetComponent<VideoPlayer>();
         if (source != "")
         {
-            player.url = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Videos", source)));
+            player.url = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, 
+                System.IO.Path.Combine("Inventory",  System.IO.Path.Combine("Videos", source)));
             duration = player.length;
         }
         volume = volume > maxVolume ? maxVolume : volume;

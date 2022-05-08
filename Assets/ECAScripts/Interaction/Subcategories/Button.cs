@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 
 /// <summary>

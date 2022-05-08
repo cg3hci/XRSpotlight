@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
@@ -36,7 +36,7 @@ public class ECAImage : MonoBehaviour
         imageSrc = GetComponent<RawImage>();
         if (source != "")
         {
-            sourcePath = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Images", source)));
+            sourcePath = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, System.IO.Path.Combine("Inventory", System.IO.Path.Combine("Images", source)));
             StartCoroutine(ChangeImageSource());
         }
         width = (int) reference.rect.width;
@@ -63,7 +63,8 @@ public class ECAImage : MonoBehaviour
     public void ChangesSource(string newSource)
     {
         source = newSource;
-        sourcePath = "file://" + Path.Combine(Application.streamingAssetsPath, Path.Combine("Inventory", Path.Combine("Images", source)));
+        sourcePath = "file://" + System.IO.Path.Combine(Application.streamingAssetsPath, 
+            System.IO.Path.Combine("Inventory", System.IO.Path.Combine("Images", source)));
         StartCoroutine(ChangeImageSource());
     }
 

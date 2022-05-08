@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 /// <summary>
 /// <b>Firearm</b> is a class that represents a firearm, a firearm can expel bullets.
 /// </summary>

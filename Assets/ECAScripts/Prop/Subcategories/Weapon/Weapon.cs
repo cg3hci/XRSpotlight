@@ -1,4 +1,4 @@
-﻿using ECARules4All.RuleEngine;
+﻿using EcaRules;
 using UnityEngine;
 
 /// <summary>

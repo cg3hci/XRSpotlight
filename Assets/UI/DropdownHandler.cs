@@ -5,12 +5,10 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime.Misc;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts;
 using UnityEngine;
 using UnityEngine.UI;
-using Action = ECARules4All.RuleEngine.Action;
 using UnityEngine.XR.Interaction.Toolkit.Examples.UIRule.Prefabs;
 using Object = System.Object;
 
@@ -152,7 +150,7 @@ public class DropdownHandler : MonoBehaviour
         {UIColors.white, "white"}, // 0xffffffff
     };
 
-    private Action action; //serve?
+    private EcaAction ecaAction; //serve?
 
     //Selected
     private GameObject subjectSelected; //gameobject with the subject

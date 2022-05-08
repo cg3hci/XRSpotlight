@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     /// <summary>
     /// <b>Environment</b> objects represent inanimated elements that configure the scene, like buildings, vegetation etc...

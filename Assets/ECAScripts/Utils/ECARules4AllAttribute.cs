@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     public class ECARules4AllAttribute : System.Attribute

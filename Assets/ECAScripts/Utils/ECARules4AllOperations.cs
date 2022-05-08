@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     public class ECARules4AllOperations
     {

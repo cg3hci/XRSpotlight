@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Particle</b> is a <see cref="Behaviour"/> that lets the object emit particles.

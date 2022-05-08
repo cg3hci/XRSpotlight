@@ -4,7 +4,7 @@ using System.IO;
 using ECAScripts.Utils;
 using UnityEngine;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     public class TextRuleSerializer
     {
@@ -29,7 +29,7 @@ namespace ECARules4All.RuleEngine
 
                 //TODO add alias
 
-                foreach (Rule r in RuleEngine.GetInstance().Rules())
+                foreach (EcaRule r in EcaRuleEngine.GetInstance().Rules())
                 {
                     PrintRule(r, writer);
                 }
@@ -97,17 +97,17 @@ namespace ECARules4All.RuleEngine
 
         private void PrintSimpleTypeDeclarations(TextWriter writer)
         {
-            foreach(Rule r in RuleEngine.GetInstance().Rules())
+            foreach(EcaRule r in EcaRuleEngine.GetInstance().Rules())
             {
                 PrintActionSimpleType(r.GetEvent(), writer);
-                foreach(Action a in r.GetActions())
+                foreach(EcaAction a in r.GetActions())
                 {
                     PrintActionSimpleType(a, writer);
                 }
             }
         }
 
-        private void PrintActionSimpleType(Action a, TextWriter writer)
+        private void PrintActionSimpleType(EcaAction a, TextWriter writer)
         {
             DeclareSimpleType(a.GetObject(), writer);
             DeclareSimpleType(a.GetModifierValue(), writer);
@@ -216,7 +216,7 @@ namespace ECARules4All.RuleEngine
             }
         }
 
-        public void PrintRule(Rule r, TextWriter writer)
+        public void PrintRule(EcaRule r, TextWriter writer)
         {
             // write event
             writer.Write("when ");
@@ -235,7 +235,7 @@ namespace ECARules4All.RuleEngine
             // write actions
             writer.Write("then ");
 
-            foreach(Action a in r.GetActions())
+            foreach(EcaAction a in r.GetActions())
             {
                 PrintAction(a, writer);
                 writer.WriteLine(";");
@@ -250,7 +250,7 @@ namespace ECARules4All.RuleEngine
             // writer.WriteLine();
         }
 
-        private void PrintAction(Action a, TextWriter writer)
+        private void PrintAction(EcaAction a, TextWriter writer)
         {
             // TODO: check if a contains "color" and then swap it [e.g.: ColoredLight (Unity....) changes color to #d62....]
 
@@ -313,30 +313,30 @@ namespace ECARules4All.RuleEngine
             }
         }
 
-        private void PrintCondition(Condition c, TextWriter writer)
+        private void PrintCondition(EcaCondition c, TextWriter writer)
         {
-            if(c is CompositeCondition){
-                PrintCompositeCondition(c as CompositeCondition, writer);
+            if(c is CompositeEcaCondition){
+                PrintCompositeCondition(c as CompositeEcaCondition, writer);
                 
             }
 
-            if(c is SimpleCondition)
+            if(c is SimpleEcaCondition)
             {
-                PrintSimpleCondition(c as SimpleCondition, writer);
+                PrintSimpleCondition(c as SimpleEcaCondition, writer);
                 
             }
         }
 
-        private void PrintCompositeCondition(CompositeCondition c, TextWriter writer)
+        private void PrintCompositeCondition(CompositeEcaCondition c, TextWriter writer)
         {
-            if (c.Op == CompositeCondition.ConditionType.NOT)
+            if (c.Op == CompositeEcaCondition.ConditionType.NOT)
             {
                 writer.Write("not ");
             }
 
             if (c.GetParent() != null &&
-                ((c.ChildrenCount() > 1 && c.Op != (c.GetParent() as CompositeCondition).Op )||
-                 c.GetChild(0) is CompositeCondition ))
+                ((c.ChildrenCount() > 1 && c.Op != (c.GetParent() as CompositeEcaCondition).Op )||
+                 c.GetChild(0) is CompositeEcaCondition ))
             {
                 writer.Write("(");
             }
@@ -344,7 +344,7 @@ namespace ECARules4All.RuleEngine
 
 
             int count = c.ChildrenCount() - 1;
-            foreach(Condition child in c.Children())
+            foreach(EcaCondition child in c.Children())
             {
                 PrintCondition(child, writer);
 
@@ -357,8 +357,8 @@ namespace ECARules4All.RuleEngine
             }
 
             if (c.GetParent() != null &&
-                ((c.ChildrenCount() > 1 && c.Op != (c.GetParent() as CompositeCondition).Op) ||
-                 c.GetChild(0) is CompositeCondition))
+                ((c.ChildrenCount() > 1 && c.Op != (c.GetParent() as CompositeEcaCondition).Op) ||
+                 c.GetChild(0) is CompositeEcaCondition))
             {
                 writer.Write(")");
             }
@@ -416,16 +416,16 @@ namespace ECARules4All.RuleEngine
             }
         }
 
-        private void PrintOp(CompositeCondition.ConditionType op, TextWriter writer)
+        private void PrintOp(CompositeEcaCondition.ConditionType op, TextWriter writer)
         {
             switch (op)
             {
                
-                case CompositeCondition.ConditionType.AND:
+                case CompositeEcaCondition.ConditionType.AND:
                     writer.Write("and ");
                     break;
 
-                case CompositeCondition.ConditionType.OR:
+                case CompositeEcaCondition.ConditionType.OR:
                     writer.Write("or ");
                     break;
 
@@ -435,7 +435,7 @@ namespace ECARules4All.RuleEngine
             }
         }
 
-        private void PrintSimpleCondition(SimpleCondition c, TextWriter writer)
+        private void PrintSimpleCondition(SimpleEcaCondition c, TextWriter writer)
         {
             writer.Write("the ");
             writer.Write(GetTypeName(GetECAObjectType(c.GetSubject())));

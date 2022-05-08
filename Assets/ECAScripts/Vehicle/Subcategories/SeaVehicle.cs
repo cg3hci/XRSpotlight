@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 /// <summary>
 /// <b>SeaVehicle</b> is a class that represents a sea vehicle.

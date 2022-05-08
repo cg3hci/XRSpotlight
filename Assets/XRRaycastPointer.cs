@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
-using Action = ECARules4All.RuleEngine.Action;
 
 public class XRRaycastPointer : MonoBehaviour
 {
@@ -55,7 +54,7 @@ public class XRRaycastPointer : MonoBehaviour
             Debug.Log("target object " + args.interactable.name);
             lastSelectedObject = args.interactable.gameObject;
             textObject.text = "Object: " + lastSelectedObject.name;
-            EventBus.GetInstance().Publish(new Action(gameObject, "interacts with", args.interactable.gameObject)); 
+            EcaEventBus.GetInstance().Publish(new EcaAction(gameObject, "interacts with", args.interactable.gameObject)); 
         }
     }
 
@@ -64,7 +63,7 @@ public class XRRaycastPointer : MonoBehaviour
         if (args.interactable.gameObject.GetComponent<ECAObject>() != null)
         {
             Debug.Log("released target object " + args.interactable.name);
-            EventBus.GetInstance().Publish(new Action(gameObject, "stops-interacting with", args.interactable.gameObject));
+            EcaEventBus.GetInstance().Publish(new EcaAction(gameObject, "stops-interacting with", args.interactable.gameObject));
         }
     }
 

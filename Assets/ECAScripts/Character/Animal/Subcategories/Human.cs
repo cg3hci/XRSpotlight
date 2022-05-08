@@ -1,6 +1,5 @@
 ﻿using System.Collections;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 /// <summary>
 /// The <b>Human</b> class is used to represent a human character.

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Linq.Expressions;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 /// <summary>
 /// This class represents an animal that can swim.

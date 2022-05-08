@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using EcaRules;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
-/// <b>Keypad</b> is a <see cref="ECARules4All.RuleEngine.Behaviour"/> that lets an object to receive codes and trigger
+/// <b>Keypad</b> is a <see cref="EcaRules.Behaviour"/> that lets an object to receive codes and trigger
 /// actions when the code is correct.
 /// </summary>
 [ECARules4All("keypad")]

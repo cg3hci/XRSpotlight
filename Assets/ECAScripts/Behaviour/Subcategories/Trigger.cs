@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using Action = ECARules4All.RuleEngine.Action;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using EcaRules;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Trigger</b> is a <see cref="Behaviour"/> that can be used to trigger an action without an explicit request
@@ -16,11 +15,11 @@ public class Trigger : MonoBehaviour
     /// <summary>
     /// <b>Triggers</b> emits an event when the trigger is activated.
     /// </summary>
-    /// <param name="action"> The event to trigger in the scene.</param>
-    [Action(typeof(Trigger), "triggers", typeof(Action))]
-    public void Triggers(Action action)
+    /// <param name="ecaAction"> The event to trigger in the scene.</param>
+    [Action(typeof(Trigger), "triggers", typeof(EcaAction))]
+    public void Triggers(EcaAction ecaAction)
     {
-        EventBus.GetInstance().Publish(action);
+        EcaEventBus.GetInstance().Publish(ecaAction);
         //DOUBT: l'evento lo deve descrivere a mano l'End user Developer?
     }
 }

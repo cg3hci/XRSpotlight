@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 /// <summary>
 /// The <b>EdgedWeapon</b> class is a <b>Weapon</b> that has a sharp edge.

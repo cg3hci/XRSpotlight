@@ -2,7 +2,7 @@
 using System.Data.Common;
 using UnityEngine;
 
-namespace ECARules4All
+namespace EcaRules
 {
     public class Position
     {

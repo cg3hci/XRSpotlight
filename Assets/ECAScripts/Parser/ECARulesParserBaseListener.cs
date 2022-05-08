@@ -26,7 +26,7 @@ using ITerminalNode = Antlr4.Runtime.Tree.ITerminalNode;
 using IToken = Antlr4.Runtime.IToken;
 using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
 	/// <summary>
 	/// This class provides an empty implementation of <see cref="IECARulesParserListener"/>,

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     /// <summary>
     /// <b>Artwork</b> is an <see cref="Environment"/> subclass that represents an artwork.

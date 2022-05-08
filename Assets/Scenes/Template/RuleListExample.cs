@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 public class RuleListExample : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        RuleEngine.GetInstance().Add(new Rule(
-            new Action(GameObject.Find("Player"),"interacts with", GameObject.Find("Sphere")),
-            new List<Action>
+        EcaRuleEngine.GetInstance().Add(new EcaRule(
+            new EcaAction(GameObject.Find("Player"),"interacts with", GameObject.Find("Sphere")),
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("Player"), "starts animation", "WalkBack"),
+                new EcaAction(GameObject.Find("Player"), "starts animation", "WalkBack"),
             }
         ));
        /* RuleEngine.GetInstance().Add(new Rule(

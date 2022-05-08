@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
 using UnityEngine;
-using Action = ECARules4All.RuleEngine.Action;
 
 
 public class MuseumRules : MonoBehaviour
@@ -68,136 +67,136 @@ public class MuseumRules : MonoBehaviour
         
         // Rules for the Canvases
         // Appears when the player approaches Zeus' sculpture (uses its light activator as trigger)
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R1LightActivator2")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasZeus"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasZeus"), "changes", "visible", "to",ECABoolean.YES)
             }));
         
         // Same but with the Discobolus' sculpture
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R1LightActivator1")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasDisco"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasDisco"), "changes", "visible", "to",ECABoolean.YES)
             }));
         
         // Same but with the Boy's sculpture
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R1LightActivator3")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasBoy"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasBoy"), "changes", "visible", "to",ECABoolean.YES)
             }));
         
         // All canvases when the player walks away and turns the main light on (uses the room's main light switcher as trigger)
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), "interacts with",
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), "interacts with",
                 GameObject.Find("R1LightSwitcher")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasZeus"), "changes", "visible", "to",ECABoolean.NO),
-                new Action(GameObject.Find("CanvasBoy"), "changes", "visible", "to",ECABoolean.NO),
-                new Action(GameObject.Find("CanvasDisco"), "changes", "visible", "to",ECABoolean.NO)
+                new EcaAction(GameObject.Find("CanvasZeus"), "changes", "visible", "to",ECABoolean.NO),
+                new EcaAction(GameObject.Find("CanvasBoy"), "changes", "visible", "to",ECABoolean.NO),
+                new EcaAction(GameObject.Find("CanvasDisco"), "changes", "visible", "to",ECABoolean.NO)
             }));
         
         
         // Same but with the Discobolus' sculpture
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R2LightActivator1")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasPortrait1"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasPortrait1"), "changes", "visible", "to",ECABoolean.YES)
             }));
         
         
         // Same but with the Discobolus' sculpture
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R2LightActivator2")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasPortrait2"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasPortrait2"), "changes", "visible", "to",ECABoolean.YES)
             }));
             
         // Same but with the Discobolus' sculpture
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                 "interacts with", GameObject.Find("R2LightActivator3")),
-            new List<Action>
+            new List<EcaAction>
             {
-                new Action(GameObject.Find("CanvasPortrait3"), "changes", "visible", "to",ECABoolean.YES)
+                new EcaAction(GameObject.Find("CanvasPortrait3"), "changes", "visible", "to",ECABoolean.YES)
             }));
 
             // Same but with the Discobolus' sculpture
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("R2LightActivator4")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasPortrait4"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasPortrait4"), "changes", "visible", "to",ECABoolean.YES)
                 }));
             
             // Same but with the Discobolus' sculpture
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                     "interacts with", GameObject.Find("R2LightActivator5")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasPortrait5"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasPortrait5"), "changes", "visible", "to",ECABoolean.YES)
                 }));
             
             // Same but with the Discobolus' sculpture
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                     "interacts with", GameObject.Find("R2LightActivator6")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasPortrait6"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasPortrait6"), "changes", "visible", "to",ECABoolean.YES)
                 }));
             
             // All canvases when the player walks away and turns the main light on (uses the room's main light switcher as trigger)
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), "interacts with",
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), "interacts with",
                     GameObject.Find("R2LightSwitcher")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasPortrait1"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasPortrait2"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasPortrait3"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasPortrait4"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasPortrait5"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasPortrait6"), "changes", "visible", "to",ECABoolean.NO)
+                    new EcaAction(GameObject.Find("CanvasPortrait1"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasPortrait2"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasPortrait3"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasPortrait4"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasPortrait5"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasPortrait6"), "changes", "visible", "to",ECABoolean.NO)
                 }));
 
 
             // Rules for the Canvases
             // Appears when the player approaches Zeus' sculpture (uses its light activator as trigger)
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                     "interacts with", GameObject.Find("R4LightActivator1")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasAncient1"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasAncient1"), "changes", "visible", "to",ECABoolean.YES)
                 }));
         
             // Same but with the Discobolus' sculpture
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                     "interacts with", GameObject.Find("R4LightActivator2")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasAncient2"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasAncient2"), "changes", "visible", "to",ECABoolean.YES)
                 }));
         
             // Same but with the Boy's sculpture
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), 
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), 
                     "interacts with", GameObject.Find("R4LightActivator3")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasAncient3"), "changes", "visible", "to",ECABoolean.YES)
+                    new EcaAction(GameObject.Find("CanvasAncient3"), "changes", "visible", "to",ECABoolean.YES)
                 }));
         
             // All canvases when the player walks away and turns the main light on (uses the room's main light switcher as trigger)
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), "interacts with",
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), "interacts with",
                     GameObject.Find("R4LightSwitcher")),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find("CanvasAncient1"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasAncient2"), "changes", "visible", "to",ECABoolean.NO),
-                    new Action(GameObject.Find("CanvasAncient3"), "changes", "visible", "to",ECABoolean.NO)
+                    new EcaAction(GameObject.Find("CanvasAncient1"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasAncient2"), "changes", "visible", "to",ECABoolean.NO),
+                    new EcaAction(GameObject.Find("CanvasAncient3"), "changes", "visible", "to",ECABoolean.NO)
                 }));
 
 
@@ -206,44 +205,44 @@ public class MuseumRules : MonoBehaviour
                 set1.SetActive(true);
                 set2.SetActive(false);
                 
-                RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+                EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                         "interacts with", GameObject.Find("HawaiiTrigger1")),
-                    new List<Action>
+                    new List<EcaAction>
                     {
-                        new Action(GameObject.Find("HawaiiVideo"), "changes", "visible", "to", ECABoolean.YES),
-                        new Action(GameObject.Find("HawaiiVideo"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Video/Hawaii1.mp4"),
-                        new Action(GameObject.Find("HawaiiVideo"), "plays"),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "changes", "visible", "to", ECABoolean.YES),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Video/Hawaii1.mp4"),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "plays"),
 
                     }));
-                RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+                EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                         "interacts with", GameObject.Find("HawaiiTrigger2")),
-                    new List<Action>
+                    new List<EcaAction>
                     {
-                        new Action(GameObject.Find("HawaiiVideo"), "changes", "visible", "to", ECABoolean.YES),
-                        new Action(GameObject.Find("HawaiiVideo"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Video/Hawaii2.mp4"),
-                        new Action(GameObject.Find("HawaiiVideo"), "plays"),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "changes", "visible", "to", ECABoolean.YES),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Video/Hawaii2.mp4"),
+                        new EcaAction(GameObject.Find("HawaiiVideo"), "plays"),
 
                     }));
                 
-                RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+                EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                         "interacts with", GameObject.Find("Fence")),
-                    new SimpleCondition(GameObject.Find("360Sphere"), "playing", "is", ECABoolean.NO),
-                    new List<Action>
+                    new SimpleEcaCondition(GameObject.Find("360Sphere"), "playing", "is", ECABoolean.NO),
+                    new List<EcaAction>
                     {
 
-                        new Action(GameObject.Find("360Sphere"), "shows"),
-                        new Action(GameObject.Find("360Sphere"), "plays")
+                        new EcaAction(GameObject.Find("360Sphere"), "shows"),
+                        new EcaAction(GameObject.Find("360Sphere"), "plays")
 
 
                     }));	        
-                RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+                EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                         "interacts with", GameObject.Find("Fence")),
-                    new SimpleCondition(GameObject.Find("360Sphere"), "playing", "is", ECABoolean.YES),
-                    new List<Action>
+                    new SimpleEcaCondition(GameObject.Find("360Sphere"), "playing", "is", ECABoolean.YES),
+                    new List<EcaAction>
                     {
 
-                        new Action(GameObject.Find("360Sphere"), "hides"),
-                        new Action(GameObject.Find("360Sphere"), "stops")
+                        new EcaAction(GameObject.Find("360Sphere"), "hides"),
+                        new EcaAction(GameObject.Find("360Sphere"), "stops")
 
 
                     }));
@@ -254,95 +253,95 @@ public class MuseumRules : MonoBehaviour
                 set1.SetActive(false);
                 
                 //Audio
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("HawaiiAudio")),
-                new List<Action>
+                new List<EcaAction>
                 {
 
-                    new Action(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/HawaiiMusic.mp3"),
-                    new Action(GameObject.Find("Audio"), "plays"),
+                    new EcaAction(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/HawaiiMusic.mp3"),
+                    new EcaAction(GameObject.Find("Audio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("ChinaAudio")),
-                new List<Action>
+                new List<EcaAction>
                 {
 
-                    new Action(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/ChinaMusic.mp3"),
-                    new Action(GameObject.Find("Audio"), "plays"),
+                    new EcaAction(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/ChinaMusic.mp3"),
+                    new EcaAction(GameObject.Find("Audio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("EgyptAudio")),
-                new List<Action>
+                new List<EcaAction>
                 {
 
-                    new Action(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/EgyptMusic.mp3"),
-                    new Action(GameObject.Find("Audio"), "plays"),
+                    new EcaAction(GameObject.Find("Audio"), "changes", "source", "to", "Assets/Prefabs/TemplateStuff/FBX/Museum/Audio/EgyptMusic.mp3"),
+                    new EcaAction(GameObject.Find("Audio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("PlayGreek")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("GreekAudio"), "plays"),
+                    new EcaAction(GameObject.Find("GreekAudio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("StopGreek")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("GreekAudio"), "stops"),
+                    new EcaAction(GameObject.Find("GreekAudio"), "stops"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("PlayClassical")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("ClassicalAudio"), "plays"),
+                    new EcaAction(GameObject.Find("ClassicalAudio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("StopClassical")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("ClassicalAudio"), "stops"),
+                    new EcaAction(GameObject.Find("ClassicalAudio"), "stops"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("PlayPersian")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("PersianAudio"), "plays"),
+                    new EcaAction(GameObject.Find("PersianAudio"), "plays"),
 
 
                 }));
             
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                     "interacts with", GameObject.Find("StopPersian")),
-                new List<Action>
+                new List<EcaAction>
                 {
                     
-                    new Action(GameObject.Find("PersianAudio"), "stops"),
+                    new EcaAction(GameObject.Find("PersianAudio"), "stops"),
 
 
                 }));
@@ -422,19 +421,19 @@ public class MuseumRules : MonoBehaviour
     public void turnOneOn(string lightTrigger, string lightOn, List<string> lightsOff)
     {
         // Action list needed to add a new rule
-        List<Action> l = new List<Action>();
+        List<EcaAction> l = new List<EcaAction>();
         // Turns on the only light that was specified
-        l.Add(new Action(GameObject.Find(lightOn), "turns", ECABoolean.ON));
+        l.Add(new EcaAction(GameObject.Find(lightOn), "turns", ECABoolean.ON));
         
         // Turns off every other light in the room
         foreach(string s in lightsOff)
         {
             if(s != lightOn) 
-                l.Add(new Action(GameObject.Find(s), "turns", ECABoolean.OFF));
+                l.Add(new EcaAction(GameObject.Find(s), "turns", ECABoolean.OFF));
         }
         
         // Creates the rule
-        RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"),
+        EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"),
                 "interacts with", GameObject.Find(lightTrigger)), l ));
     }
     

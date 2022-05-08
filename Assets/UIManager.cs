@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Action = ECARules4All.RuleEngine.Action;
 
 
 public class UIManager : MonoBehaviour
 {
-    private static Rule popUpRule = null;
+    private static EcaRule _popUpEcaRule = null;
     private static ButtonsHandle.RuleString popUpRuleString = new ButtonsHandle.RuleString();
 
     public static ButtonsHandle.RuleString PopUpRuleString
@@ -25,10 +24,10 @@ public class UIManager : MonoBehaviour
         set => popUpRuleString = value;
     }
 
-    public static Rule PopUpRule
+    public static EcaRule popUpEcaRule
     {
-        get => popUpRule;
-        set => popUpRule = value;
+        get => _popUpEcaRule;
+        set => _popUpEcaRule = value;
     }
 
     //HandUI buttons
@@ -117,7 +116,7 @@ public class UIManager : MonoBehaviour
 
     private string checkPlaceholder(string placeholderName)
     {
-        foreach (var rule in RuleEngine.GetInstance().Rules())
+        foreach (var rule in EcaRuleEngine.GetInstance().Rules())
         {
             foreach (var action in rule.GetActions())
             {
@@ -139,18 +138,18 @@ public class UIManager : MonoBehaviour
             replacementString.GetComponent<Text>().text = t;
             currentReplacement = t;
             string sceneName = SceneManager.GetActiveScene().name;
-            Rule newReplacement = new Rule(
-                new Action(GameObject.Find("Player"), "teleports to",
+            EcaRule newReplacement = new EcaRule(
+                new EcaAction(GameObject.Find("Player"), "teleports to",
                     GameObject.Find(sceneName)),
-                new List<Action>
+                new List<EcaAction>
                 {
-                    new Action(GameObject.Find(currentPlaceholder), "changes", "mesh", "to", currentReplacement),
+                    new EcaAction(GameObject.Find(currentPlaceholder), "changes", "mesh", "to", currentReplacement),
                 }
             );
-            RuleEngine.GetInstance().Add(newReplacement);
+            EcaRuleEngine.GetInstance().Add(newReplacement);
             TextRuleSerializer ser = new TextRuleSerializer();
-            ser.SaveRules(Path.Combine(Application.streamingAssetsPath, "storedRules.txt"));
-            EventBus.GetInstance().Publish( new Action(GameObject.Find("Player"), "teleports to", GameObject.Find(sceneName)));
+            ser.SaveRules(System.IO.Path.Combine(Application.streamingAssetsPath, "storedRules.txt"));
+            EcaEventBus.GetInstance().Publish( new EcaAction(GameObject.Find("Player"), "teleports to", GameObject.Find(sceneName)));
             GameObject viewport = ruleList.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
             GameObject newRulePrefab = Instantiate(Resources.Load("Rule"), viewport.transform) as GameObject;
             // Fix the new rule's transform
@@ -207,7 +206,7 @@ public class UIManager : MonoBehaviour
         ruleList.SetActive(true);
         //string path = Path.Combine("Assets", Path.Combine("Resources", "storedRules.txt"));
         //string path = Path.Combine(Directory.GetCurrentDirectory(), "storedRules.txt");
-        string path = Path.Combine(Application.streamingAssetsPath, "storedRules.txt");
+        string path = System.IO.Path.Combine(Application.streamingAssetsPath, "storedRules.txt");
         RuleUtils.LoadRulesAndAddToUI(path);
         editorCanvasInterface.SetActive(false);
 
@@ -223,7 +222,7 @@ public class UIManager : MonoBehaviour
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, LoadSceneMode mode)
     {
-        EventBus.GetInstance().Publish(new Action(GameObject.Find("Player"), "teleports to", GameObject.Find(SceneManager.GetActiveScene().name)));
+        EcaEventBus.GetInstance().Publish(new EcaAction(GameObject.Find("Player"), "teleports to", GameObject.Find(SceneManager.GetActiveScene().name)));
     }
 
     //State for login mechanism
@@ -399,8 +398,8 @@ public class UIManager : MonoBehaviour
         // DON'T CHANGE THE ORDER <3 
         ruleList.SetActive(true);
         
-        Rule rule = buttonsHandle.CreateRule();
-        PopUpRule = rule; // Used in the pop-ups
+        EcaRule ecaRule = buttonsHandle.CreateRule();
+        popUpEcaRule = ecaRule; // Used in the pop-ups
         ruleList.SetActive(false);
 
         ShowSavePopup();
@@ -456,13 +455,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ExecuteRule(List<Rule> rules)
+    private void ExecuteRule(List<EcaRule> rules)
     {
         foreach (var rule in rules)
         {
-            Action eventAction = rule.GetEvent();
+            EcaAction eventEcaAction = rule.GetEvent();
             //makes the event happen
-            EventBus.GetInstance().Publish(eventAction);
+            EcaEventBus.GetInstance().Publish(eventEcaAction);
         }
     }
 
@@ -474,18 +473,18 @@ public class UIManager : MonoBehaviour
             testingSingleRule = true;
             StateTesting();
 
-            Rule rule = buttonsHandle.CreateRule();
+            EcaRule ecaRule = buttonsHandle.CreateRule();
             //TODO handle this case with a popup
-            if (rule == null) return; //not valid rule
-            ExecuteRule(new List<Rule>() {rule});
+            if (ecaRule == null) return; //not valid rule
+            ExecuteRule(new List<EcaRule>() {ecaRule});
         }
         else
         {
             //test all rules
             testingAllRules = true;
             StateTesting();
-            List<Rule> rules = new List<Rule>();
-            foreach (var r in RuleEngine.GetInstance().Rules())
+            List<EcaRule> rules = new List<EcaRule>();
+            foreach (var r in EcaRuleEngine.GetInstance().Rules())
             {
                 rules.Add(r);
             }
@@ -551,7 +550,7 @@ public class UIManager : MonoBehaviour
             if (r.Value.prefab == rule)
             {
                 //remove from rule engine
-                RuleEngine.GetInstance().Remove(r.Value.rule);
+                EcaRuleEngine.GetInstance().Remove(r.Value.EcaRule);
                 RuleUtils.rulesDictionary.Remove(r.Key);
                 Destroy(rule);
                 
@@ -595,7 +594,7 @@ public class UIManager : MonoBehaviour
         ButtonsHandle.modifyingRuleId = obj.name;
 
         //remove from rule engine
-        RuleEngine.GetInstance().Remove(rulesStruct.rule);
+        EcaRuleEngine.GetInstance().Remove(rulesStruct.EcaRule);
 
         //TODO gestione colori oggetti selezionati?
         //Event:
@@ -607,7 +606,7 @@ public class UIManager : MonoBehaviour
         var actions = from act in allActions where act.name != "ActionPrefab" select act;
         foreach(var ac in actions)
             Destroy(ac);
-        for (int i = 0; i < rulesStruct.rule.GetActions().Count; i++)
+        for (int i = 0; i < rulesStruct.EcaRule.GetActions().Count; i++)
         {
             //we re-instantiate the first action when we discard changes, so if we instantiate that again
             GameObject singleAction = Instantiate(uiManager.actionPrefab, uiManager.contentActionTransform);
@@ -833,7 +832,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowSavePopup()
     {
-        if (PopUpRule != null) // if the rule is valid
+        if (popUpEcaRule != null) // if the rule is valid
         {
             // Then we ask the user if they want to save or discard the rule
 
@@ -855,7 +854,7 @@ public class UIManager : MonoBehaviour
 
     public void PressSavePopUp()
     {
-        RuleEngine.GetInstance().Add(PopUpRule);
+        EcaRuleEngine.GetInstance().Add(popUpEcaRule);
         ButtonsHandle.DiscardChanges();
         
         RuleUtils.SaveRulesToFile();
@@ -868,14 +867,14 @@ public class UIManager : MonoBehaviour
 
         CreateOrModifyRulePrefab();
 
-        PopUpRule = null;
+        popUpEcaRule = null;
         PopUpRuleString = new ButtonsHandle.RuleString();
     }
 
     public void PressDiscardPopUp()
     {
         ButtonsHandle.DiscardChanges();
-        PopUpRule = null;
+        popUpEcaRule = null;
         PopUpRuleString = new ButtonsHandle.RuleString();
 
         popUpSaveDiscard.SetActive(false);
@@ -905,8 +904,8 @@ public class UIManager : MonoBehaviour
                 if (r.Key == ButtonsHandle.modifyingRuleId)
                 {
                     GameObject prefab = RuleUtils.rulesDictionary[r.Key].prefab;
-                    ButtonsHandle.CreateRuleRow(prefab, PopUpRule);
-                    RuleUtils.rulesDictionary[r.Key] = new RuleUtils.RulesStruct(prefab, PopUpRule, PopUpRuleString);
+                    ButtonsHandle.CreateRuleRow(prefab, popUpEcaRule);
+                    RuleUtils.rulesDictionary[r.Key] = new RuleUtils.RulesStruct(prefab, popUpEcaRule, PopUpRuleString);
                     ButtonsHandle.modifyingRuleId = "";
                     break;
                 }
@@ -916,23 +915,23 @@ public class UIManager : MonoBehaviour
         {
             //if we don't find the rule, we have to create a new one
             string newRuleUuid = Guid.NewGuid().ToString();
-            GameObject gameObject = ButtonsHandle.CreateRuleRow(null, PopUpRule);
+            GameObject gameObject = ButtonsHandle.CreateRuleRow(null, popUpEcaRule);
             gameObject.name = newRuleUuid;
 
             if (!RuleUtils.rulesDictionary.ContainsKey(newRuleUuid))
             {
-                RuleUtils.rulesDictionary.Add(newRuleUuid, new RuleUtils.RulesStruct(gameObject, PopUpRule, PopUpRuleString));
+                RuleUtils.rulesDictionary.Add(newRuleUuid, new RuleUtils.RulesStruct(gameObject, popUpEcaRule, PopUpRuleString));
             }
         }
     }
 
     public void PressSaveFloppy()
     {
-        Rule rule = buttonsHandle.CreateRule();
-        PopUpRule = rule; // Used in the pop-ups
+        EcaRule ecaRule = buttonsHandle.CreateRule();
+        popUpEcaRule = ecaRule; // Used in the pop-ups
 
         // IF the rule is valid, we simply save it. No interaction needed
-        if (PopUpRule != null)
+        if (popUpEcaRule != null)
         {
             PressSavePopUp();
         }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
-using ECARules4All.RuleEngine;
-using Action = ECARules4All.RuleEngine.Action;
+using EcaRules;
 
 
 namespace ECAScripts.Utils
@@ -36,12 +35,12 @@ namespace ECAScripts.Utils
         public void assignPrefabToPlaceholder(String element, GameObject target)
         {
             //TODO: This snippet of code is in beta phase, it'll be surely updated to a better implementation
-            RuleEngine.GetInstance().Add(new Rule(new Action(GameObject.Find("Player"), "activates"), 
-                new List<Action>()
+            EcaRuleEngine.GetInstance().Add(new EcaRule(new EcaAction(GameObject.Find("Player"), "activates"), 
+                new List<EcaAction>()
                 {
-                    new Action(target, "changes", "mesh", "to", element)
+                    new EcaAction(target, "changes", "mesh", "to", element)
                 }));
-            EventBus.GetInstance().Publish(new Action(GameObject.Find("Player"), "activates"));
+            EcaEventBus.GetInstance().Publish(new EcaAction(GameObject.Find("Player"), "activates"));
         }
     }
 }

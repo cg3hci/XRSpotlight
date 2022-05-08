@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine.SceneManagement;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Transition</b> is a <see cref="Behaviour"/> that is used to trigger a transition to another scene.

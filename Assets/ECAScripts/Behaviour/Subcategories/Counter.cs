@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using EcaRules;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Counter</b> is a <see cref="Behaviour">Behaviour</see> that enables the object to keep track of countable events

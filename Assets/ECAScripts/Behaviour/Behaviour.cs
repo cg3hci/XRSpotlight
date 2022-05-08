@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     /// <summary>
     /// <b>Behaviour</b> is a Component that does not derive from the <see cref="ECAObject">ECAObject</see> family, it's possible to apply more than one

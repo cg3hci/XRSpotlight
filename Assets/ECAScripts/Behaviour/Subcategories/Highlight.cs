@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts;
 using ECAScripts.Utils;
 using UnityEngine.UI;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Highlight</b> is a <see cref="Behaviour">Behaviour</see> that is used to highlight the objects that are in the scene.

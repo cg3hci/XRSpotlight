@@ -1,6 +1,5 @@
 ﻿using System;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 
 /// <summary>

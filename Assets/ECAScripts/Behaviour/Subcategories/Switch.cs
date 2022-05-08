@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts.Utils;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Switch</b> is a <see cref="Behaviour"/> that can be use to let an object have an on/off state, useful for

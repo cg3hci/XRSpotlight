@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 using Action = System.Action;
 
@@ -8,7 +8,7 @@ namespace ECAScripts.Utils
 {
     public class OutlineInteractiveObjects : MonoBehaviour
     {
-        private List<Rule> interactiveRules = new List<Rule>();
+        private List<EcaRule> interactiveRules = new List<EcaRule>();
         private List<GameObject> interactiveObjects = new List<GameObject>();
         
         void Start()
@@ -19,7 +19,7 @@ namespace ECAScripts.Utils
         
         public void findInteractiveRules()
         {
-            foreach (Rule r in RuleEngine.GetInstance().Rules())
+            foreach (EcaRule r in EcaRuleEngine.GetInstance().Rules())
             {
                 if (isInteractive(r))
                 {
@@ -34,11 +34,11 @@ namespace ECAScripts.Utils
             
         }
 
-        bool isInteractive(Rule r)
+        bool isInteractive(EcaRule r)
         {
             String searchingSubject = "Player";
             String searchingVerb = "interacts with";
-            ECARules4All.RuleEngine.Action eventRule = r.GetEvent();
+            EcaRules.EcaAction eventRule = r.GetEvent();
             if (eventRule.GetSubject().name.Equals(searchingSubject) && eventRule.GetActionMethod().Equals(searchingVerb))
             {
                 interactiveObjects.Add((GameObject)eventRule.GetObject());

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     /// <summary>
     /// <b>Sky</b> is an <see cref="Environment"/> subclass that represents the skybox of the scene.

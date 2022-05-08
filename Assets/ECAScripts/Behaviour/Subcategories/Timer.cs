@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using Action = ECARules4All.RuleEngine.Action;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using EcaRules;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Timer</b> is a <see cref="Behaviour"/> that can be used to trigger an action after a certain amount of time.
@@ -91,7 +90,7 @@ public class Timer : MonoBehaviour
     [Action(typeof(Timer), "elapses-timer", typeof(int))]
     public void Elapses(int seconds)
     {
-        EventBus.GetInstance().Publish(new Action(this.gameObject, "elapses-timer", seconds));
+        EcaEventBus.GetInstance().Publish(new EcaAction(this.gameObject, "elapses-timer", seconds));
     }
     
     /// <summary>
@@ -101,7 +100,7 @@ public class Timer : MonoBehaviour
     [Action(typeof(Timer), "reaches", typeof(int))]
     public void Reaches(int seconds)
     {
-        EventBus.GetInstance().Publish(new Action(this.gameObject, "reaches", seconds));
+        EcaEventBus.GetInstance().Publish(new EcaAction(this.gameObject, "reaches", seconds));
     }
 
     /// <summary>

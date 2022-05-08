@@ -6,15 +6,14 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime.Misc;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using ECAScripts;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Examples.UIRule.Prefabs;
-using Action = ECARules4All.RuleEngine.Action;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using Behaviour = EcaRules.Behaviour;
 using Object = UnityEngine.Object;
 using System.IO;
 
@@ -24,13 +23,13 @@ public class RuleUtils : MonoBehaviour
     public struct RulesStruct
     {
         public GameObject prefab;
-        public Rule rule;
+        public EcaRule EcaRule;
         public ButtonsHandle.RuleString ruleString;
 
-        public RulesStruct(GameObject prefab, Rule rule, ButtonsHandle.RuleString ruleString)
+        public RulesStruct(GameObject prefab, EcaRule ecaRule, ButtonsHandle.RuleString ruleString)
         {
             this.prefab = prefab;
-            this.rule = rule;
+            this.EcaRule = ecaRule;
             this.ruleString = ruleString;
         }
     }
@@ -42,7 +41,7 @@ public class RuleUtils : MonoBehaviour
     public static Dictionary<string, RulesStruct> rulesDictionary =
         new Dictionary<string, RulesStruct>();
     
-    public static ButtonsHandle.RuleString ConvertRuleObjectToRuleString(Rule rule, string ruleText)
+    public static ButtonsHandle.RuleString ConvertRuleObjectToRuleString(EcaRule ecaRule, string ruleText)
     {
         ButtonsHandle.RuleString ruleString = new ButtonsHandle.RuleString() { };
         List<ButtonsHandle.StringAction> actionString = new List<ButtonsHandle.StringAction>();
@@ -50,14 +49,14 @@ public class RuleUtils : MonoBehaviour
         ButtonsHandle.StringAction eventString = new ButtonsHandle.StringAction();
     
         //When action
-        Action eventRule = rule.GetEvent();
+        EcaAction eventRule = ecaRule.GetEvent();
         //find when row in the text
         string whenString = FindElementInText(ruleText, "when");
         //convert to StringAction
         eventString = ConvertActionToString(eventRule, whenString);
     
         //First Then action
-        List<Action> listOfActions = rule.GetActions();
+        List<EcaAction> listOfActions = ecaRule.GetActions();
         //using a regex I find all the actions in the file searching for anything that starts with "the" and ends with ";"
         Regex rgx = new Regex("(?<=the\\s)(.*?)(?=;)");
         int i = 0;
@@ -68,19 +67,19 @@ public class RuleUtils : MonoBehaviour
         }
         
         //Conditions
-        Condition condition = rule.GetCondition();
-        if (condition!=null)
+        EcaCondition ecaCondition = ecaRule.GetCondition();
+        if (ecaCondition!=null)
         {
-            if (condition.GetType() == typeof(SimpleCondition))//one condition
+            if (ecaCondition.GetType() == typeof(SimpleEcaCondition))//one condition
             {
                 //using a regex I find the condition in the rule searching for anything that starts with "if" and ends with "\n"
                 string ifcondition = Regex.Match(ruleText, "(?<=if\\s)(.*?)(?=\\n)").Groups[0].Value;
-                conditionString.Add(ConvertConditionToString((SimpleCondition)condition, ifcondition, null));
+                conditionString.Add(ConvertConditionToString((SimpleEcaCondition)ecaCondition, ifcondition, null));
             } 
                 
             else //multiple conditions
             {
-                CompositeCondition ccondition = condition as CompositeCondition;
+                CompositeEcaCondition ccondition = ecaCondition as CompositeEcaCondition;
                 conditionString = ConvertCompositeCondition(ccondition, ruleText);
             }
         }
@@ -92,22 +91,22 @@ public class RuleUtils : MonoBehaviour
     }
     
     
-    private static ButtonsHandle.StringCondition ConvertConditionToString(SimpleCondition condition, string stringText, string andOr)
+    private static ButtonsHandle.StringCondition ConvertConditionToString(SimpleEcaCondition ecaCondition, string stringText, string andOr)
     {
         ButtonsHandle.StringCondition stringCondition = new ButtonsHandle.StringCondition();
         //toCheck
-        string toCheck = condition.GetSubject().name;
+        string toCheck = ecaCondition.GetSubject().name;
         string toCheckType = Regex.Match(stringText, "\\w+(?=\\s+"+toCheck+")").Groups[0].Value;
         stringCondition.ToCheck = FirstCharToUpper(toCheckType) + " " + toCheck;
     
         //property
-        stringCondition.Property = condition.GetProperty();
+        stringCondition.Property = ecaCondition.GetProperty();
     
         //checksymbol
-        stringCondition.CheckSymbol = condition.GetSymbol();
+        stringCondition.CheckSymbol = ecaCondition.GetSymbol();
     
         //comparewith
-        string compareWith = condition.GetValueToCompare().ToString();
+        string compareWith = ecaCondition.GetValueToCompare().ToString();
         //the word before comparewith, it can be a type (e.g. color blue -> color) or 
         //it can only the comparewith (e.g. is on)
         // The regex extracts the word BEFORE compareWith
@@ -122,7 +121,7 @@ public class RuleUtils : MonoBehaviour
         return stringCondition;
     }
 
-    private static List<ButtonsHandle.StringCondition> ConvertCompositeCondition(CompositeCondition condition,
+    private static List<ButtonsHandle.StringCondition> ConvertCompositeCondition(CompositeEcaCondition ecaCondition,
         string stringText)
     {
 
@@ -134,13 +133,13 @@ public class RuleUtils : MonoBehaviour
         GroupCollection andOrs = Regex.Match(stringText, "(\\sand\\s|\\sor\\s)").Groups;
         
         int i = 0;
-        foreach (var c in condition.Children())
+        foreach (var c in ecaCondition.Children())
         {
             if (!string.IsNullOrEmpty(split[i])) ;
             {
                 string andOrNull = null;
                 if (i != 0) andOrNull = andOrs[i - 1].Value;
-                stringConditions.Add(ConvertConditionToString((SimpleCondition) c, split[i], andOrNull));
+                stringConditions.Add(ConvertConditionToString((SimpleEcaCondition) c, split[i], andOrNull));
             }
             i++;
         }
@@ -162,23 +161,23 @@ public class RuleUtils : MonoBehaviour
         };
     
     
-    public static ButtonsHandle.StringAction ConvertActionToString(Action action, string stringText)
+    public static ButtonsHandle.StringAction ConvertActionToString(EcaAction ecaAction, string stringText)
     {
         ButtonsHandle.StringAction stringAction = new ButtonsHandle.StringAction();
     
         //subject
-        string subj = action.GetSubject().name;
+        string subj = ecaAction.GetSubject().name;
         string subjType = Regex.Match(stringText, "\\w+(?=\\s+"+subj+")").Groups[0].Value;
         stringAction.Subj = FirstCharToUpper(subjType) + " " + subj;
     
         //verb
-        stringAction.Verb = action.GetActionMethod();
+        stringAction.Verb = ecaAction.GetActionMethod();
     
         //object
-        if (action.GetObject() != null && action.GetModifierValue()==null)
+        if (ecaAction.GetObject() != null && ecaAction.GetModifierValue()==null)
         {
             //object name
-            string obj = action.GetObject().ToString();
+            string obj = ecaAction.GetObject().ToString();
             
             // Remove (UnityEngine.GameObject) from "obj" (e.g.: obj = "bigButton1 (UnityEngine.GameObject)")
             obj = obj.Split('(')[0];
@@ -200,12 +199,12 @@ public class RuleUtils : MonoBehaviour
         }
 
         //object + value
-        if (action.GetModifierValue() != null)
+        if (ecaAction.GetModifierValue() != null)
         {
             //object name
-            string obj = action.GetObject().ToString();
+            string obj = ecaAction.GetObject().ToString();
             stringAction.Obj = obj;
-            stringAction.Prep = action.GetModifier();
+            stringAction.Prep = ecaAction.GetModifier();
             // stringAction.Value = Regex.Match(stringText, "\\w+(?=\\s+"+stringAction.Value+")").Groups[0].Value;
             // (?<=to\s).*  /// Picks everything after "to"
 
@@ -828,7 +827,7 @@ public class RuleUtils : MonoBehaviour
         TextRuleSerializer serializer = new TextRuleSerializer();
         // string path = Path.Combine("Assets", Path.Combine("Resources", "storedRules.txt"));
         //string path = Path.Combine(Directory.GetCurrentDirectory(), "storedRules.txt");
-        string path = Path.Combine(Application.streamingAssetsPath, "storedRules.txt");
+        string path = System.IO.Path.Combine(Application.streamingAssetsPath, "storedRules.txt");
         serializer.SaveRules(path);
     }
     

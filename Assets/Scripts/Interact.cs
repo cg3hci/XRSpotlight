@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ECARules4All.RuleEngine;
+using EcaRules;
 
 /*
  * This is an example of script that publishes events inside a template
@@ -39,6 +39,6 @@ public class Interact : MonoBehaviour
     private void Update()
     {
         if (otherGameObject != null && Input.GetButtonDown("Fire1"))
-            EventBus.GetInstance().Publish(new Action(otherGameObject, "interacts with", this.gameObject));
+            EcaEventBus.GetInstance().Publish(new EcaAction(otherGameObject, "interacts with", this.gameObject));
     }
 }

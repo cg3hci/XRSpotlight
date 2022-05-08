@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 
-public class RuleEngineLoader : MonoBehaviour
+public class EcaRuleEngineLoader : MonoBehaviour
 {
-    private RuleEngine ruleEngine;
-    private EventBus eventBus;
+    private EcaRuleEngine ecaRuleEngine;
+    private EcaEventBus ecaEventBus;
 
     private void Start()
     {
-        ruleEngine = RuleEngine.GetInstance();
-        eventBus = EventBus.GetInstance();
+        ecaRuleEngine = EcaRuleEngine.GetInstance();
+        ecaEventBus = EcaEventBus.GetInstance();
         //we're supposing that a GameObject called Player always exists in a scene, the check is for preventing errors
         // if (GameObject.Find("Player") != null)
         // {

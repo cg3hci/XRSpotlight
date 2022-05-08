@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using ECARules4All;
+using EcaRules;
 using UnityEngine;
-using ECARules4All.RuleEngine;
 using ECAScripts.Utils;
 
 public class RuleList : MonoBehaviour

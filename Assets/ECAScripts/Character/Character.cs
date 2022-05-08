@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using ECARules4All;
+using EcaRules;
 using ECAScripts.Utils;
 using UnityEditor;
 

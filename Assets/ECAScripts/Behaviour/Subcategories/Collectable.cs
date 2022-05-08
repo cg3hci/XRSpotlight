@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using ECARules4All.RuleEngine;
-using Behaviour = ECARules4All.RuleEngine.Behaviour;
+using EcaRules;
+using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
 /// <b>Collectable</b> is a <see cref="Behaviour">Behaviour</see> that lets an object to be taken inside a player/object owned inventory, or instantly used

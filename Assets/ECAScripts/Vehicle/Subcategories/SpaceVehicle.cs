@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using ECARules4All;
+using EcaRules;
 using UnityEngine;
-using ECARules4All.RuleEngine;
 
 /// <summary>
 /// A <b>SpaceVehicle</b> can fly in the air.

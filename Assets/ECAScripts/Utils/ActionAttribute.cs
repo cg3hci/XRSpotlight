@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ECAScripts.Utils;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
     public class ActionAttribute : System.Attribute

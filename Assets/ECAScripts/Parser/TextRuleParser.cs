@@ -8,7 +8,7 @@ using ECAScripts.Utils;
 using UnityEngine;
 using System.Globalization;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
     public class TextRuleParser : IECARulesParserListener, IAntlrErrorListener<IToken>
     {
@@ -24,10 +24,10 @@ namespace ECARules4All.RuleEngine
         private string _stringLiteral;
         private string _timeLiteral;
         private GameObject _reference;
-        private Action _event, _tmp;
-        private CompositeCondition _c;
-        private SimpleCondition _simple;
-        private List<Action> _actions;
+        private EcaAction _event, _tmp;
+        private CompositeEcaCondition _c;
+        private SimpleEcaCondition simpleEca;
+        private List<EcaAction> _actions;
         private string _op;
         private object _value;
 
@@ -44,7 +44,7 @@ namespace ECARules4All.RuleEngine
             PositionDeclarations = new Dictionary<string, Position>();
             PathDeclarations = new Dictionary<string, Path>();
             ColorDeclarations = new Dictionary<string, ECAColor>();
-            _actions = new ArrayList<Action>();
+            _actions = new ArrayList<EcaAction>();
             _boolLiteral = new ECABoolean(ECABoolean.BoolType.FALSE);
         }
 
@@ -117,9 +117,9 @@ namespace ECARules4All.RuleEngine
             return obj;
         }
 
-        private SimpleCondition ReadBaseCondition(ECARulesParser.BaseConditionContext context)
+        private SimpleEcaCondition ReadBaseCondition(ECARulesParser.BaseConditionContext context)
         {
-            SimpleCondition condition = null; 
+            SimpleEcaCondition ecaCondition = null; 
             _objectName = context.IDENTIFIER().GetText();
             _objectTypeName = context.type().IDENTIFIER().GetText();
             _reference = GetReference();
@@ -147,11 +147,11 @@ namespace ECARules4All.RuleEngine
                 _objectName = context.@object().IDENTIFIER().GetText();
                 _objectTypeName = context.@object().type().IDENTIFIER().GetText();
                 var _reference2 = GetReference();
-                condition = new SimpleCondition(_reference, property, _op, _reference2);
+                ecaCondition = new SimpleEcaCondition(_reference, property, _op, _reference2);
             }
-            if (context.value() != null) condition = new SimpleCondition(_reference, property, _op, _value);
+            if (context.value() != null) ecaCondition = new SimpleEcaCondition(_reference, property, _op, _value);
             _op = null;
-            return condition;
+            return ecaCondition;
         }
 
         public void Reset()
@@ -221,7 +221,7 @@ namespace ECARules4All.RuleEngine
 
         public void EnterAction([NotNull] ECARulesParser.ActionContext context)
         {
-            _tmp = new Action();
+            _tmp = new EcaAction();
         }
 
         public void EnterAlias([NotNull] ECARulesParser.AliasContext context)
@@ -256,14 +256,14 @@ namespace ECARules4All.RuleEngine
 
         public void EnterCondition([NotNull] ECARulesParser.ConditionContext context)
         {
-            CompositeCondition composite = new CompositeCondition();
+            CompositeEcaCondition compositeEca = new CompositeEcaCondition();
             if(_c != null)
             {
-                _c.AddChild(composite);
+                _c.AddChild(compositeEca);
                 
 
             }
-            _c = composite;
+            _c = compositeEca;
         }
 
         public void EnterDeclaration([NotNull] ECARulesParser.DeclarationContext context)
@@ -274,9 +274,9 @@ namespace ECARules4All.RuleEngine
         public void EnterEcarule([NotNull] ECARulesParser.EcaruleContext context)
         {
             _tmp = null;
-            _c = new CompositeCondition();
+            _c = new CompositeEcaCondition();
             //_conditionTree = new ConditionTree(;
-            _actions = new List<Action>();
+            _actions = new List<EcaAction>();
         }
 
         public void EnterEveryRule(ParserRuleContext ctx)
@@ -415,7 +415,7 @@ namespace ECARules4All.RuleEngine
                 _actions.Add(_tmp);
                 
             }
-            _tmp = new Action();
+            _tmp = new EcaAction();
 
         }
 
@@ -433,8 +433,8 @@ namespace ECARules4All.RuleEngine
 
         public void ExitBaseCondition([NotNull] ECARulesParser.BaseConditionContext context)
         {
-            _simple = ReadBaseCondition(context);
-            _c.AddChild(_simple);
+            simpleEca = ReadBaseCondition(context);
+            _c.AddChild(simpleEca);
         }
 
         public void ExitBehaviourDeclaration([NotNull] ECARulesParser.BehaviourDeclarationContext context)
@@ -511,18 +511,18 @@ namespace ECARules4All.RuleEngine
         public void ExitCondition([NotNull] ECARulesParser.ConditionContext context)
         {
             if (context.NOT() != null)
-                _c.Op = CompositeCondition.ConditionType.NOT;
+                _c.Op = CompositeEcaCondition.ConditionType.NOT;
             
             if (_c.parent != null)
             {
-                _c = (CompositeCondition)_c.parent;
+                _c = (CompositeEcaCondition)_c.parent;
 
             }
 
             if (context.AND().Length > 0)
-                _c.Op = CompositeCondition.ConditionType.AND;
+                _c.Op = CompositeEcaCondition.ConditionType.AND;
             if (context.OR().Length > 0)
-                _c.Op = CompositeCondition.ConditionType.OR;
+                _c.Op = CompositeEcaCondition.ConditionType.OR;
 
 
         }
@@ -535,25 +535,25 @@ namespace ECARules4All.RuleEngine
         public void ExitEcarule([NotNull] ECARulesParser.EcaruleContext context)
         {
             // remove the composite condition if not needed
-            Condition c = SimplifyCondition(_c);
+            EcaCondition c = SimplifyCondition(_c);
             
-            Rule rule = new Rule(_event, c, _actions);
-            RuleEngine.GetInstance().Add(rule);
+            EcaRule ecaRule = new EcaRule(_event, c, _actions);
+            EcaRuleEngine.GetInstance().Add(ecaRule);
         }
 
-        private Condition SimplifyCondition(CompositeCondition c)
+        private EcaCondition SimplifyCondition(CompositeEcaCondition c)
         {
             if (c == null)
                 return null;
 
             CompactCompositeCondition(c);
 
-            CompositeCondition cursor = c;
-            while (cursor != null && c.ChildrenCount() == 1 && cursor.Op != CompositeCondition.ConditionType.NOT)
+            CompositeEcaCondition cursor = c;
+            while (cursor != null && c.ChildrenCount() == 1 && cursor.Op != CompositeEcaCondition.ConditionType.NOT)
             {
-                Condition child = cursor.GetChild(0);
+                EcaCondition child = cursor.GetChild(0);
                 child.parent = null;
-                if (child is CompositeCondition) cursor = child as CompositeCondition;
+                if (child is CompositeEcaCondition) cursor = child as CompositeEcaCondition;
                 else return child;
             }
 
@@ -565,13 +565,13 @@ namespace ECARules4All.RuleEngine
             return cursor;
         }
 
-        private void CompactCompositeCondition(CompositeCondition c)
+        private void CompactCompositeCondition(CompositeEcaCondition c)
         {
             if (c == null) return;
 
-            if (c.ChildrenCount() == 2 && c.GetChild(1) is CompositeCondition)
+            if (c.ChildrenCount() == 2 && c.GetChild(1) is CompositeEcaCondition)
             {
-                CompositeCondition right = c.GetChild(1) as CompositeCondition;
+                CompositeEcaCondition right = c.GetChild(1) as CompositeEcaCondition;
                 if (c.Op == right.Op)
                 {
                     RemoveCompositeConditionLevel(c, right, 1);
@@ -580,10 +580,10 @@ namespace ECARules4All.RuleEngine
 
             for (int i = 0; i < c.ChildrenCount(); i++)
             {
-                if(c.GetChild(i) is CompositeCondition)
+                if(c.GetChild(i) is CompositeEcaCondition)
                 {
-                    CompositeCondition child = c.GetChild(i) as CompositeCondition;
-                    if(child.ChildrenCount() == 1 && child.Op != CompositeCondition.ConditionType.NOT)
+                    CompositeEcaCondition child = c.GetChild(i) as CompositeEcaCondition;
+                    if(child.ChildrenCount() == 1 && child.Op != CompositeEcaCondition.ConditionType.NOT)
                     {
                         RemoveCompositeConditionLevel(c, child, i);
                         i--;
@@ -596,14 +596,14 @@ namespace ECARules4All.RuleEngine
 
             for(int i = 0; i< c.ChildrenCount(); i++)
             {
-                if(c.GetChild(i) is CompositeCondition)
+                if(c.GetChild(i) is CompositeEcaCondition)
                 {
-                    CompactCompositeCondition(c.GetChild(i) as CompositeCondition);
+                    CompactCompositeCondition(c.GetChild(i) as CompositeEcaCondition);
                 }
             }
         }
 
-        private void RemoveCompositeConditionLevel(CompositeCondition c, CompositeCondition child, int index)
+        private void RemoveCompositeConditionLevel(CompositeEcaCondition c, CompositeEcaCondition child, int index)
         {
             c.RemoveChild(child);
             for (int i = child.ChildrenCount() -1; i >=0; i--)

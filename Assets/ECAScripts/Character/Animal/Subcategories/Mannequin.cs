@@ -1,6 +1,5 @@
 ﻿using System.Collections;
-using ECARules4All;
-using ECARules4All.RuleEngine;
+using EcaRules;
 using UnityEngine;
 /// <summary>
 /// The <b>Mannequin</b> class provides a way to include a character in the scene to wear 3D models of clothes that do not

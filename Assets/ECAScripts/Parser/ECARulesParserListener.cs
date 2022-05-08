@@ -23,7 +23,7 @@ using Antlr4.Runtime.Misc;
 using IParseTreeListener = Antlr4.Runtime.Tree.IParseTreeListener;
 using IToken = Antlr4.Runtime.IToken;
 
-namespace ECARules4All.RuleEngine
+namespace EcaRules
 {
 	/// <summary>
 	/// This interface defines a complete listener for a parse tree produced by
