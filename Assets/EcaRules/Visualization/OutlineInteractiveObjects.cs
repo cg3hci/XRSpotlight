@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EcaRules;
 using UnityEngine;
-using Action = System.Action;
 
-namespace ECAScripts.Utils
+namespace EcaRules.Visualization
 {
     public class OutlineInteractiveObjects : MonoBehaviour
     {

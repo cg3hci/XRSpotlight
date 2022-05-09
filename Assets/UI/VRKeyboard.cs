@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class VRKeyboard : MonoBehaviour
 {
-    public UIManager uiManager;
     private InputField activeInputField;
     private bool capsLock = false;
 
@@ -40,7 +39,6 @@ public class VRKeyboard : MonoBehaviour
                     activeInputField.text += "-";
                 break;
             case "<":
-                uiManager.PressCloseKeyboard();
                 break;
             case "SHIFT":
                 capsLock = !capsLock;

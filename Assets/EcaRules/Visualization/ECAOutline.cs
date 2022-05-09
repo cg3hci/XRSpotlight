@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace ECAScripts
+namespace EcaRules.Visualization
 {
   [DisallowMultipleComponent]
     public class ECAOutline : MonoBehaviour

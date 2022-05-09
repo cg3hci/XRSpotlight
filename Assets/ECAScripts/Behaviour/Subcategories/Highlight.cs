@@ -4,6 +4,7 @@ using EcaRules;
 using ECAScripts;
 using ECAScripts.Utils;
 using UnityEngine.UI;
+using EcaRules.Visualization;
 using Behaviour = EcaRules.Behaviour;
 
 /// <summary>
