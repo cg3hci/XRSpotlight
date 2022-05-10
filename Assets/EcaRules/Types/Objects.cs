@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EcaRules
 {
-    public class Position
+    public class EcaPosition
     {
         public string Name { get; set; }
 
@@ -12,13 +12,13 @@ namespace EcaRules
         public float y { get; set; }
         public float z { get; set; }
         
-        public Position()
+        public EcaPosition()
         {
             x = 0.0f;
             y = 0.0f;
             z = 0.0f;
         }
-        public Position(float x, float y, float z)
+        public EcaPosition(float x, float y, float z)
         {
             this.x = x;
             this.y = y;
@@ -32,7 +32,7 @@ namespace EcaRules
             this.z = z;
         }
         
-        public void Assign(Position p)
+        public void Assign(EcaPosition p)
         {
             this.x = p.x;
             this.y = p.y;
@@ -58,9 +58,9 @@ namespace EcaRules
 
         public override bool Equals(object obj)
         {
-            if(obj is Position)
+            if(obj is EcaPosition)
             {
-                Position p = obj as Position;
+                EcaPosition p = obj as EcaPosition;
                 return this.x == p.x && this.y == p.y && this.z == p.z;
             }
             else
@@ -70,13 +70,13 @@ namespace EcaRules
         }
     }
 
-    public class Rotation
+    public class EcaRotation
     {
         public float x { get; set; }
         public float y { get; set; }
         public float z { get; set; }
         
-        public void Assign(Rotation r)
+        public void Assign(EcaRotation r)
         {
             this.x = r.x;
             this.y = r.y;
@@ -98,19 +98,19 @@ namespace EcaRules
         }
     }
 
-    public class Path
+    public class EcaPath
     {
         public string Name { get; set; }
 
-        public List<Position> Points { get; set; }
+        public List<EcaPosition> Points { get; set; }
 
-        public Path(List<Position> list)
+        public EcaPath(List<EcaPosition> list)
         {
             Name = "Path";
             Points = list;
         }
         
-        public Path(string name, List<Position> list)
+        public EcaPath(string name, List<EcaPosition> list)
         {
             Name = name;
             Points = list;
@@ -118,9 +118,9 @@ namespace EcaRules
 
         public override bool Equals(object obj)
         {
-            if(obj is Path)
+            if(obj is EcaPath)
             {
-                Path path = obj as Path;
+                EcaPath path = obj as EcaPath;
 
                 if(this.Points.Count != path.Points.Count)
                 {

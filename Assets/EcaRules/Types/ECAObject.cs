@@ -11,7 +11,7 @@ namespace EcaRules
     /// All the other classes in this package inherit from this class or one of its subclasses.
     /// </summary>
     [DisallowMultipleComponent]
-    [ECARules4All("object")]
+    [EcaRules4All("object")]
     public class ECAObject : MonoBehaviour
     {
         /// <summary>
@@ -30,24 +30,24 @@ namespace EcaRules
         /// <summary>
         /// <b>p</b> is the position of the object.
         /// </summary>
-        [StateVariable("position", ECARules4AllType.Position)]
-        public Position p;
+        [EcaStateVariable("position", EcaRules4AllType.Position)]
+        public EcaPosition p;
         /// <summary>
         /// <b>r</b> is the rotation of the object.
         /// </summary>
-        [StateVariable("rotation", ECARules4AllType.Rotation)]
-        public Rotation r;
+        [EcaStateVariable("rotation", EcaRules4AllType.Rotation)]
+        public EcaRotation r;
         /// <summary>
         /// <b>isVisible</b> is a boolean that indicates if the object is visible.
         /// If the object is invisible, it will not be rendered but it will still collide with other objects.
         /// </summary>
-        [StateVariable("visible", ECARules4AllType.Boolean)] 
+        [EcaStateVariable("visible", EcaRules4AllType.Boolean)] 
         public ECABoolean isVisible = new ECABoolean(ECABoolean.BoolType.YES);
         /// <summary>
         /// <b>isActive</b> is a boolean that indicates if the object is active and visible.
         /// If the object is inactive, it will not be rendered and it will not collide with other objects.
         /// </summary>
-        [StateVariable("active", ECARules4AllType.Boolean)]
+        [EcaStateVariable("active", EcaRules4AllType.Boolean)]
         public ECABoolean isActive = new ECABoolean(ECABoolean.BoolType.YES);
         private Canvas canvas;
         
@@ -62,8 +62,8 @@ namespace EcaRules
         /// <b>Moves</b> (to) is a method that moves the object to a new position.
         /// </summary>
         /// <param name="newPos">The new position for the object </param>
-        [Action(typeof(ECAObject), "moves to", typeof(Position))]
-        public void Moves(Position newPos)
+        [EcaAction(typeof(ECAObject), "moves to", typeof(EcaPosition))]
+        public void Moves(EcaPosition newPos)
         {
             float speed = 1.0F;
             Vector3 endMarker = new Vector3(newPos.x, newPos.y, newPos.z);
@@ -74,15 +74,15 @@ namespace EcaRules
         /// <b>Moves</b> (on) is a method that moves the object to a new position, following a path.
         /// </summary>
         /// <param name="path">The array of positions the object will follow, one after another</param>
-        [Action(typeof(ECAObject), "moves on", typeof(Path))]
-        public void Moves(Path path)
+        [EcaAction(typeof(ECAObject), "moves on", typeof(EcaPath))]
+        public void Moves(EcaPath path)
         {
             StartCoroutine(WaitForOrderedMovement(path));
         }
 
-        private IEnumerator WaitForOrderedMovement(Path path)
+        private IEnumerator WaitForOrderedMovement(EcaPath path)
         {
-            foreach (Position pos in path.Points)
+            foreach (EcaPosition pos in path.Points)
             {
                 while (isBusyMoving)
                 {
@@ -97,8 +97,8 @@ namespace EcaRules
         /// <b>Rotates</b> sets the rotation of the object to a new value.
         /// </summary>
         /// <param name="newRot">The new rotation value fo the object. </param>
-        [Action(typeof(ECAObject), "rotates around", typeof(Rotation))]
-        public void Rotates(Rotation newRot)
+        [EcaAction(typeof(ECAObject), "rotates around", typeof(EcaRotation))]
+        public void Rotates(EcaRotation newRot)
         {
             r.Assign(newRot);
             transform.Rotate(r.x, r.y, r.z);
@@ -108,7 +108,7 @@ namespace EcaRules
         /// <b>Looks</b> sets the rotation of the object in a way that it looks at a target.
         /// </summary>
         /// <param name="o">The target GameObject to look at.</param>
-        [Action(typeof(ECAObject), "looks at", typeof(GameObject))]
+        [EcaAction(typeof(ECAObject), "looks at", typeof(GameObject))]
         public void Looks(GameObject o)
         {
             ECAObject looked = o.GetComponent<ECAObject>();
@@ -124,7 +124,7 @@ namespace EcaRules
         /// <summary>
         /// <b>Shows</b> makes the object visible. It makes it visible if it is not already.
         /// </summary>
-        [Action(typeof(ECAObject), "shows")]
+        [EcaAction(typeof(ECAObject), "shows")]
         public void Shows()
         {
             isVisible.Assign(ECABoolean.BoolType.YES);
@@ -134,7 +134,7 @@ namespace EcaRules
         /// <summary>
         /// <b>Hides</b> makes the object invisible. It makes it invisible if it is not already.
         /// </summary>
-        [Action(typeof(ECAObject), "hides")]
+        [EcaAction(typeof(ECAObject), "hides")]
         public void Hides()
         {
             isVisible.Assign(ECABoolean.BoolType.NO);
@@ -144,7 +144,7 @@ namespace EcaRules
         /// <summary>
         /// <b>Activates</b> makes the object active. It makes it active if it is not already. 
         /// </summary>
-        [Action(typeof(ECAObject), "activates")]
+        [EcaAction(typeof(ECAObject), "activates")]
         public void Activates()
         {
             isActive.Assign(ECABoolean.BoolType.YES);
@@ -153,7 +153,7 @@ namespace EcaRules
         /// <summary>
         /// <b>Deactivates</b> makes the object inactive. It makes it inactive if it is not already.
         /// </summary>
-        [Action(typeof(ECAObject), "deactivates")]
+        [EcaAction(typeof(ECAObject), "deactivates")]
         public void Deactivates()
         {
             isActive.Assign(ECABoolean.BoolType.NO);
@@ -164,7 +164,7 @@ namespace EcaRules
         /// <b>ShowsHides</b> sets the visibility of the object, defined by a parameter.
         /// </summary>
         /// <param name="yesNo">The new visibility state for the object. </param>
-        [Action(typeof(ECAObject), "changes", "visible", "to", typeof(YesNo))]
+        [EcaAction(typeof(ECAObject), "changes", "visible", "to", typeof(YesNo))]
         public void ShowsHides(ECABoolean yesNo)
         {
             isVisible = yesNo;
@@ -175,7 +175,7 @@ namespace EcaRules
         /// <b>ActivatesDeactivates</b> sets the active state of the object, defined by a parameter.
         /// </summary>
         /// <param name="yesNo"></param>
-        [Action(typeof(ECAObject), "changes", "active", "to", typeof(YesNo))]
+        [EcaAction(typeof(ECAObject), "changes", "active", "to", typeof(YesNo))]
         public void ActivatesDeactivates(ECABoolean yesNo)
         {
             isActive = yesNo;
@@ -193,9 +193,9 @@ namespace EcaRules
             if (gameCollider.Length == 0)
                 gameCollider = this.gameObject.GetComponentsInChildren<Collider>();
             
-            p = new Position();
+            p = new EcaPosition();
             p.Assign(transform.position);
-            r = new Rotation();
+            r = new EcaRotation();
             r.Assign(transform.rotation);
         }
         

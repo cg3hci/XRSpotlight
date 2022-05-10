@@ -357,7 +357,7 @@ namespace EcaRules
                 foreach (Component c in GetSubject().GetComponents<Component>())
                 {
                     Type cType = c.GetType();
-                    if (Attribute.IsDefined(cType, typeof(ECARules4AllAttribute)))
+                    if (Attribute.IsDefined(cType, typeof(EcaRules4AllAttribute)))
                     {
                         // we found a ECARules4All managed type
                         //Se la regola ha un valore nel campo ModifierValue significa che sta modificando una variabile
@@ -367,9 +367,9 @@ namespace EcaRules
                         {
                             foreach (MethodInfo m in cType.GetMethods())
                             {
-                                ActionAttribute[] actions =
-                                    (ActionAttribute[]) m.GetCustomAttributes(typeof(ActionAttribute), true);
-                                foreach (ActionAttribute a in actions)
+                                EcaActionAttribute[] actions =
+                                    (EcaActionAttribute[]) m.GetCustomAttributes(typeof(EcaActionAttribute), true);
+                                foreach (EcaActionAttribute a in actions)
                                 {
                                     if (a.Verb == GetActionMethod() && a.SubjectType == c.GetType() &&
                                         a.variableName == (string) GetObject() &&
@@ -391,10 +391,10 @@ namespace EcaRules
 
                             foreach (FieldInfo f in cType.GetFields())
                             {
-                                StateVariableAttribute[] variables =
-                                    (StateVariableAttribute[]) f.GetCustomAttributes(typeof(StateVariableAttribute),
+                                EcaStateVariableAttribute[] variables =
+                                    (EcaStateVariableAttribute[]) f.GetCustomAttributes(typeof(EcaStateVariableAttribute),
                                         true);
-                                foreach (StateVariableAttribute a in variables)
+                                foreach (EcaStateVariableAttribute a in variables)
                                 {
                                     if (a.Name == (string) GetObject() && f.FieldType == GetModifierValueType())
                                     {
@@ -409,9 +409,9 @@ namespace EcaRules
                                          */
                                         string verb;
                                         string[] supportedOps;
-                                        ECARules4AllOperations.operationAliases.TryGetValue(GetActionMethod(),
+                                        EcaRules4AllOperations.operationAliases.TryGetValue(GetActionMethod(),
                                             out verb);
-                                        ECARules4AllOperations.supportedOperations.TryGetValue(a.type,
+                                        EcaRules4AllOperations.supportedOperations.TryGetValue(a.type,
                                             out supportedOps);
                                         if (supportedOps.Contains(verb))
                                         {
@@ -452,9 +452,9 @@ namespace EcaRules
                                 // se l'oggetto è attivo oppure l'oggetto è non attivo ma il verbo coincide con activates di ECAObject...
                                 foreach (MethodInfo m in cType.GetMethods())
                                 {
-                                    ActionAttribute[] actions =
-                                        (ActionAttribute[]) m.GetCustomAttributes(typeof(ActionAttribute), true);
-                                    foreach (ActionAttribute a in actions)
+                                    EcaActionAttribute[] actions =
+                                        (EcaActionAttribute[]) m.GetCustomAttributes(typeof(EcaActionAttribute), true);
+                                    foreach (EcaActionAttribute a in actions)
                                     {
                                         if (a.Verb == GetActionMethod())
                                         {
@@ -540,14 +540,14 @@ namespace EcaRules
                                             .GetComponents<Component>())
                                         {
                                             Type cTypePass = cPass.GetType();
-                                            if (Attribute.IsDefined(cTypePass, typeof(ECARules4AllAttribute)))
+                                            if (Attribute.IsDefined(cTypePass, typeof(EcaRules4AllAttribute)))
                                             {
                                                 foreach (MethodInfo mPass in cTypePass.GetMethods())
                                                 {
-                                                    ActionAttribute[] actionsPass =
-                                                        (ActionAttribute[]) mPass.GetCustomAttributes(
-                                                            typeof(ActionAttribute), true);
-                                                    foreach (ActionAttribute aPass in actionsPass)
+                                                    EcaActionAttribute[] actionsPass =
+                                                        (EcaActionAttribute[]) mPass.GetCustomAttributes(
+                                                            typeof(EcaActionAttribute), true);
+                                                    foreach (EcaActionAttribute aPass in actionsPass)
                                                     {
                                                         if (aPass.Verb == GetActionMethod())
                                                         {

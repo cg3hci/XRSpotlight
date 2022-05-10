@@ -231,7 +231,7 @@ namespace EcaRules
             List<String> variables = new List<String>();
             foreach (FieldInfo m in c.GetFields())
             {
-                object[] a = m.GetCustomAttributes(typeof(StateVariableAttribute), true);
+                object[] a = m.GetCustomAttributes(typeof(EcaStateVariableAttribute), true);
                 if (a.Length > 0)
                 {
                     foreach (var item in a)
@@ -289,7 +289,7 @@ namespace EcaRules
             List<String> actions = new List<String>();
             foreach (MethodInfo m in c.GetMethods())
             {
-                object[] a = m.GetCustomAttributes(typeof(ActionAttribute), true);
+                object[] a = m.GetCustomAttributes(typeof(EcaActionAttribute), true);
                 if (a.Length > 0)
                 {
                     foreach (var item in a)

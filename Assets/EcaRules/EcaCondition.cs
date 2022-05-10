@@ -251,19 +251,19 @@ namespace EcaRules
                 {
                     Type cType = c.GetType();
                     //Se uno di loro contiene l'attributo Custom "ECARules4All" allora si ispeziona
-                    if (Attribute.IsDefined(cType, typeof(ECARules4AllAttribute)))
+                    if (Attribute.IsDefined(cType, typeof(EcaRules4AllAttribute)))
                     {
                         // we found a ECARules4All managed type
                         //Si va alla ricerca del campo che ci serve
                         foreach (FieldInfo m in cType.GetFields())
                         {
                             //Per ogni variabile etichettata con l'attributo "StateVariable" si controlla se i tipi combaciano, nel caso si fa un controllo sull'uguaglianza sui valori
-                            StateVariableAttribute[] variables =
-                                (StateVariableAttribute[]) m.GetCustomAttributes(typeof(StateVariableAttribute), true);
-                            foreach (StateVariableAttribute a in variables)
+                            EcaStateVariableAttribute[] variables =
+                                (EcaStateVariableAttribute[]) m.GetCustomAttributes(typeof(EcaStateVariableAttribute), true);
+                            foreach (EcaStateVariableAttribute a in variables)
                             {
                                 //Check if the type supports mathematical operations (such as <, >, >= and <=)
-                                ECARules4AllOperations.supportsMathematicalConditionChecks.TryGetValue(a.type,
+                                EcaRules4AllOperations.supportsMathematicalConditionChecks.TryGetValue(a.type,
                                     out var res);
                                 //If the operation is supported check whether is true or not
                                 if (!res && !mathValues.Contains(checkSymbol) || res)
