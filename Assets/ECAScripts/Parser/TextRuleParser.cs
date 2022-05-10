@@ -80,7 +80,8 @@ namespace EcaRules
 
         private GameObject GetReference()
         {
-            GameObject obj = GameObject.Find(_objectName);
+            GameObject obj; 
+            obj = GameObject.Find(_objectName);
             if (obj != null)
             {
                 _objectType = null;
