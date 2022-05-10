@@ -17,9 +17,5 @@ public class EcaRuleEngineLoader : MonoBehaviour
         TextRuleParser ruleParser = new TextRuleParser();
         string path = Path.Combine(Application.streamingAssetsPath, "storedRules.txt");
         ruleParser.ReadRuleFile(path);
-        foreach (var rule in ecaRuleEngine.Rules())
-        {
-            Debug.Log(rule);
-        }
     }
 }
