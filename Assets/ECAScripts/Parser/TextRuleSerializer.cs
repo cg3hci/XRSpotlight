@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EcaRules
 {
-    public class TextRuleSerializer
+    public class TextRuleSerializer: IEcaRuleSerializer
     {
         public TextRuleSerializer()
         {

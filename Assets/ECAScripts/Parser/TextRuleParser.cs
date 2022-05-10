@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace EcaRules
 {
-    public class TextRuleParser : IECARulesParserListener, IAntlrErrorListener<IToken>
+    public class TextRuleParser : IEcaRuleParser, IECARulesParserListener, IAntlrErrorListener<IToken>
     {
         private string _objectName;
         private Type _objectType;
