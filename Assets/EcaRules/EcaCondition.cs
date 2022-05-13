@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
 using System.Reflection;
 using ECAScripts.Utils;
 using UnityEngine;
@@ -354,6 +356,50 @@ namespace EcaRules
         public override string ToString()
         {
             return toCheck + " " + property + " " + checkSymbol + " " + compareWith;
+        }
+    }
+
+    // TODO: test the condition evaluation
+    public class LambdaCondition : EcaCondition
+    {
+        public string[] Ids { get; internal  set; }
+        public string LambdaExpr { get; internal set; }
+
+        private LambdaExpression exp;
+        private GameObject[] par;
+
+        public LambdaCondition(string[] ids, string lambdaExpr)
+        {
+            this.Ids = ids;
+            this.LambdaExpr = lambdaExpr;
+
+            ParameterExpression[] parExp = new ParameterExpression[this.Ids.Length];
+            this.par = new GameObject[this.Ids.Length];
+            Type t = null;
+            for (var i = 0; i < this.Ids.Length; i++)
+            {
+                EcaAction.GetReference(null, this.Ids[i], out t, out this.par[i]);
+                parExp[i] = Expression.Parameter(typeof(GameObject), this.Ids[i]);
+            }
+            
+            ParameterExpression x = Expression.Parameter(typeof(int), "x");
+            ParameterExpression y = Expression.Parameter(typeof(int), "y");
+            LambdaExpression e = DynamicExpressionParser.ParseLambda(new ParameterExpression[] { x, y }, null, "(x + y) * 2");
+            
+            this.exp = DynamicExpressionParser.ParseLambda(new ParsingConfig(), parExp, typeof(bool), this.LambdaExpr);
+            
+        }
+        
+        public override bool Evaluate()
+        {
+            var test = this.exp.Compile();
+            bool result = (bool)test.DynamicInvoke(this.par);
+            return result;
+        }
+
+        public override bool IsLeaf()
+        {
+            return true;
         }
     }
 }

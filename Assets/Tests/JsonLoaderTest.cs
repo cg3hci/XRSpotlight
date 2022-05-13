@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Net.Mime;
 using NUnit.Framework;
@@ -88,12 +89,15 @@ public class JsonLoaderTest
     [UnityTest]
     public IEnumerator JsonLoaderDeserializeFile()
     {
-        yield return SceneManager.LoadSceneAsync("SampleScene");
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("SampleScene"));
+        var activeScene = SceneManager.GetActiveScene();
+        yield return SceneManager.LoadSceneAsync("StoreDemo");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("StoreDemo"));
         var parser = new JsonRuleParser();
         parser.ReadRuleFile(path);
         Assert.IsTrue(parser.Rules.Equals(CreateSampleRules()));
-        yield return null;
+        Console.Out.WriteLine("Test passed");
+        SceneManager.SetActiveScene(activeScene);
+        yield return SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("StoreDemo"));
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

@@ -29,6 +29,7 @@ namespace EcaRules
             {
                 foreach (Component c in obj.GetComponents(typeof(Component)))
                 {
+                    if (c == null) continue;
                     var attrs = c.GetType().GetCustomAttributes(typeof(EcaRules4AllAttribute), false);
                     if (attrs.Length > 0)
                     {
@@ -36,6 +37,7 @@ namespace EcaRules
                         if ((objectTypeName != null && attr.Name.Equals(objectTypeName)) || objectTypeName == null)
                         {
                             objectType = c.GetType();
+                            return;
                         }
                     }
 
