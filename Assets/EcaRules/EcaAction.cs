@@ -12,6 +12,52 @@ namespace EcaRules
     ///</summary>
     public class EcaAction
     {
+        
+        /// <summary>
+        /// Retrieves a reference to a managed GameObject by name.  
+        /// </summary>
+        /// <param name="objectTypeName">Enforces a specific ECAType on the retrieved object. Set it to null if not required</param>
+        /// <param name="objectName">The name of the GameObject to retrieve</param>
+        /// <param name="objectType">The Type of the retrieved GameObject (if any).</param>
+        /// <param name="obj">The retrieved object. Null if not available.</param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void GetReference(string objectTypeName, string objectName, out Type objectType, out GameObject obj)
+        {
+            obj = GameObject.Find(objectName);
+            objectType = null;
+            if (obj != null)
+            {
+                foreach (Component c in obj.GetComponents(typeof(Component)))
+                {
+                    var attrs = c.GetType().GetCustomAttributes(typeof(EcaRules4AllAttribute), false);
+                    if (attrs.Length > 0)
+                    {
+                        var attr = (EcaRules4AllAttribute)attrs[0];
+                        if ((objectTypeName != null && attr.Name.Equals(objectTypeName)) || objectTypeName == null)
+                        {
+                            objectType = c.GetType();
+                        }
+                    }
+
+
+                }
+
+                if (objectType == null)
+                {
+                    throw new ArgumentException(
+                        String.Format("The object {0} does not contain a {1} component",
+                            objectName,
+                            objectTypeName));
+                }
+            }
+            else
+            {
+                throw new ArgumentException(
+                    String.Format("Cannot find object with name {0}",
+                        objectName));
+            }
+        }
+        
         public enum ActionType
         {
             INVALID,
@@ -168,29 +214,6 @@ namespace EcaRules
         }
 
         ///<summary>
-        ///<c>GetPreposition</c> returns the preposition value
-        ///<para/>
-        ///<strong>Returns:</strong> The preposition value
-        ///</summary>
-        //public object GetPreposition()
-        //{
-        //    return a_prep;
-        //}
-
-        ///<summary>
-        ///<c>SetPreposition</c> sets the value of the preposition
-        ///<strong>Parameters:</strong> 
-        ///<list type="bullet">
-        ///<item><description><paramref name="val"/>: The value to be set (Type: <seealso cref="string"/>)</description></item>
-        ///</list>
-        ///<para/>
-        ///</summary>
-        //public void SetPreposition(string val)
-        //{
-        //    a_prep = val;
-        //}
-
-        ///<summary>
         ///<c>GetModifierValue</c> returns the value to be set or added/subtracted
         ///<para/>
         ///<strong>Returns:</strong> The value needed to modify a variable
@@ -282,12 +305,12 @@ namespace EcaRules
 
         public static bool operator ==(EcaAction one, EcaAction two)
         {
-            return one.ActionEquals(two);
+            return one != null && one.ActionEquals(two);
         }
 
         public static bool operator !=(EcaAction one, EcaAction two)
         {
-            return !one.ActionEquals(two);
+            return one != null && !one.ActionEquals(two);
         }
 
         //TODO null action

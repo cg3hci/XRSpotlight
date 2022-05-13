@@ -5,11 +5,13 @@ using UnityEngine.TestTools;
 using EcaRules;
 using EcaRules.Json;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class JsonLoaderTest
 {
     private static string path = System.IO.Path.Combine(new string[] {Application.dataPath, "StreamingAssets", "rules.json"});
+
     
     // A Test behaves as an ordinary method
     [Test]
@@ -83,13 +85,15 @@ public class JsonLoaderTest
         serializer.SaveRules(path);
     }
 
-    [Test]
-    public void JsonLoaderDeserializeFile()
+    [UnityTest]
+    public IEnumerator JsonLoaderDeserializeFile()
     {
+        yield return SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("SampleScene"));
         var parser = new JsonRuleParser();
         parser.ReadRuleFile(path);
         Assert.IsTrue(parser.Rules.Equals(CreateSampleRules()));
-
+        yield return null;
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

@@ -9,7 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StoreDemo.unity
     guid: 71a5e52b52ef0ad4e8023818d7b2798a
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c56ec091f3882bc46806ff9848b0bc43, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4000edc4046fb6a45883aeec5ae15ece, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 5ad8db81b3d0bef4fa34d734136d838e, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: ea63216b148854944980d80155621209, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8e6582751ac517a47943cf68c8dacb81, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8ab707124ed42c542b8b7a4d87c344fe, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 56fc9115032d5ae439d6dc5e0e01cb81, type: 2}

@@ -79,52 +79,12 @@ namespace EcaRules
             _position.z = float.Parse(c.floatLiteral()[2].GetText(), System.Globalization.CultureInfo.InvariantCulture);
         }
 
-        private GameObject GetReference()
-        {
-            GameObject obj; 
-            obj = GameObject.Find(_objectName);
-            if (obj != null)
-            {
-                _objectType = null;
-                foreach (Component c in obj.GetComponents(typeof(Component)))
-                {
-                    var attrs = c.GetType().GetCustomAttributes(typeof(EcaRules4AllAttribute), false);
-                    if (attrs != null && attrs.Length > 0)
-                    {
-                        EcaRules4AllAttribute attr = (EcaRules4AllAttribute)attrs[0];
-                        if (attr.Name.Equals(_objectTypeName))
-                        {
-                            _objectType = c.GetType();
-                        }
-                    }
-
-
-                }
-
-                if (_objectType == null)
-                {
-                    throw new ArgumentException(
-                    String.Format("The object {0} does not contain a {1} component",
-                    _objectName,
-                    _objectTypeName));
-                }
-            }
-            else
-            {
-                throw new ArgumentException(
-                    String.Format("Cannot find object with name {0}",
-                    _objectName));
-            }
-
-            return obj;
-        }
-
         private SimpleEcaCondition ReadBaseCondition(ECARulesParser.BaseConditionContext context)
         {
             SimpleEcaCondition ecaCondition = null; 
             _objectName = context.IDENTIFIER().GetText();
             _objectTypeName = context.type().IDENTIFIER().GetText();
-            _reference = GetReference();
+            EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference);
 
             string property = null;
             if (context.property().IDENTIFIER() != null)
@@ -148,7 +108,8 @@ namespace EcaRules
             {
                 _objectName = context.@object().IDENTIFIER().GetText();
                 _objectTypeName = context.@object().type().IDENTIFIER().GetText();
-                var _reference2 = GetReference();
+                GameObject _reference2 = null;
+                EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference2);
                 ecaCondition = new SimpleEcaCondition(_reference, property, _op, _reference2);
             }
             if (context.value() != null) ecaCondition = new SimpleEcaCondition(_reference, property, _op, _value);
@@ -443,7 +404,7 @@ namespace EcaRules
         {
             _objectName = context.IDENTIFIER().GetText();
             _objectTypeName = context.type(0).IDENTIFIER().GetText();
-            _reference = GetReference();
+            EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference);
             string behaviour = context.type(1).IDENTIFIER().GetText();
 
             bool found = false;
@@ -630,13 +591,13 @@ namespace EcaRules
         public void ExitObject([NotNull] ECARulesParser.ObjectContext context)
         {
             _objectName = context.IDENTIFIER().GetText();
-            _reference = GetReference();
+            EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference);
         }
 
         public void ExitObjectDeclaration([NotNull] ECARulesParser.ObjectDeclarationContext context)
         {
             _objectName = context.IDENTIFIER().GetText();
-            _reference = GetReference();
+            EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference);
             this.ObjectDeclarations.Add(new Pair<Type, GameObject>(_objectType, _reference));
         }
 
@@ -732,7 +693,7 @@ namespace EcaRules
         public void ExitSubject([NotNull] ECARulesParser.SubjectContext context)
         {
             _objectName = context.IDENTIFIER().GetText();
-            _reference = GetReference();
+            EcaAction.GetReference(_objectTypeName,_objectName, out _objectType, out _reference);
             _tmp.SetSubject(_reference);
         }
 
