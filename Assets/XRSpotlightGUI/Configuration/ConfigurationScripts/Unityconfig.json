@@ -1,0 +1,18 @@
+{
+  "configuration": "Unity",
+  "elements": [
+      {
+          "scriptName": "Rigidbody",
+          "definitionNoEvents": "grab",
+          "events": [],
+          "properties": [
+            {
+              "propertyName": "Use Gravity",
+              "valueType": "boolean",
+              "defaultValue": false
+            }
+          ]
+          
+      }
+  ]
+}

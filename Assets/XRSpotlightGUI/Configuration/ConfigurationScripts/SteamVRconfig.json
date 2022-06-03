@@ -14,6 +14,7 @@
           "events": [
             {
               "name": "",
+              "hasMultipleElements": false,
               "inputEvents": [
                 {
                   "inputName": "OnHandOverBegin",
@@ -59,10 +60,11 @@
         "events": [
           {
             "name": "",
+            "hasMultipleElements": false,
             "inputEvents": [
               {
                 "name": "OnPickUp",
-                "definition": "throws",
+                "definition": "commit",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -70,7 +72,7 @@
             },
             {
                 "name": "OnDetachFromHand",
-                "definition": "releases",
+                "definition": "release",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -78,7 +80,7 @@
             },
             {
                 "name": "OnHeldUpdate",
-                "definition": "holds",
+                "definition": "move",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -96,10 +98,11 @@
       "events": [
         {
           "name": "",
+          "hasMultipleElements": false,
           "inputEvents": [
             {
               "name": "OnPickUp",
-              "definition": "throws",
+              "definition": "commit",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -107,7 +110,7 @@
           },
           {
               "name": "OnDetachFromHand",
-              "definition": "releases",
+              "definition": "release",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -115,7 +118,7 @@
           },
           {
               "name": "OnHeldUpdate",
-              "definition": "holds",
+              "definition": "move",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -129,14 +132,14 @@
   },
       {
           "scriptName": "Teleport",
-          "definitionNoEvents": "teleports",
+          "definitionNoEvents": "release",
           "events": [],
           "properties": []
           
       },
       {
           "scriptName": "TeleportArea",
-          "definitionNoEvents": "teleports",
+          "definitionNoEvents": "release",
           "events": [],
           "properties": []
           
@@ -147,10 +150,11 @@
         "events": [
           {
             "name": "",
+            "hasMultipleElements": false,
             "inputEvents": [
               {
                 "name": "OnClick",
-                "definition": "clicks",
+                "definition": "commit",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -168,11 +172,12 @@
       "events": [
         {
           "name": "",
+          "hasMultipleElements": false,
           "inputEvents": [
             {
               
               "name": "OnButtonDown",
-              "definition": "presses",
+              "definition": "commit",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -180,7 +185,7 @@
           },
           {
               "name": "OnButtonUp",
-              "definition": "stops pressing",
+              "definition": "release",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -188,7 +193,7 @@
           },
           {
               "name": "OnButtonPressed",
-              "definition": "holds",
+              "definition": "move",
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
@@ -203,7 +208,7 @@
   },
       {
           "scriptName": "Equippable",
-          "definitionNoEvents": "grabs",
+          "definitionNoEvents": "commit",
           "events": [],
           "properties": []
           
@@ -214,10 +219,11 @@
         "events": [
           {
             "name": "",
+            "hasMultipleElements": false,
             "inputEvents": [
               {
                 "name": "OnMinAngle",
-                "definition": "rotates",
+                "definition": "move",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -225,7 +231,7 @@
             },
             {
                 "name": "OnMaxAngle",
-                "definition": "rotates",
+                "definition": "move",
                 "parametersInputEvents": {
                   "hasGameObject": true,
                   "hasMethod": true
@@ -239,7 +245,7 @@
     },
       {
           "scriptName": "LinearDrive",
-          "definitionNoEvents": "slides",
+          "definitionNoEvents": "move",
           "events": [],
           "properties": []
           
