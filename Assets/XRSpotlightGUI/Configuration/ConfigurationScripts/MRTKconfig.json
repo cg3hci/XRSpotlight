@@ -1,0 +1,311 @@
+{
+  "configuration": "MRTK",
+  "elements": [
+    {
+      "scriptName": "Interactable",
+      "events": [
+        {
+          "name": "OnClick",
+          "inputEvents": [
+            {
+              "inputName": "OnClick",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        },
+        {
+          "name": "InteractableAudioReceiver",
+          "inputEvents": [],
+          "properties":{
+              "propertyName": "Audio Clip",
+              "valueType": "gameObject",
+              "defaultValue": ""
+          }
+        },
+        {
+          "name": "InteractableOnClickReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnClick",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        },
+        {
+          "name": "InteractableOnFocusReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnFocusOn",
+              "definition": "hover",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "OnFocusOff",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        },
+        {
+          "name": "InteractableOnGrabReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnGrab",
+              "definition": "move",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "OnRelease",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        },
+        {
+          "name": "InteractableOnHoldReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnHold",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {
+            "propertyName": "Hold Time",
+            "valueType": "number",
+            "defaultValue": 1
+          }
+        },
+        {
+          "name": "InteractableOnPressReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnPress",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "OnRelease",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {
+            "propertyName": "Interaction Filter",
+            "valueType": "string",
+            "defaultValue": "Near and Far"
+          }
+        },
+        {
+          "name": "InteractableOnToggleReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnSelect",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "OnDeselect",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        },
+        {
+          "name": "InteractableOnTouchReceiver",
+          "inputEvents": [
+            {
+              "inputName": "OnTouch",
+              "definition": "click",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "OnTouchEnd",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        }
+      ]
+    },
+    {
+      "scriptName": "SpeechInputHandler", 
+      "events": [
+        {
+          "name": "???",
+          "inputEvents": [
+            {
+              "inputName": "Response",
+              "definition": "speak",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {
+            "propertyName": "Speech Command",
+            "valueType": "string",
+            "defaultValue": "(No Selection)"
+          }
+        }
+      ]
+    },
+    {
+      "scriptName": "BoundsControl",
+      "events": [
+        {
+          "name": "Events",
+          "inputEvents": [
+            {
+              "inputName": "Rotate Started",
+              "definition": "move",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "Rotate Stopped",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "Translate Started",
+              "definition": "move",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "Translate Stopped",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        }
+      ]
+    },
+    {
+      "scriptName": "Object Manipulation",
+      "events": [
+        {
+          "name": "Manipulation Events",
+          "inputEvents": [
+            {
+              "inputName": "On Manipulation Started", 
+              "definition": "move",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "On Manipulation Ended",
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "On Hover Entered",
+              "definition": "hover",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            },
+            {
+              "inputName": "On Hover Exited", 
+              "definition": "release",
+              "multipleInputEvents": true,
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+            }
+          ],
+          "properties": {}
+        }
+      ]
+    }
+    
+  ]
+}

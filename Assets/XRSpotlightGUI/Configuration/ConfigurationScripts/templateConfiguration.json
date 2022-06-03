@@ -1,0 +1,30 @@
+{
+  "configuration": "",
+  "elements": [
+    {
+      "scriptName": "",
+      "events": [
+        {
+          "name": "",
+          "inputEvents": [
+            {
+              "inputName": "",
+              "definition": "",
+              "multipleInputEvents": "",
+              "parametersInputEvents": {
+                "hasGameObject": "",
+                "hasMethod": ""
+              }
+            }
+          ],
+          "properties": {
+            "propertyName": "",
+            "valueType": "",
+            "defaultValue": ""
+          }
+        }
+        
+      ]
+    }
+  ]
+}
