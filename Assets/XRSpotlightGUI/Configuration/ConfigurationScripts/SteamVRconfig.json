@@ -1,0 +1,248 @@
+{
+  "configuration": "SteamVR",
+  "elements": [
+      {
+          "scriptName": "Interactable",
+          "definitionNoEvents": "grab",
+          "events": [],
+          "properties": []
+          
+      },
+      {
+          "scriptName": "InteractableHoverEvents",
+          "definitionNoEvents": "",
+          "events": [
+            {
+              "name": "",
+              "inputEvents": [
+                {
+                  "inputName": "OnHandOverBegin",
+                  "definition": "hover",
+                  "parametersInputEvents": {
+                    "hasGameObject": true,
+                    "hasMethod": true
+                  }
+              },
+              {
+                  "name": "OnHandOverEnd",
+                  "definition": "release",
+                  "parametersInputEvents": {
+                    "hasGameObject": true,
+                    "hasMethod": true
+                  }
+              },
+              {
+                  "name": "OnAttachedToHand",
+                  "definition": "grab",
+                  "parametersInputEvents": {
+                    "hasGameObject": true,
+                    "hasMethod": true
+                  }
+              },
+              {
+                  "name": "OnDetachedFromHand",
+                  "definition": "release",
+                  "parametersInputEvents": {
+                    "hasGameObject": true,
+                    "hasMethod": true
+                  }
+              }
+              ]
+            }
+              
+          ],
+          "properties": []
+      },
+      {
+        "scriptName": "Throwable",
+        "definitionNoEvents": "",
+        "events": [
+          {
+            "name": "",
+            "inputEvents": [
+              {
+                "name": "OnPickUp",
+                "definition": "throws",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            },
+            {
+                "name": "OnDetachFromHand",
+                "definition": "releases",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            },
+            {
+                "name": "OnHeldUpdate",
+                "definition": "holds",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            }
+            ]
+          }
+            
+        ],
+        "properties": []
+    },
+    {
+      "scriptName": "ModalThrowable",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "name": "",
+          "inputEvents": [
+            {
+              "name": "OnPickUp",
+              "definition": "throws",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          },
+          {
+              "name": "OnDetachFromHand",
+              "definition": "releases",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          },
+          {
+              "name": "OnHeldUpdate",
+              "definition": "holds",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          }
+          ]
+        }
+          
+      ],
+      "properties": []
+  },
+      {
+          "scriptName": "Teleport",
+          "definitionNoEvents": "teleports",
+          "events": [],
+          "properties": []
+          
+      },
+      {
+          "scriptName": "TeleportArea",
+          "definitionNoEvents": "teleports",
+          "events": [],
+          "properties": []
+          
+      },
+      {
+        "scriptName": "Button",
+        "definitionNoEvents": "",
+        "events": [
+          {
+            "name": "",
+            "inputEvents": [
+              {
+                "name": "OnClick",
+                "definition": "clicks",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            }
+            ]
+          }
+            
+        ],
+        "properties": []
+    },
+    {
+      "scriptName": "HoverButton",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "name": "",
+          "inputEvents": [
+            {
+              
+              "name": "OnButtonDown",
+              "definition": "presses",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          },
+          {
+              "name": "OnButtonUp",
+              "definition": "stops pressing",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          },
+          {
+              "name": "OnButtonPressed",
+              "definition": "holds",
+              "parametersInputEvents": {
+                "hasGameObject": true,
+                "hasMethod": true
+              }
+          }
+          
+          ]
+        }
+          
+      ],
+      "properties": []
+  },
+      {
+          "scriptName": "Equippable",
+          "definitionNoEvents": "grabs",
+          "events": [],
+          "properties": []
+          
+      },
+      {
+        "scriptName": "CircularDrive",
+        "definitionNoEvents": "",
+        "events": [
+          {
+            "name": "",
+            "inputEvents": [
+              {
+                "name": "OnMinAngle",
+                "definition": "rotates",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            },
+            {
+                "name": "OnMaxAngle",
+                "definition": "rotates",
+                "parametersInputEvents": {
+                  "hasGameObject": true,
+                  "hasMethod": true
+                }
+            }
+            ]
+          }
+            
+        ],
+        "properties": []
+    },
+      {
+          "scriptName": "LinearDrive",
+          "definitionNoEvents": "slides",
+          "events": [],
+          "properties": []
+          
+      }
+  ]
+}
