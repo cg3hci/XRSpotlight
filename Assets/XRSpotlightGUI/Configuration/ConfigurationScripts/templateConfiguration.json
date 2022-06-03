@@ -3,6 +3,7 @@
   "elements": [
     {
       "scriptName": "",
+      "definitionNoEvents": "",
       "events": [
         {
           "name": "",
@@ -17,13 +18,14 @@
               }
             }
           ],
-          "properties": {
+          "properties": [
+            {
             "propertyName": "",
             "valueType": "",
             "defaultValue": ""
-          }
+           }
+          ]
         }
-        
       ]
     }
   ]

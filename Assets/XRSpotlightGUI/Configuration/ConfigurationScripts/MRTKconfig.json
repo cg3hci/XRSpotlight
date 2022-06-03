@@ -3,6 +3,7 @@
   "elements": [
     {
       "scriptName": "Interactable",
+      "definitionNoEvents": "",
       "events": [
         {
           "name": "OnClick",
@@ -17,7 +18,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         },
         {
           "name": "InteractableAudioReceiver",
@@ -41,7 +42,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         },
         {
           "name": "InteractableOnFocusReceiver",
@@ -65,7 +66,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         },
         {
           "name": "InteractableOnGrabReceiver",
@@ -89,7 +90,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         },
         {
           "name": "InteractableOnHoldReceiver",
@@ -104,11 +105,13 @@
               }
             }
           ],
-          "properties": {
-            "propertyName": "Hold Time",
-            "valueType": "number",
-            "defaultValue": 1
-          }
+          "properties": [
+            {
+              "propertyName": "Hold Time",
+              "valueType": "number",
+              "defaultValue": 1
+            }
+          ] 
         },
         {
           "name": "InteractableOnPressReceiver",
@@ -132,11 +135,13 @@
               }
             }
           ],
-          "properties": {
-            "propertyName": "Interaction Filter",
-            "valueType": "string",
-            "defaultValue": "Near and Far"
-          }
+          "properties": [
+            {
+              "propertyName": "Interaction Filter",
+              "valueType": "string",
+              "defaultValue": "Near and Far"
+            }
+          ]
         },
         {
           "name": "InteractableOnToggleReceiver",
@@ -160,7 +165,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         },
         {
           "name": "InteractableOnTouchReceiver",
@@ -184,12 +189,13 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         }
       ]
     },
     {
-      "scriptName": "SpeechInputHandler", 
+      "scriptName": "SpeechInputHandler",
+      "definitionNoEvents": "",
       "events": [
         {
           "name": "???",
@@ -204,16 +210,17 @@
               }
             }
           ],
-          "properties": {
+          "properties":[ {
             "propertyName": "Speech Command",
             "valueType": "string",
             "defaultValue": "(No Selection)"
-          }
+          }]
         }
       ]
     },
     {
       "scriptName": "BoundsControl",
+      "definitionNoEvents": "",
       "events": [
         {
           "name": "Events",
@@ -255,12 +262,13 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         }
       ]
     },
     {
       "scriptName": "Object Manipulation",
+      "definitionNoEvents": "",
       "events": [
         {
           "name": "Manipulation Events",
@@ -302,7 +310,7 @@
               }
             }
           ],
-          "properties": {}
+          "properties": []
         }
       ]
     }
