@@ -7,6 +7,7 @@
       "events": [
         {
           "name": "OnClick",
+          "hasMultipleElements": false,
           "inputEvents": [
             {
               "inputName": "OnClick",
@@ -15,7 +16,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -24,9 +26,9 @@
           "name": "InteractableAudioReceiver",
           "inputEvents": [],
           "properties":{
-              "propertyName": "Audio Clip",
-              "valueType": "gameObject",
-              "defaultValue": ""
+            "propertyName": "Audio Clip",
+            "valueType": "gameObject",
+            "defaultValue": ""
           }
         },
         {
@@ -39,7 +41,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -54,7 +57,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "OnFocusOff",
@@ -63,7 +67,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -78,7 +83,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "OnRelease",
@@ -87,7 +93,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -102,7 +109,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": [
@@ -111,7 +119,7 @@
               "valueType": "number",
               "defaultValue": 1
             }
-          ] 
+          ]
         },
         {
           "name": "InteractableOnPressReceiver",
@@ -123,7 +131,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "OnRelease",
@@ -132,7 +141,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": [
@@ -153,7 +163,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "OnDeselect",
@@ -162,7 +173,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -177,7 +189,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "OnTouchEnd",
@@ -186,7 +199,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -198,7 +212,8 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "name": "???",
+          "name": "",
+          "hasMultipleElements": true,
           "inputEvents": [
             {
               "inputName": "Response",
@@ -207,14 +222,15 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
+              },
+              "property": {
+                "propertyName": "Speech Command",
+                "valueType": "string",
+                "defaultValue": "(No Selection)"
               }
             }
           ],
-          "properties":[ {
-            "propertyName": "Speech Command",
-            "valueType": "string",
-            "defaultValue": "(No Selection)"
-          }]
+          "properties":[]
         }
       ]
     },
@@ -224,6 +240,7 @@
       "events": [
         {
           "name": "Events",
+          "hasMultipleElements": false,
           "inputEvents": [
             {
               "inputName": "Rotate Started",
@@ -232,7 +249,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "Rotate Stopped",
@@ -241,7 +259,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "Translate Started",
@@ -250,7 +269,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "Translate Stopped",
@@ -259,7 +279,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
@@ -272,15 +293,17 @@
       "events": [
         {
           "name": "Manipulation Events",
+          "hasMultipleElements": false,
           "inputEvents": [
             {
-              "inputName": "On Manipulation Started", 
+              "inputName": "On Manipulation Started",
               "definition": "move",
               "multipleInputEvents": true,
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "On Manipulation Ended",
@@ -289,7 +312,8 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
               "inputName": "On Hover Entered",
@@ -298,22 +322,24 @@
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             },
             {
-              "inputName": "On Hover Exited", 
+              "inputName": "On Hover Exited",
               "definition": "release",
               "multipleInputEvents": true,
               "parametersInputEvents": {
                 "hasGameObject": true,
                 "hasMethod": true
-              }
+              },
+              "property": {}
             }
           ],
           "properties": []
         }
       ]
     }
-    
+
   ]
 }

@@ -7,6 +7,7 @@
       "events": [
         {
           "name": "",
+          "hasMultipleElements": "",
           "inputEvents": [
             {
               "inputName": "",
@@ -15,6 +16,11 @@
               "parametersInputEvents": {
                 "hasGameObject": "",
                 "hasMethod": ""
+              },
+              "property": {
+                "propertyName": "",
+                "valueType": "",
+                "defaultValue": ""
               }
             }
           ],
