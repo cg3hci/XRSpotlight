@@ -69,9 +69,6 @@ public class EcaEventFinder : MonoBehaviour
         
         
         //Debug.Log(events.Count);
-        
-        
-        
     }
 
     // Update is called once per frame
@@ -80,36 +77,4 @@ public class EcaEventFinder : MonoBehaviour
         
     }
     
-    public void showTag()
-    {
-        GameObject.Find("infoBlackShoes").GetComponent<Canvas>().enabled = true;
-        
-    }
-    
-    public void showTagVanx()
-    {
-        GameObject.Find("infoBlackVanx").GetComponent<Canvas>().enabled = true;
-        
-    }
-    
-    
-
-    public void onClickNormale()
-    {
-        Debug.Log("Questa è una onClick normale");
-    }   
-    public void onClickNormale2()
-    {
-        Debug.Log("Questa è una onClick normale 2");
-    }
-    
-    public void onClickReceiver()
-    {
-        Debug.Log("Questa è una onClick receiver");
-    }
-
-    public void onFocusReceiver()
-    {
-        Debug.Log("On focus receiver");
-    }
 }
