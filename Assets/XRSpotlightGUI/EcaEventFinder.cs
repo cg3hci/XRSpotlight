@@ -5,16 +5,17 @@ using System.Reflection;
 using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using XRSpotlightGUI;
 using Object = UnityEngine.Object;
 
 public class EcaEventFinder : MonoBehaviour
 {
     class UnityEventInfo
     {
-        private MethodInfo method;
-        private GameObject gameObjectScript;
-        private string typeOfEvent;
-        private string scriptContainingTheEvent;
+        public MethodInfo method;
+        public GameObject gameObjectScript;
+        public string typeOfEvent;
+        public string scriptContainingTheEvent;
         public UnityEventInfo(MethodInfo method, GameObject gameObjectScript, string typeOfEvent, string scriptContainingTheEvent)
         {
             this.method = method;
@@ -29,12 +30,56 @@ public class EcaEventFinder : MonoBehaviour
        // FindInteractableEventsByGameObject(GameObject.Find("OggettoProvaVicky"));
     }
 
-    void FindInteractableEventsByGameObject(GameObject gameObject)
+    public static InferredRule[] InferRuleByGameObject(GameObject gameObject)
+    {
+        List<UnityEventInfo> infos = FindInteractableEventsByGameObject(gameObject);
+        if (infos == null)
+        {
+            return Array.Empty<InferredRule>();
+        }
+        var rules = new Dictionary<Phases, InferredRule>();
+        Phases phase = Phases.None;
+        foreach (var info in infos)
+        {
+            // TODO: these mappings must be defined in the JSON configuration file
+            if (info.typeOfEvent.Equals("OnClick")) phase = Phases.Selected; 
+            if (info.typeOfEvent.Equals("OnFocusOn")) phase = Phases.Addressed; 
+            
+            if(phase == Phases.None) continue;
+
+            if (!rules.ContainsKey(phase))
+            {
+                rules.Add(phase, new InferredRule());
+                // TODO: modalities are fixed. These must be defined into the JSON configuration file.
+                rules[phase].modalities = new Modalities()
+                {
+                    gaze = false,
+                    hand = true,
+                    remote = true,
+                    touch = true
+                };
+                rules[phase].trigger = phase;
+            }
+            rules[phase].actions.Add(new InferredAction(
+                info.gameObjectScript, 
+                $"executes {info.scriptContainingTheEvent}.{info.method.Name}"));
+           
+        }
+
+        return rules.Values.ToArray();
+        
+    }
+
+    private static List<UnityEventInfo> FindInteractableEventsByGameObject(GameObject gameObject)
     {
         List<UnityEventInfo> unityEventInfos = new List<UnityEventInfo>();
+
+        Interactable interactable = gameObject.GetComponent<Interactable>();
+        if (interactable == null)
+            return null;
         
         //onclick events
-        UnityEvent onClick = gameObject.GetComponent<Interactable>().OnClick;
+        UnityEvent onClick = interactable.OnClick;
         int eventCount = onClick.GetPersistentEventCount();
         for (int i = 0; i < eventCount; i++)
         {
@@ -63,12 +108,15 @@ public class EcaEventFinder : MonoBehaviour
         }
         
         Debug.Log(unityEventInfos);
+        return unityEventInfos;
     }
 
-    private List<UnityEventInfo> FindEventsInfo(UnityEvent unityEvent, int index, string eventType="OnClick")
+    static private List<UnityEventInfo> FindEventsInfo(UnityEvent unityEvent, int index, string eventType="OnClick")
     {
         List<UnityEventInfo> result = new List<UnityEventInfo>();
         Object target = unityEvent.GetPersistentTarget(index);
+        if (target == null) return result;
+        
         GameObject gameObjectParameter = GameObject.Find(target.name);
         string methodName = unityEvent.GetPersistentMethodName(index);
         MonoBehaviour[] components = gameObjectParameter.GetComponents<MonoBehaviour>();
@@ -84,7 +132,7 @@ public class EcaEventFinder : MonoBehaviour
         return result;
     }
 
-    private UnityEventInfo FindSingleEventInfo(string methodName, MonoBehaviour component, GameObject gameObjectParameter, string eventType)
+    static private UnityEventInfo FindSingleEventInfo(string methodName, MonoBehaviour component, GameObject gameObjectParameter, string eventType)
     {
         MethodInfo methodInfo = component.GetType().GetMethod(methodName);
         if (methodInfo != null)

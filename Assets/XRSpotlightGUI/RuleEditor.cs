@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using XRSpotlightGUI;
 
 
 public class RuleEditor : EditorWindow
@@ -46,7 +47,7 @@ public class RuleEditor : EditorWindow
  
         Selection.selectionChanged += () => 
         {
-            if (activeLabel != null)
+            if (activeLabel != null && Selection.activeObject != null)
             {
                 activeLabel.text = "Active object: " + Selection.activeObject.name;
                 PopulateInspectionPanel(GameObject.Find(Selection.activeObject.name));
@@ -87,52 +88,17 @@ public class RuleEditor : EditorWindow
 
     private void PopulateInspectionPanel(GameObject selected)
     {
+        if (selected == null) return; 
         objInspection.Clear();
         objInspection.Add(CreateInspectionHeading(selected));
-        
-        // TODO: dummy rules initialization. To be received from the inference engine
-        var rules = new InferredRule[]
-        {
-            new InferredRule()
-            {
-                trigger = Phases.Pointed,
-                actions = new InferredAction[]
-                {
-                    new InferredAction(GameObject.Find("TryHat"), "moves"),
-                    new InferredAction(GameObject.Find("WinterShirt"), "rotates")
-                },
-                modalities = new Modalities()
-                {
-                    gaze = true,
-                    hand = false,
-                    remote = true,
-                    touch = false
-                }
-            },
-            new InferredRule()
-            {
-                trigger = Phases.Released,
-                actions = new InferredAction[]
-                {
-                    new InferredAction(GameObject.Find("WinterShirt"), "rotates")
-                },
-                modalities = new Modalities()
-                {
-                    gaze = false,
-                    hand = true,
-                    remote = true,
-                    touch = false
-                }
-            },
 
-        };
+        var rules = EcaEventFinder.InferRuleByGameObject(selected);
         objInspection.Add(CreateInferredRules(rules));
     }
     
     private VisualElement CreateInspectionHeading(GameObject selected)
     {
         var heading = new Toolbar();
-
         var headingToggle = new Foldout();
         
         
@@ -269,11 +235,11 @@ public class RuleEditor : EditorWindow
         icon.AddToClassList("phase-icon");
         switch (phase)
         {
-            case Phases.Pointed: icon.AddToClassList("pointed");
+            case Phases.Addressed: icon.AddToClassList("pointed");
                 break;
             case Phases.Selected: icon.AddToClassList("selected");
                 break;
-            case Phases.Dragged: icon.AddToClassList("dragged");
+            case Phases.Moved: icon.AddToClassList("dragged");
                 break;
             case Phases.Released: icon.AddToClassList("released");
                 break;
@@ -286,9 +252,9 @@ public class RuleEditor : EditorWindow
     {
         switch (p)
         {
-            case Phases.Pointed: return "Pointed";
+            case Phases.Addressed: return "Addressed";
             case Phases.Selected: return "Selected";
-            case Phases.Dragged: return "Dragged";
+            case Phases.Moved: return "Moved";
             case Phases.Released: return "Released";
         }
 
@@ -306,34 +272,5 @@ public class RuleEditor : EditorWindow
         phaseLabel.AddToClassList("phase-label");
         phase.Add(phaseLabel);
         return phase;
-    }
-
-    private enum Phases
-    {
-        Pointed, Selected, Dragged, Released
-    }
-
-    private class InferredAction
-    {
-        public GameObject obj;
-        public string action;
-
-        public InferredAction(GameObject obj, string action)
-        {
-            this.obj = obj;
-            this.action = action; 
-        }
-    }
-
-    private class InferredRule
-    {
-        public Phases trigger;
-        public InferredAction[] actions;
-        public Modalities modalities;
-    }
-
-    private class Modalities
-    {
-        public bool gaze, touch, hand, remote;
     }
 }
