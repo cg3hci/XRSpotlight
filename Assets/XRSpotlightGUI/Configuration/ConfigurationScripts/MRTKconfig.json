@@ -2,7 +2,7 @@
   "configuration": "MRTK",
   "elements": [
     {
-      "component": "Interactable",
+      "component": "Microsoft.MixedReality.Toolkit.UI.Interactable",
       "definitionNoEvents": "",
       "events": [
         {
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "component": "InteractableAudioReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "component": "InteractableOnClickReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "component": "InteractableOnFocusReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "component": "InteractableOnGrabReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "component": "InteractableOnHoldReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "component": "InteractableOnPressReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "component": "InteractableOnToggleReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "component": "InteractableOnTouchReceiver",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver",
       "definitionNoEvents": "",
       "events": [
         {
@@ -117,7 +117,7 @@
     },
 
     {
-      "component": "BoundsControl",
+      "component": "Microsoft.MixedReality.Toolkit.UI.BoundsControl",
       "definitionNoEvents": "",
       "events": [
         {
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "component": "Object Manipulator",
+      "component": "Microsoft.MixedReality.Toolkit.UI.Object Manipulator",
       "definitionNoEvents": "",
       "events": [
         {
@@ -161,7 +161,7 @@
       ]
     },
     {
-      "component": "PressableButton",
+      "component": "Microsoft.MixedReality.Toolkit.UI.PressableButton",
       "definitionNoEvents": "",
       "events": [
         {
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "component": "PressableButtonHololens2",
+      "component": "Microsoft.MixedReality.Toolkit.UI.PressableButtonHololens2",
       "definitionNoEvents": "",
       "events": [
         {
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "component": "HandInteractionPanZoom",
+      "component": "Microsoft.MixedReality.Toolkit.UI.HandInteractionPanZoom",
       "definitionNoEvents": "",
       "events": [
         {
@@ -223,7 +223,7 @@
       ]
     },
     {
-      "component": "PinchSlider",
+      "component": "Microsoft.MixedReality.Toolkit.UI.PinchSlider",
       "definitionNoEvents": "",
       "events": [
         {
@@ -249,7 +249,7 @@
       ]
     },
     {
-      "component": "TouchHandler",
+      "component": "Microsoft.MixedReality.Toolkit.UI.TouchHandler",
       "definitionNoEvents": "",
       "events": [
         {
@@ -267,7 +267,7 @@
       ]
     },
     {
-      "component": "InteractableToggleCollection",
+      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableToggleCollection",
       "definitionNoEvents": "",
       "events": [
         {
@@ -278,7 +278,7 @@
     },
 
     {
-      "component": "SpeechInputHandler",
+      "component": "Microsoft.MixedReality.Toolkit.UI.SpeechInputHandler",
       "definitionNoEvents": "",
       "events": [
         {

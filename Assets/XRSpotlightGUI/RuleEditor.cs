@@ -24,10 +24,12 @@ public class RuleEditor : EditorWindow
     private bool listFold = true;
     private VisualElement objInspection;
     private bool showEmpty = false;
+    private InferenceEngine engine;
 
     public void CreateGUI()
     {
         this.showEmpty = false;
+        engine = new InferenceEngine(Toolkits.MRTK);
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/XRSpotlightGUI/RuleEditor.uss");
         // Each editor window contains a root VisualElement object
         VisualElement panel = rootVisualElement;
@@ -75,10 +77,10 @@ public class RuleEditor : EditorWindow
     {
         if (interactableList == null) return;
         interactableList.Clear();
-        Interactable[] interactables = GameObject.FindObjectsOfType<Interactable>();
+        GameObject[] interactables = engine.FindInteractableObjects();
         foreach (var interactable in interactables)
         {
-            VisualElement interLabel = new Label(interactable.gameObject.name);
+            VisualElement interLabel = new Label(interactable.name);
             interactableList.Add(interLabel);
         }
         
