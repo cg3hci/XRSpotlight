@@ -1,79 +1,17 @@
 {
-  "configuration": "",
+  "configuration": "", //es. MRTK/SteamVR
   "elements": [
     {
-      "scriptName": "",
-      //quando non ha eventi e bisogna descriverlo comunque con una parola, vedi Interactable di SteamVR 
-      "definitionNoEvents": "", 
+      "component": "", //es. Interactable/InteractableAudioReceiver/…
+      "definitionNoEvents": "", quando non ha eventi e bisogna descriverlo comunque con una parola, vedi Interactable di SteamVR
       "events": [
         {
-          //esempio Events o Receiver
-          "name": "", 
-          //vero solo nei casi come Speech Input
-          "hasMultipleElements": "",
-          "inputEvents": [
-            {
-              //es Touch Begin
-              "inputName": "",
-              //click, grab, hover, release, move
-              "definition": "",
-              //praticamente sempre true quando puoi aggiungere piu' listener
-              "multipleInputEvents": "",
-              "parametersInputEvents": {
-                "hasGameObject": "",
-                "hasMethod": ""
-              },
-              //dovrebbe servire solo per speech input
-              "property": {
-                "propertyName": "",
-                "valueType": "",
-                "defaultValue": ""
-              }
-            }
-          ],
-          //eventuali altre proprieta' comuni a tutti gli event
-          "properties": [
-            {
-            "propertyName": "",
-            "valueType": "",
-            "defaultValue": ""
-           }
-          ]
-        }
-      ]
-    },
-    {
-      "scriptName": "",
-      "definitionNoEvents": "",
-      "events": [
+          "methodName": "", 
+          "definition": "" // [idle, address, select, movement, release, grab]
+        },
         {
-          "name": "",
-          "hasMultipleElements": "",
-          "inputEvents": [
-            {
-              "inputName": "",
-              "definition": "",
-              "multipleInputEvents": "",
-              "parametersInputEvents": {
-                "hasGameObject": "",
-                "hasMethod": ""
-              },
-              "property": {
-                "propertyName": "",
-                "valueType": "",
-                "defaultValue": ""
-              }
-            }
-          ],
-          "properties": [
-            {
-              "propertyName": "",
-              "valueType": "",
-              "defaultValue": ""
-            }
-          ]
+          //...
         }
       ]
     }
-  ]
-}
+  }
