@@ -62,7 +62,8 @@ public class EcaEventFinder : MonoBehaviour
             }
             rules[phase].actions.Add(new InferredAction(
                 info.gameObjectScript, 
-                $"executes {info.scriptContainingTheEvent}.{info.method.Name}"));
+                $"executes {info.scriptContainingTheEvent}.{info.method.Name}",
+                info.method.Name));
            
         }
 

@@ -83,9 +83,6 @@ public class RuleEditor : EditorWindow
             VisualElement interLabel = new Label(interactable.name);
             interactableList.Add(interLabel);
         }
-        
-        // access to the toggle element (setting labels with icons)
-        //Debug.Log(interactableList.hierarchy.ElementAt(0).GetType()); 
     }
 
     private void PopulateInspectionPanel(GameObject selected)
@@ -94,7 +91,7 @@ public class RuleEditor : EditorWindow
         objInspection.Clear();
         objInspection.Add(CreateInspectionHeading(selected));
 
-        var rules = EcaEventFinder.InferRuleByGameObject(selected);
+        var rules = engine.InferRuleByGameObject(selected);
         objInspection.Add(CreateInferredRules(rules));
     }
     

@@ -10,13 +10,15 @@ namespace XRSpotlightGUI
 
     public class InferredAction
     {
-        public GameObject obj;
+        public Object obj;
         public string action;
+        public string method;
 
-        public InferredAction(GameObject obj, string action)
+        public InferredAction(Object obj, string action, string method)
         {
             this.obj = obj;
-            this.action = action; 
+            this.action = action;
+            this.method = method;
         }
     }
 
@@ -29,6 +31,11 @@ namespace XRSpotlightGUI
         public InferredRule()
         {
             this.actions = new List<InferredAction>();
+        }
+
+        public void Add(InferredAction a)
+        {
+            this.actions.Add(a);
         }
     }
 

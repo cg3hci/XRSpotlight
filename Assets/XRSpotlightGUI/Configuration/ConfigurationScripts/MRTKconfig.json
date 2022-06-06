@@ -7,10 +7,10 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnClick"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -64,10 +64,10 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
+          "reference": [{
             "member": "method",
             "name": "OnClick"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }

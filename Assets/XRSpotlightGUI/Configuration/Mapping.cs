@@ -16,7 +16,13 @@ namespace XRSpotlightGUI.Configuration
         public bool isComponent;
         public string definitionNoEvents;
         public Event[] events;
-        public MemberReference[] eventReferences;
+        public EventReference[] eventReferences;
+    }
+
+    [Serializable]
+    public class EventReference
+    {
+        public MemberReference[] reference;
     }
 
     [Serializable]
