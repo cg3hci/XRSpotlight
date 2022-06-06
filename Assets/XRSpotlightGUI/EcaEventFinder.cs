@@ -93,18 +93,9 @@ public class EcaEventFinder : MonoBehaviour
         for (int i = 0; i < receiversCount; i++)
         {
             ReceiverBase receiverBase = receivers.ElementAt(i);
-            if (receiverBase.GetType().Name == "InteractableOnFocusReceiver")
-            {
-                InteractableOnFocusReceiver interactableReceiver = receiverBase as InteractableOnFocusReceiver;
-                if (interactableReceiver.OnFocusOff!=null)
-                {
-                    unityEventInfos=unityEventInfos.Concat(FindEventsInfo(interactableReceiver.OnFocusOff, i, receivers[i].Name)).ToList();
-                }
-                if (interactableReceiver.OnFocusOn!=null)
-                {
-                    unityEventInfos=unityEventInfos.Concat(FindEventsInfo(interactableReceiver.OnFocusOn, i, receivers[i].Name)).ToList();
-                }
-            }
+            //non custom receiver type
+            DetectNonCustomReceiverType(receiverBase, ref unityEventInfos, i);
+            //TODO custom receiver type
             // unityEventInfos=unityEventInfos.Concat(FindEventsInfo(receivers[i].Event, i, receivers[i].Name)).ToList();
         }
         
@@ -112,7 +103,7 @@ public class EcaEventFinder : MonoBehaviour
         return unityEventInfos;
     }
 
-    static private List<UnityEventInfo> FindEventsInfo(UnityEvent unityEvent, int index, string eventType="OnClick")
+    private static List<UnityEventInfo> FindEventsInfo(UnityEvent unityEvent, int index, string eventType="OnClick")
     {
         List<UnityEventInfo> result = new List<UnityEventInfo>();
         Object target = unityEvent.GetPersistentTarget(index);
@@ -133,7 +124,7 @@ public class EcaEventFinder : MonoBehaviour
         return result;
     }
 
-    static private UnityEventInfo FindSingleEventInfo(string methodName, MonoBehaviour component, GameObject gameObjectParameter, string eventType)
+    private static UnityEventInfo FindSingleEventInfo(string methodName, MonoBehaviour component, GameObject gameObjectParameter, string eventType)
     {
         MethodInfo methodInfo = component.GetType().GetMethod(methodName);
         if (methodInfo != null)
@@ -142,4 +133,53 @@ public class EcaEventFinder : MonoBehaviour
         }
         return null;
     }
+    private static void DetectNonCustomReceiverType(ReceiverBase receiverBase, ref List<UnityEventInfo> unityEventInfos,
+        int index)
+    {
+        string receiverName = receiverBase.GetType().Name;
+        switch (receiverName)
+        {
+            case "InteractableOnFocusReceiver":
+                InteractableOnFocusReceiver interactableReceiver = receiverBase as InteractableOnFocusReceiver;
+                HandleInteractableOnFocusReceiver(interactableReceiver, ref unityEventInfos, index);
+                break;
+            /*case "InteractableOnClickReceiver":
+                InteractableOnClickReceiver interactableOnClickReceiver = receiverBase as InteractableOnClickReceiver;
+                return interactableOnClickReceiver;
+            case "InteractableAudioReceiver":
+                InteractableAudioReceiver interactableAudioReceiver = receiverBase as InteractableAudioReceiver;
+                return interactableAudioReceiver;
+            case "InteractableOnGrabReceiver":
+                InteractableOnGrabReceiver interactableOnGrabReceiver = receiverBase as InteractableOnGrabReceiver;
+                return interactableOnGrabReceiver;
+            case "InteractableOnHoldReceiver":
+                InteractableOnHoldReceiver interactableOnHoldReceiver = receiverBase as InteractableOnHoldReceiver;
+                return interactableOnHoldReceiver;
+            case "InteractableOnPressReceiver":
+                InteractableOnPressReceiver interactableOnPressReceiver = receiverBase as InteractableOnPressReceiver;
+                return interactableOnPressReceiver;
+            case "InteractableOnToggleReceiver":
+                InteractableOnToggleReceiver interactableOnToggleReceiver = receiverBase as InteractableOnToggleReceiver;
+                return interactableOnToggleReceiver;
+            case "InteractableOnTouchReceiver":
+                InteractableOnTouchReceiver interactableOnTouchReceiver = receiverBase as InteractableOnTouchReceiver;
+                return interactableOnTouchReceiver;*/
+        }
+    }
+    
+    private static void HandleInteractableOnFocusReceiver(InteractableOnFocusReceiver interactableOnFocusReceiver,
+        ref List<UnityEventInfo> unityEventInfos, int index)
+    {
+        if (interactableOnFocusReceiver.OnFocusOff!=null)
+        {
+            unityEventInfos=unityEventInfos.Concat(FindEventsInfo(interactableOnFocusReceiver.OnFocusOff, index, interactableOnFocusReceiver.Name)).ToList();
+        }
+        if (interactableOnFocusReceiver.OnFocusOn!=null)
+        {
+            unityEventInfos=unityEventInfos.Concat(FindEventsInfo(interactableOnFocusReceiver.OnFocusOn, index, interactableOnFocusReceiver.Name)).ToList();
+        }
+    }
 }
+
+
+
