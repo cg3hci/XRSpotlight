@@ -17,44 +17,61 @@
       ],
       "eventReferences": [
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver"
+          "reference": [{
+            "member": "property",
+            "name": "InteractableEvents",
+            "type": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver"
+          }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver"
+          "reference": [{
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver"
+          "reference": [{
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver"
+          "reference": [
+            {
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver"
+          "reference": [{
+            "member": "property",
+            "name": "InteractableEvents",
+            "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver"
+          "reference": [{
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver"
+          "reference": [{
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver"
+            }]
         },
         {
-          "member": "property",
-          "name": "InteractableEvents",
-          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver"
+          "reference": [{
+              "member": "property",
+              "name": "InteractableEvents",
+              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver"
+            }]
         }
       ]
     },
@@ -65,7 +82,7 @@
       "events": [
         {
           "reference": [{
-            "member": "method",
+            "member": "field",
             "name": "OnClick"
           }],
           "definition": "select",
@@ -79,10 +96,10 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnClick"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -94,18 +111,18 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnFocusOn"
-          },
+          }],
           "definition": "address",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnFocusOff"
-          },
+          }],
           "definition": "idle",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -117,18 +134,18 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnGrab"
-          },
+          }],
           "definition": "grab",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnRelease"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -140,18 +157,18 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnHold"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnRelease"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -164,17 +181,17 @@
       "events": [
         {
           "reference": {
-            "member": "method",
+            "member": "field",
             "name": "OnPress"
           },
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnRelease"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -186,18 +203,18 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnSelect"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnDeselect"
-          },
+          }],
           "definition": "idle",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -209,18 +226,18 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnTouch"
-          },
+          }],
           "definition": "select",
           "modality":  ["touch"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnTouchEnd"
-          },
+          }],
           "definition": "release",
           "modality":  ["touch"]
         }
@@ -233,34 +250,34 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "RotateStarted"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "RotateStopped"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TranslateStarted"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TranslateStopped"
-          },
+          }],
           "definition": "release",
           "modality": ["gaze", "touch", "hand", "remote"]
         }
@@ -272,34 +289,34 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnManipulationStarted"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnManipulationEnded"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnHoverEntered"
-          },
+          }],
           "definition": "address",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnHoverExited"
-          },
+          }],
           "definition": "idle",
           "modality": ["gaze", "touch", "hand", "remote"]
         }
@@ -311,34 +328,34 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TouchBegin"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TouchEnd"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "ButtonPressed"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "ButtonReleased"
-          },
+          }],
           "definition": "release",
           "modality": ["gaze", "touch", "hand", "remote"]
         }
@@ -350,34 +367,34 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TouchBegin"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "TouchEnd"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference":[{
+            "member": "field",
             "name": "ButtonPressed"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "ButtonReleased"
-          },
+          }],
           "definition": "release",
           "modality": ["gaze", "touch", "hand", "remote"]
         }
@@ -389,26 +406,26 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "PanStarted"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "PanStopped"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "PanUpdated"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -420,42 +437,42 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnValueUpdated"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnInteractionStarted"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnInteractionEnded"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnHoverEntered"
-          },
+          }],
           "definition": "address",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnHoverExited"
-          },
+          }],
           "definition": "idle",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -467,26 +484,26 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnTouchStarted"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnTouchCompleted"
-          },
+          }],
           "definition": "release",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnTouchUpdated"
-          },
+          }],
           "definition": "movement",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
@@ -498,10 +515,10 @@
       "definitionNoEvents": "",
       "events": [
         {
-          "reference": {
-            "member": "method",
+          "reference": [{
+            "member": "field",
             "name": "OnSelectionEvents"
-          },
+          }],
           "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }

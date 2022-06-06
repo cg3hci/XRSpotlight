@@ -161,7 +161,7 @@ namespace XRSpotlightGUI
 
             if (phase.Equals("address")) p = Phases.Addressed;
             if (phase.Equals("select")) p = Phases.Selected;
-            if (phase.Equals("move")) p = Phases.Moved;
+            if (phase.Equals("movement")) p = Phases.Moved;
             if (phase.Equals("release")) p = Phases.Released;
 
             return p;
