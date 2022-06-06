@@ -2,119 +2,244 @@
   "configuration": "SteamVR",
   "elements": [
     {
-      "scriptName": "Valve.VR.InteractionSystem.Interactable",
+      "className": "Valve.VR.InteractionSystem.Interactable",
+      "isComponent": true,
       "definitionNoEvents": "grab",
-      "events": []
+      "events": [],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.InteractableHoverEvents",
+      "className": "Valve.VR.InteractionSystem.InteractableHoverEvents",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnHandOverBegin",
-          "definition": "hover"
+          "reference": {
+            "name": "OnHandOverBegin",
+            "member": "method"
+          },
+          "definition": "hover",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnHandOverEnd",
-          "definition": "idle"
+          "reference": {
+            "name": "OnHandOverEnd",
+            "member": "method"
+          },
+          "definition": "idle",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnAttachedToHand",
-          "definition": "grab"
+          "reference": {
+            "name": "OnAttachedToHand",
+            "member": "method"
+          },
+          "definition": "grab",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnDetachedFromHand",
-          "definition": "release"
+          "reference": {
+            "name": "OnDetachedFromHand",
+            "member": "method"
+          },
+          "definition": "release",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         }
-      ]
+      ],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.Throwable",
+      "className": "Valve.VR.InteractionSystem.Throwable",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnPickUp",
-          "definition": "select"
+          "reference": {
+            "name": "OnPickUp",
+            "member": "method"
+          },
+          "definition": "select",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnDetachFromHand",
-          "definition": "release"
+          "reference": {
+            "name": "OnDetachFromHand",
+            "member": "method"
+          },
+          "definition": "release",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnHeldUpdate",
-          "definition": "movement"
+          "reference": {
+            "name": "OnHeldUpdate",
+            "member": "method"
+          },
+          "definition": "movement",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         }
-      ]
+      ],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.ModalThrowable",
+      "className": "Valve.VR.InteractionSystem.ModalThrowable",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnPickUp",
-          "definition": "select"
+          "reference": {
+            "name": "OnPickUp",
+            "member": "method"
+          },
+          "definition": "select",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnDetachFromHand",
-          "definition": "release"
+          "reference": {
+            "name": "OnDetachFromHand",
+            "member": "method"
+          },
+          "definition": "release",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnHeldUpdate",
-          "definition": "movement"
+          "reference": {
+            "name": "OnHeldUpdate",
+            "member": "method"
+          },
+          "definition": "movement",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         }
-      ]
+      ],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.Teleport",
+      "className": "Valve.VR.InteractionSystem.Teleport",
+      "isComponent": true,
       "definitionNoEvents": "release",
-      "events": []
+      "events": [],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.TeleportArea",
+      "className": "Valve.VR.InteractionSystem.TeleportArea",
+      "isComponent": true,
       "definitionNoEvents": "release",
-      "events": []
+      "events": [],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.HoverButton",
+      "className": "Valve.VR.InteractionSystem.HoverButton",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnButtonDown",
-          "definition": "select"
+          "reference": {
+            "name": "OnButtonDown",
+            "member": "method"
+          },
+          "definition": "select",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnButtonUp",
-          "definition": "release"
+          "reference": {
+            "name": "OnButtonUp",
+            "member": "method"
+          },
+          "definition": "release",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnButtonPressed",
-          "definition": "movement"
+          "reference": {
+            "name": "OnButtonPressed",
+            "member": "method"
+          },
+          "definition": "movement",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         }
-      ]
+      ],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.Equippable",
+      "className": "Valve.VR.InteractionSystem.Equippable",
+      "isComponent": true,
       "definitionNoEvents": "select",
-      "events": []
+      "events": [],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.CircularDrive",
+      "className": "Valve.VR.InteractionSystem.CircularDrive",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnMinAngle",
-          "definition": "movement"
+          "reference": {
+            "name": "OnMinAngle",
+            "member": "method"
+          },
+          "definition": "movement",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         },
         {
-          "methodName": "OnMaxAngle",
-          "definition": "movement"
+          "reference": {
+            "name": "OnMaxAngle",
+            "member": "method"
+          },
+          "definition": "movement",
+          "modality": [
+            "remote"
+          ],
+          "parameters": []
         }
-      ]
+      ],
+      "eventReferences": []
     },
     {
-      "scriptName": "Valve.VR.InteractionSystem.LinearDrive",
+      "className": "Valve.VR.InteractionSystem.LinearDrive",
+      "isComponent": true,
       "definitionNoEvents": "movement",
-      "events": []
+      "events": [],
+      "eventReferences": []
     }
   ]
 }

@@ -1,17 +1,40 @@
 {
-  "configuration": "", //es. MRTK/SteamVR
+  "configuration": "", 
   "elements": [
     {
-      "component": "", //es. Interactable/InteractableAudioReceiver/…
-      "definitionNoEvents": "", quando non ha eventi e bisogna descriverlo comunque con una parola, vedi Interactable di SteamVR
+      "className": "", 
+      "isComponent": true,
+      "definitionNoEvents": "", 
       "events": [
         {
-          "methodName": "", 
-          "definition": "" // [idle, address, select, movement, release, grab]
-        },
+          "reference": {
+            "name": "",
+            "member": ""
+          },
+          "definition": "",
+          "modality": [
+            ""
+          ],
+          "parameters": [
+            {
+              "name": "",
+              "reference": [
+                {
+                  "name": "",
+                  "member": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "eventReferences": [
         {
-          //...
+          "member": "",
+          "name": "",
+          "type": ""
         }
       ]
     }
-  }
+  ]
+}
