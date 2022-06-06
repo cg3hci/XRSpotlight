@@ -29,7 +29,7 @@ public class RuleEditor : EditorWindow
     public void CreateGUI()
     {
         this.showEmpty = false;
-        engine = new InferenceEngine(Toolkits.MRTK);
+        engine = InferenceEngine.GetInstance(Toolkits.MRTK);
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/XRSpotlightGUI/RuleEditor.uss");
         // Each editor window contains a root VisualElement object
         VisualElement panel = rootVisualElement;
@@ -117,7 +117,7 @@ public class RuleEditor : EditorWindow
         modality.AddToClassList("modality");
         
         var modalityHead = new Label($"When " + label4Phase(rule.trigger));
-        modalityHead.AddToClassList("prefix");
+        modalityHead.AddToClassList("prefix"); 
         modality.Add(modalityHead);
 
         var gazeLabel = new Label(rule.modalities.gaze ? "gaze " : "");
@@ -251,6 +251,7 @@ public class RuleEditor : EditorWindow
     {
         switch (p)
         {
+            case Phases.Idle: return "Idle";
             case Phases.Addressed: return "Addressed";
             case Phases.Selected: return "Selected";
             case Phases.Moved: return "Moved";

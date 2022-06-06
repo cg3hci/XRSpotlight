@@ -5,7 +5,7 @@ namespace XRSpotlightGUI
 {
     public enum Phases
     {
-        None, Addressed, Selected, Moved, Released
+        None, Idle, Addressed, Selected, Moved, Released
     }
 
     public class InferredAction

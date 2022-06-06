@@ -245,7 +245,7 @@
     },
 
     {
-      "className": "Microsoft.MixedReality.Toolkit.UI.BoundsControl",
+      "className": "Microsoft.MixedReality.Toolkit.UI.BoundsControl.BoundsControl",
       "isComponent": true,
       "definitionNoEvents": "",
       "events": [
@@ -284,13 +284,13 @@
       ]
     },
     {
-      "className": "Microsoft.MixedReality.Toolkit.UI.Object Manipulator",
+      "className": "Microsoft.MixedReality.Toolkit.UI.ObjectManipulator",
       "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "OnManipulationStarted"
           }],
           "definition": "movement",
@@ -298,7 +298,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "OnManipulationEnded"
           }],
           "definition": "release",
@@ -306,7 +306,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "OnHoverEntered"
           }],
           "definition": "address",
@@ -314,7 +314,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "OnHoverExited"
           }],
           "definition": "idle",
