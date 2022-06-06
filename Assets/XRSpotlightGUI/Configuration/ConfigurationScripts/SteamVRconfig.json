@@ -1,254 +1,120 @@
 {
   "configuration": "SteamVR",
   "elements": [
-      {
-          "scriptName": "Interactable",
-          "definitionNoEvents": "grab",
-          "events": [],
-          "properties": []
-          
-      },
-      {
-          "scriptName": "InteractableHoverEvents",
-          "definitionNoEvents": "",
-          "events": [
-            {
-              "name": "",
-              "hasMultipleElements": false,
-              "inputEvents": [
-                {
-                  "inputName": "OnHandOverBegin",
-                  "definition": "hover",
-                  "parametersInputEvents": {
-                    "hasGameObject": true,
-                    "hasMethod": true
-                  }
-              },
-              {
-                  "name": "OnHandOverEnd",
-                  "definition": "release",
-                  "parametersInputEvents": {
-                    "hasGameObject": true,
-                    "hasMethod": true
-                  }
-              },
-              {
-                  "name": "OnAttachedToHand",
-                  "definition": "grab",
-                  "parametersInputEvents": {
-                    "hasGameObject": true,
-                    "hasMethod": true
-                  }
-              },
-              {
-                  "name": "OnDetachedFromHand",
-                  "definition": "release",
-                  "parametersInputEvents": {
-                    "hasGameObject": true,
-                    "hasMethod": true
-                  }
-              }
-              ]
-            }
-              
-          ],
-          "properties": []
-      },
-      {
-        "scriptName": "Throwable",
-        "definitionNoEvents": "",
-        "events": [
-          {
-            "name": "",
-            "hasMultipleElements": false,
-            "inputEvents": [
-              {
-                "name": "OnPickUp",
-                "definition": "commit",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            },
-            {
-                "name": "OnDetachFromHand",
-                "definition": "release",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            },
-            {
-                "name": "OnHeldUpdate",
-                "definition": "move",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            }
-            ]
-          }
-            
-        ],
-        "properties": []
+    {
+      "scriptName": "Valve.VR.InteractionSystem.Interactable",
+      "definitionNoEvents": "grab",
+      "events": []
     },
     {
-      "scriptName": "ModalThrowable",
+      "scriptName": "Valve.VR.InteractionSystem.InteractableHoverEvents",
       "definitionNoEvents": "",
       "events": [
         {
-          "name": "",
-          "hasMultipleElements": false,
-          "inputEvents": [
-            {
-              "name": "OnPickUp",
-              "definition": "commit",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          },
-          {
-              "name": "OnDetachFromHand",
-              "definition": "release",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          },
-          {
-              "name": "OnHeldUpdate",
-              "definition": "move",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          }
-          ]
+          "methodName": "OnHandOverBegin",
+          "definition": "hover"
+        },
+        {
+          "methodName": "OnHandOverEnd",
+          "definition": "idle"
+        },
+        {
+          "methodName": "OnAttachedToHand",
+          "definition": "grab"
+        },
+        {
+          "methodName": "OnDetachedFromHand",
+          "definition": "release"
         }
-          
-      ],
-      "properties": []
-  },
-      {
-          "scriptName": "Teleport",
-          "definitionNoEvents": "release",
-          "events": [],
-          "properties": []
-          
-      },
-      {
-          "scriptName": "TeleportArea",
-          "definitionNoEvents": "release",
-          "events": [],
-          "properties": []
-          
-      },
-      {
-        "scriptName": "Button",
-        "definitionNoEvents": "",
-        "events": [
-          {
-            "name": "",
-            "hasMultipleElements": false,
-            "inputEvents": [
-              {
-                "name": "OnClick",
-                "definition": "commit",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            }
-            ]
-          }
-            
-        ],
-        "properties": []
+      ]
     },
     {
-      "scriptName": "HoverButton",
+      "scriptName": "Valve.VR.InteractionSystem.Throwable",
       "definitionNoEvents": "",
       "events": [
         {
-          "name": "",
-          "hasMultipleElements": false,
-          "inputEvents": [
-            {
-              
-              "name": "OnButtonDown",
-              "definition": "commit",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          },
-          {
-              "name": "OnButtonUp",
-              "definition": "release",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          },
-          {
-              "name": "OnButtonPressed",
-              "definition": "move",
-              "parametersInputEvents": {
-                "hasGameObject": true,
-                "hasMethod": true
-              }
-          }
-          
-          ]
+          "methodName": "OnPickUp",
+          "definition": "select"
+        },
+        {
+          "methodName": "OnDetachFromHand",
+          "definition": "release"
+        },
+        {
+          "methodName": "OnHeldUpdate",
+          "definition": "movement"
         }
-          
-      ],
-      "properties": []
-  },
-      {
-          "scriptName": "Equippable",
-          "definitionNoEvents": "commit",
-          "events": [],
-          "properties": []
-          
-      },
-      {
-        "scriptName": "CircularDrive",
-        "definitionNoEvents": "",
-        "events": [
-          {
-            "name": "",
-            "hasMultipleElements": false,
-            "inputEvents": [
-              {
-                "name": "OnMinAngle",
-                "definition": "move",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            },
-            {
-                "name": "OnMaxAngle",
-                "definition": "move",
-                "parametersInputEvents": {
-                  "hasGameObject": true,
-                  "hasMethod": true
-                }
-            }
-            ]
-          }
-            
-        ],
-        "properties": []
+      ]
     },
-      {
-          "scriptName": "LinearDrive",
-          "definitionNoEvents": "move",
-          "events": [],
-          "properties": []
-          
-      }
+    {
+      "scriptName": "Valve.VR.InteractionSystem.ModalThrowable",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "methodName": "OnPickUp",
+          "definition": "select"
+        },
+        {
+          "methodName": "OnDetachFromHand",
+          "definition": "release"
+        },
+        {
+          "methodName": "OnHeldUpdate",
+          "definition": "movement"
+        }
+      ]
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.Teleport",
+      "definitionNoEvents": "release",
+      "events": []
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.TeleportArea",
+      "definitionNoEvents": "release",
+      "events": []
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.HoverButton",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "methodName": "OnButtonDown",
+          "definition": "select"
+        },
+        {
+          "methodName": "OnButtonUp",
+          "definition": "release"
+        },
+        {
+          "methodName": "OnButtonPressed",
+          "definition": "movement"
+        }
+      ]
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.Equippable",
+      "definitionNoEvents": "select",
+      "events": []
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.CircularDrive",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "methodName": "OnMinAngle",
+          "definition": "movement"
+        },
+        {
+          "methodName": "OnMaxAngle",
+          "definition": "movement"
+        }
+      ]
+    },
+    {
+      "scriptName": "Valve.VR.InteractionSystem.LinearDrive",
+      "definitionNoEvents": "movement",
+      "events": []
+    }
   ]
 }
