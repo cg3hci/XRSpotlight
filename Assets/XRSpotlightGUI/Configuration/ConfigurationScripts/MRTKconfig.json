@@ -11,7 +11,8 @@
             "member": "method",
             "name": "OnClick"
           },
-          "definition": "select"
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
         }
       ],
       "eventReferences": [
@@ -24,6 +25,36 @@
           "member": "property",
           "name": "InteractableEvents",
           "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver"
+        },
+        {
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver"
         }
       ]
     },
@@ -37,7 +68,138 @@
             "member": "method",
             "name": "OnClick"
           },
-          "definition": "select"
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnClick"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnFocusOn"
+          },
+          "definition": "address",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnFocusOff"
+          },
+          "definition": "idle",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnGrab"
+          },
+          "definition": "grab",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnRelease"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnHold"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnRelease"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnPress"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnRelease"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver",
+      "isComponent": false,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnSelect"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnDeselect"
+          },
+          "definition": "idle",
+          "modality":  ["gaze", "touch", "hand", "remote"]
         }
       ]
     },
@@ -48,17 +210,304 @@
       "events": [
         {
           "reference": {
-            "name": "OnTouch",
-            "member": "method"
+            "member": "method",
+            "name": "OnTouch"
           },
-          "definition": "select"
+          "definition": "select",
+          "modality":  ["touch"]
         },
         {
-          "methodName": "OnTouchEnd",
-          "definition": "release"
+          "reference": {
+            "member": "method",
+            "name": "OnTouchEnd"
+          },
+          "definition": "release",
+          "modality":  ["touch"]
         }
       ]
     },
+
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.BoundsControl",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "RotateStarted"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "RotateStopped"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "TranslateStarted"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "TranslateStopped"
+          },
+          "definition": "release",
+          "modality": ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.Object Manipulator",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnManipulationStarted"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnManipulationEnded"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnHoverEntered"
+          },
+          "definition": "address",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnHoverExited"
+          },
+          "definition": "idle",
+          "modality": ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PressableButton",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "TouchBegin"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "TouchEnd"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "ButtonPressed"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "ButtonReleased"
+          },
+          "definition": "release",
+          "modality": ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PressableButtonHololens2",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "TouchBegin"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "TouchEnd"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "ButtonPressed"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "ButtonReleased"
+          },
+          "definition": "release",
+          "modality": ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.HandInteractionPanZoom",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "PanStarted"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "PanStopped"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "PanUpdated"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PinchSlider",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnValueUpdated"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnInteractionStarted"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnInteractionEnded"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnHoverEntered"
+          },
+          "definition": "address",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnHoverExited"
+          },
+          "definition": "idle",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.TouchHandler",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnTouchStarted"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnTouchCompleted"
+          },
+          "definition": "release",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnTouchUpdated"
+          },
+          "definition": "movement",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableToggleCollection",
+      "isComponent": true,
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "reference": {
+            "member": "method",
+            "name": "OnSelectionEvents"
+          },
+          "definition": "select",
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    
     {
       "className": "Microsoft.MixedReality.Toolkit.Input.SpeechInputHandler",
       "isComponent": true,
