@@ -4,15 +4,17 @@
       {
           "scriptName": "Rigidbody",
           "definitionNoEvents": "grab",
-          "events": [],
-          "properties": [
-            {
-              "propertyName": "Use Gravity",
-              "valueType": "boolean",
-              "defaultValue": false
-            }
-          ]
-          
-      }
+          "events": [] 
+      },
+    {
+      "scriptName": "Button",
+      "definitionNoEvents": "",
+      "events": [
+        {
+          "methodName": "OnClick",
+          "definition": "select"
+        }
+      ]
+    }
   ]
 }
