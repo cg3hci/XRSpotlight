@@ -12,15 +12,26 @@ namespace XRSpotlightGUI.Configuration
     [Serializable]
     public class Element
     {
-        public string component;
+        public string className;
+        public bool isComponent;
         public string definitionNoEvents;
-        
+        public Event[] events;
+        public MemberReference[] eventReferences;
     }
 
     [Serializable]
     public class Event
     {
+        public MemberReference[] reference;
+        public string definition;
+        public string[] modality;
+    }
+
+    [Serializable]
+    public class MemberReference
+    {
+        public string member;
         public string name;
-        public string definition; 
+        public string type;
     }
 }

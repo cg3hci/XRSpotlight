@@ -2,111 +2,55 @@
   "configuration": "MRTK",
   "elements": [
     {
-      "component": "Microsoft.MixedReality.Toolkit.UI.Interactable",
+      "className": "Microsoft.MixedReality.Toolkit.UI.Interactable",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnClick",
+          "reference": {
+            "member": "method",
+            "name": "OnClick"
+          },
           "definition": "select"
         }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver",
-      "definitionNoEvents": "",
-      "events": [
+      ],
+      "eventReferences": [
         {
-          "methodName": "OnClick",
-          "definition": "select"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnClick",
-          "definition": "select"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnFocusOn",
-          "definition": "address"
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver"
         },
         {
-          "methodName": "OnFocusOff",
-          "definition": "idle"
+          "member": "property",
+          "name": "InteractableEvents",
+          "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver"
         }
       ]
     },
     {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver",
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver",
+      "isComponent": false,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnGrab",
-          "definition": "grab"
-        },
-        {
-          "methodName": "OnRelease",
-          "definition": "release"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnHold",
+          "reference": {
+            "member": "method",
+            "name": "OnClick"
+          },
           "definition": "select"
-        },
-        {
-          "methodName": "OnRelease",
-          "definition": "release"
         }
       ]
     },
     {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver",
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver",
+      "isComponent": false,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "OnPress",
-          "definition": "select"
-        },
-        {
-          "methodName": "OnRelease",
-          "definition": "release"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnSelect",
-          "definition": "select"
-        },
-        {
-          "methodName": "OnDeselect",
-          "definition": "idle"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnTouch",
+          "reference": {
+            "name": "OnTouch",
+            "member": "method"
+          },
           "definition": "select"
         },
         {
@@ -115,177 +59,42 @@
         }
       ]
     },
-
     {
-      "component": "Microsoft.MixedReality.Toolkit.UI.BoundsControl",
+      "className": "Microsoft.MixedReality.Toolkit.Input.SpeechInputHandler",
+      "isComponent": true,
       "definitionNoEvents": "",
       "events": [
         {
-          "methodName": "RotateStarted",
-          "definition": "movement"
-        },
-        {
-          "methodName": "RotateStopped",
-          "definition": "release"
-        },
-        {
-          "methodName": "TranslateStarted",
-          "definition": "movement"
-        },
-        {
-          "methodName": "TranslateStopped",
-          "definition": "release"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.Object Manipulator",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnManipulationStarted",
-          "definition": "movement"
-        },
-        {
-          "methodName": "OnManipulationEnded",
-          "definition": "release"
-        },
-        {
-          "methodName": "OnHoverEntered",
-          "definition": "address"
-        },
-        {
-          "methodName": "OnHoverExited",
-          "definition": "idle"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.PressableButton",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "TouchBegin",
-          "definition": "select"
-        },
-        {
-          "methodName": "TouchEnd",
-          "definition": "release"
-        },
-        {
-          "methodName": "ButtonPressed",
-          "definition": "select"
-        },
-        {
-          "methodName": "ButtonReleased",
-          "definition": "release"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.PressableButtonHololens2",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "TouchBegin",
-          "definition": "select"
-        },
-        {
-          "methodName": "TouchEnd",
-          "definition": "release"
-        },
-        {
-          "methodName": "ButtonPressed",
-          "definition": "select"
-        },
-        {
-          "methodName": "ButtonReleased",
-          "definition": "release"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.HandInteractionPanZoom",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "PanStarted",
-          "definition": "movement"
-        },
-        {
-          "methodName": "PanStopped",
-          "definition": "release"
-        },
-        {
-          "methodName": "PanUpdated",
-          "definition": "movement"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.PinchSlider",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnValueUpdated",
-          "definition": "movement"
-        },
-        {
-          "methodName": "OnInteractionStarted",
-          "definition": "movement"
-        },
-        {
-          "methodName": "OnInteractionEnded",
-          "definition": "release"
-        },
-        {
-          "methodName": "OnHoverEntered",
-          "definition": "address"
-        },
-        {
-          "methodName": "OnHoverExited",
-          "definition": "idle"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.TouchHandler",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnTouchStarted",
-          "definition": "select"
-        },
-        {
-          "methodName": "OnTouchCompleted",
-          "definition": "select"
-        },
-        {
-          "methodName": "OnTouchUpdated",
-          "definition": "select"
-        }
-      ]
-    },
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.InteractableToggleCollection",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "OnSelectionEvents",
-          "definition": "select"
-        }
-      ]
-    },
-
-    {
-      "component": "Microsoft.MixedReality.Toolkit.UI.SpeechInputHandler",
-      "definitionNoEvents": "",
-      "events": [
-        {
-          "methodName": "Response",
-          "definition": "select"
+          "reference": [
+            {
+              "name": "Keywords",
+              "member": "property"
+            },
+            {
+              "name": "Response",
+              "member": "property"
+            }
+          ],
+          "definition": "speak",
+          "parameters": [
+            {
+              "name": "speechCommand",
+              "reference": [
+                {
+                  "name": "Keywords",
+                  "member": "property"
+                },
+                {
+                  "name": "Keyword",
+                  "member": "property"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
   ]
 }
+        
+        

@@ -91879,6 +91879,22 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &1694071538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694071536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fca2afacbcf904ba013e31cb71e4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjects:
+  - {fileID: 2074310219}
+  - {fileID: 760131889}
+  - {fileID: 1236476796}
 --- !u!65 &1694071541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105615,6 +105631,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a9cb496df4401c8ff66909671ef8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2074310228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074310219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  voiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
 --- !u!1001 &2075514952
 PrefabInstance:
   m_ObjectHideFlags: 0

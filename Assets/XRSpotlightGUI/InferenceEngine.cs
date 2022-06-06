@@ -30,15 +30,15 @@ namespace XRSpotlightGUI
             foreach (var element in this.mapping.elements)
             {
 
-                Debug.Log($"Trying with {element.component}");
+              
                 Type componentType = null;
                 foreach (Assembly ass in AppDomain.CurrentDomain.GetAssemblies())
                 {
                     if (ass.FullName.StartsWith("System."))
                         continue;
-                    componentType = ass.GetType(element.component);
+                   /* componentType = ass.GetType(element);
                     if (componentType != null)
-                        break;
+                        break;*/
                 }
                 
                 if(componentType == null)

@@ -138,6 +138,10 @@ namespace EcaRules.Json
 
         private EcaCondition ParseCondition(JsonEcaCondition c)
         {
+            if (String.IsNullOrEmpty(c.LambdaExpr))
+            {
+                return null;
+            }
             var lambda = new LambdaCondition(c.Ids, c.LambdaExpr);
             return lambda;
         }
