@@ -11,7 +11,8 @@ public class InteractionIcon : MonoBehaviour
     // an array of game objects which will have a
     // line drawn to in the Scene editor
     public GameObject[] GameObjects;
-
+    public bool ShowInteractions = true;
+    
     private void OnEnable()
     {
         /*Interactable[] interactables = GameObject.FindObjectsOfType<Interactable>();
@@ -25,6 +26,7 @@ public class InteractionIcon : MonoBehaviour
         var engine = InferenceEngine.GetInstance(Toolkits.MRTK);
         GameObjects = engine.FindInteractableObjects();
     }
+    
 
     // Start is called before the first frame update
     void Start()
