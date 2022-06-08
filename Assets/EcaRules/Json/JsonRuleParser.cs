@@ -151,14 +151,21 @@ namespace EcaRules.Json
         {
             var tuples = new List<Tuple<EcaActionAttribute, MethodInfo>>();
 
-            foreach (MethodInfo m in o.GetType().GetMethods())
+            foreach(Component c in o.GetComponents(typeof(Component)))
             {
-                var attr = m.GetCustomAttribute<EcaActionAttribute>();
-                if(attr != null && attr.Verb.Equals(v))
+                if (Attribute.IsDefined(c.GetType(), typeof(EcaRules4AllAttribute)))
                 {
-                    tuples.Add(new Tuple<EcaActionAttribute, MethodInfo>(attr, m));
+                    foreach (MethodInfo m in c.GetType().GetMethods())
+                    {
+                        var attr = m.GetCustomAttribute<EcaActionAttribute>();
+                        if(attr != null && attr.Verb.Equals(v))
+                        {
+                            tuples.Add(new Tuple<EcaActionAttribute, MethodInfo>(attr, m));
+                        }
+                    }
                 }
             }
+           
 
             return tuples;
         }
