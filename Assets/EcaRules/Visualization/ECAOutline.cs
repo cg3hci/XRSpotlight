@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 
 namespace EcaRules.Visualization
 {
   [DisallowMultipleComponent]
-    public class ECAOutline : MonoBehaviour
+  [ExecuteInEditMode]
+  public class ECAOutline : MonoBehaviour
     {
           private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 
@@ -148,8 +150,8 @@ namespace EcaRules.Visualization
   void OnDestroy() {
 
     // Destroy material instances
-    Destroy(outlineMaskMaterial);
-    Destroy(outlineFillMaterial);
+    DestroyImmediate(outlineMaskMaterial);
+    DestroyImmediate(outlineFillMaterial);
   }
 
   void Bake() {
