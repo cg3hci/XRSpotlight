@@ -489,7 +489,7 @@
             "name": "OnTouchStarted"
           }],
           "definition": "select",
-          "modality":  ["gaze", "touch", "hand", "remote"]
+          "modality":  ["touch"]
         },
         {
           "reference": [{
@@ -497,7 +497,7 @@
             "name": "OnTouchCompleted"
           }],
           "definition": "release",
-          "modality":  ["gaze", "touch", "hand", "remote"]
+          "modality":  ["touch"]
         },
         {
           "reference": [{
@@ -505,7 +505,7 @@
             "name": "OnTouchUpdated"
           }],
           "definition": "movement",
-          "modality":  ["gaze", "touch", "hand", "remote"]
+          "modality":  ["touch"]
         }
       ]
     },
@@ -542,6 +542,7 @@
             }
           ],
           "definition": "speak",
+          "modality":  ["gaze", "touch", "hand", "remote"],
           "parameters": [
             {
               "name": "speechCommand",
