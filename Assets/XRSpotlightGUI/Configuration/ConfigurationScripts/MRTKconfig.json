@@ -17,61 +17,16 @@
       ],
       "eventReferences": [
         {
-          "reference": [{
-            "member": "property",
-            "name": "InteractableEvents",
-            "type": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver"
-          }]
-        },
-        {
-          "reference": [{
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver"
-            }]
-        },
-        {
-          "reference": [{
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver"
-            }]
-        },
-        {
           "reference": [
             {
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver"
-            }]
-        },
-        {
-          "reference": [{
             "member": "property",
-            "name": "InteractableEvents",
-            "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver"
-            }]
-        },
-        {
-          "reference": [{
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver"
-            }]
-        },
-        {
-          "reference": [{
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver"
-            }]
-        },
-        {
-          "reference": [{
-              "member": "property",
-              "name": "InteractableEvents",
-              "type": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver"
-            }]
+            "name": "InteractableEvents"
+           },
+            {
+              "member": "field",
+              "name": "Receiver"
+            }
+          ]
         }
       ]
     },

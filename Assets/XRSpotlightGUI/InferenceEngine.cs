@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Schema;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using XRSpotlightGUI.Configuration;
@@ -111,13 +112,13 @@ namespace XRSpotlightGUI
 
             foreach (var evtRef in element.eventReferences)
             {
-                var path = this.FollowReferencePath(evtRef.reference, component);
-                var pathArray = path as System.Collections.IList;
-                if (pathArray == null)
-                    continue;
-                foreach (object o in pathArray)
+                var resolved = new List<object>(); 
+                this.FollowReferencePaths(evtRef.reference, component);
+                
+                foreach (object o in resolved)
                 {
-                    if (!elementIndex.ContainsKey(o.GetType().FullName))
+                    //SerializedObject serializedObject = new UnityEditor.SerializedObject(obj);
+                    if (!elementIndex.ContainsKey(o.GetType().FullName)) 
                         continue;
 
                     var referenced = elementIndex[o.GetType().FullName];
@@ -166,6 +167,81 @@ namespace XRSpotlightGUI
                 }
             }
         }
+
+
+        private object[] FollowReferencePaths(MemberReference[] references, object component)
+        {
+            return null;
+        }
+        
+        private void  BuildReferences(
+            MemberReference[] references, 
+            object component, 
+            int i, 
+            List<object> resolved)
+        {
+            if (i >= references.Length)
+            {
+                resolved.Add(component);
+                return;
+            }
+
+            var reference = references[i];
+            Type t = component.GetType();
+            if (reference.member == "field")
+            {
+                FieldInfo fieldInfo = t.GetField(reference.name);
+                if (fieldInfo == null)
+                {
+                    Debug.Log($"Cannot find the field {reference.member} in type {t.FullName}");
+                    return;
+                }
+                var current = fieldInfo.GetValue(component);
+                if (current == null)
+                {
+                    Debug.Log($"The field {reference.member} is null in object {component}");
+                    return;
+                };
+                
+                FollowValueOrList(references, i, resolved, current);
+            }
+
+            if (reference.member == "property")
+            {
+                PropertyInfo propertyInfo = t.GetProperty(reference.name);
+                if (propertyInfo == null)
+                {
+                    Debug.Log($"Cannot find the property {reference.member} in type {t.FullName}");
+                    return;
+                }
+                var current = propertyInfo.GetValue(component);
+                if (current == null)
+                {
+                    Debug.Log($"The property {reference.member} is null in object {component}");
+                    return;
+                };
+                
+                FollowValueOrList(references, i, resolved, current);
+            }
+        }
+
+        private void FollowValueOrList(MemberReference[] references, int i, List<object> resolved, object current)
+        {
+            var currentArray = current as System.Collections.IList;
+            if (currentArray != null)
+            {
+                // we have multiple values 
+                foreach (var o in currentArray)
+                {
+                    BuildReferences(references, o, i + 1, resolved);
+                }
+            }
+            else
+            {
+                BuildReferences(references, current, i + 1, resolved);
+            }
+        }
+
 
         private object FollowReferencePath(MemberReference[] references, object component)
         {
@@ -235,6 +311,33 @@ namespace XRSpotlightGUI
         }
     }
 
+    class ReferenceTree
+    {
+        public object current;
+        public List<ReferenceTree> children;
+
+        public ReferenceTree(object current)
+        {
+            this.children = new List<ReferenceTree>();
+            this.current = current;
+        }
+
+        public void GetLeafs(List<object> leafs)
+        {
+            if (this.children.Count == 0)
+            {
+                leafs.Add(this.current);
+            }
+            else
+            {
+                foreach (var tree in children)
+                {
+                    tree.GetLeafs(leafs);
+                }
+            }
+            
+        }
+    }
 
     public enum Toolkits
     {
