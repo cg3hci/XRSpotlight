@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Schema;
@@ -158,20 +159,25 @@ namespace XRSpotlightGUI
             }
         }
 
+        private bool HasModality(Event evt, string modality)
+        {
+            return evt.modality != null && evt.modality.Contains(modality);
+        }
+
         private void InferRule(Event evt, List<InferredRule> rules, object component)
         {
             InferredRule rule = FindRule(evt.definition, rules);
             if (rule == null)
             {
-                rule = new InferredRule()
+                rule = new InferredRule() 
                 {
-                    // TODO read modalities from file
+                   
                     modalities = new Modalities()
                     {
-                        gaze = false,
-                        hand = true,
-                        remote = true,
-                        touch = true
+                        gaze = HasModality(evt, "gaze"),
+                        hand = HasModality(evt, "hand"),
+                        remote = HasModality(evt, "remote"),
+                        touch = HasModality(evt, "touch")
                     },
                     trigger = this.PhaseFromString(evt.definition)
                 };

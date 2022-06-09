@@ -251,7 +251,7 @@ public class RuleEditor : EditorWindow
     {
         switch (p)
         {
-            case Phases.Idle: return "Idle";
+            case Phases.Leave: return "Idle";
             case Phases.Addressed: return "Addressed";
             case Phases.Selected: return "Selected";
             case Phases.Moved: return "Moved";
