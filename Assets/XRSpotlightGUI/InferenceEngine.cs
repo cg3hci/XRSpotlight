@@ -146,7 +146,6 @@ namespace XRSpotlightGUI
                 
                 foreach (object o in resolved)
                 {
-                    //SerializedObject serializedObject = new UnityEditor.SerializedObject(obj);
                     if (!elementIndex.ContainsKey(o.GetType().FullName)) 
                         continue;
 
