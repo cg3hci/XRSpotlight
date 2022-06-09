@@ -90,7 +90,7 @@
       "events": [
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "OnGrab"
           }],
           "definition": "grab",
@@ -206,7 +206,7 @@
       "events": [
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "RotateStarted"
           }],
           "definition": "movement",
@@ -214,7 +214,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "RotateStopped"
           }],
           "definition": "release",
@@ -222,7 +222,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "TranslateStarted"
           }],
           "definition": "movement",
@@ -230,7 +230,7 @@
         },
         {
           "reference": [{
-            "member": "field",
+            "member": "property",
             "name": "TranslateStopped"
           }],
           "definition": "release",

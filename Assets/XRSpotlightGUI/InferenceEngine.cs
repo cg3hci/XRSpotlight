@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Schema;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using XRSpotlightGUI.Configuration;
@@ -80,6 +82,8 @@ namespace XRSpotlightGUI
 
         public InferredRule[] InferRuleByGameObject(GameObject gameObject)
         {
+            
+            
             if (elementIndex == null)
             {
                 FindInteractableObjects();
@@ -89,6 +93,10 @@ namespace XRSpotlightGUI
 
             foreach (var component in gameObject.GetComponents(typeof(Component)))
             {
+                if (component == null)
+                {
+                    continue;
+                }
                 if(component.GetType().FullName == null)
                     continue;
                 
@@ -96,7 +104,30 @@ namespace XRSpotlightGUI
                     continue;
                 
                 var element = elementIndex[component.GetType().FullName];
- 
+
+                // [davide] TEMPORARY WORKAROUND: Receivers are not serialized, they are re-created at each run
+                // this does not allow us to inspect them in the Editor. The following is a slightly modified
+                // version of the Receiver instantiation in MRTK, triggered by our code. 
+                // This may potentially cause memory leaks in the UnityEditor (we are not destroying the Receivers)
+                if (component is Interactable interactable)
+                {
+                    for (int i = 0; i < interactable.InteractableEvents.Count; i++)
+                    {
+                        var receiver = InteractableEvent.CreateReceiver(interactable.InteractableEvents[i]);
+                        if (receiver != null)
+                        {
+                            interactable.InteractableEvents[i].Receiver = receiver;
+                            interactable.InteractableEvents[i].Receiver.Host = interactable;
+                        }
+                        else
+                        {
+                            Debug.LogWarning(
+                                $"Empty event receiver found on {gameObject.name}, you may want to re-create this asset.");
+                        }
+                    }
+                }
+
+
                 AnalyseEvents(element, rules, component);
             }
 
@@ -110,10 +141,11 @@ namespace XRSpotlightGUI
                 InferRule(evt, rules, component);
             }
 
+            if (element.eventReferences == null) return;
+
             foreach (var evtRef in element.eventReferences)
             {
-                var resolved = new List<object>(); 
-                this.FollowReferencePaths(evtRef.reference, component);
+                var resolved =  this.FollowReferencePaths(evtRef.reference, component);
                 
                 foreach (object o in resolved)
                 {
@@ -150,8 +182,15 @@ namespace XRSpotlightGUI
                 rules.Add(rule);
             }
 
-            object path = FollowReferencePath(evt.reference, component);
+            object[] paths = FollowReferencePaths(evt.reference, component);
 
+            if (paths.Length != 1)
+            {
+                Debug.Log($"Expected a single object resolving the reference {evt.reference} for component ${component}");
+                return;
+            }
+
+            var path = paths[0];
             if (path is UnityEventBase unityEvent)
             {
                 for (var i = 0; i < unityEvent.GetPersistentEventCount(); i++)
@@ -171,7 +210,10 @@ namespace XRSpotlightGUI
 
         private object[] FollowReferencePaths(MemberReference[] references, object component)
         {
-            return null;
+            List<object> toReturn = new List<object>();
+            BuildReferences(references, component, 0, toReturn);
+
+            return toReturn.ToArray();
         }
         
         private void  BuildReferences(
@@ -190,16 +232,16 @@ namespace XRSpotlightGUI
             Type t = component.GetType();
             if (reference.member == "field")
             {
-                FieldInfo fieldInfo = t.GetField(reference.name);
+                FieldInfo fieldInfo = t.GetField(reference.name);  
                 if (fieldInfo == null)
                 {
-                    Debug.Log($"Cannot find the field {reference.member} in type {t.FullName}");
+                    Debug.Log($"Cannot find the field {reference.name} in type {t.FullName}");
                     return;
                 }
                 var current = fieldInfo.GetValue(component);
                 if (current == null)
                 {
-                    Debug.Log($"The field {reference.member} is null in object {component}");
+                    Debug.Log($"The field {reference.name} is null in object {component}");
                     return;
                 };
                 
@@ -217,7 +259,7 @@ namespace XRSpotlightGUI
                 var current = propertyInfo.GetValue(component);
                 if (current == null)
                 {
-                    Debug.Log($"The property {reference.member} is null in object {component}");
+                    Debug.Log($"The property {reference.name} is null in object {component}");
                     return;
                 };
                 
