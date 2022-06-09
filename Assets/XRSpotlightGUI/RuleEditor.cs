@@ -232,8 +232,10 @@ public class RuleEditor : EditorWindow
     {
         var icon = new Image();
         icon.AddToClassList("phase-icon");
-        switch (phase)
-        {
+        switch (phase) 
+        { 
+            case Phases.Leave: icon.AddToClassList("leave");
+                break;
             case Phases.Addressed: icon.AddToClassList("pointed");
                 break;
             case Phases.Selected: icon.AddToClassList("selected");
@@ -251,7 +253,7 @@ public class RuleEditor : EditorWindow
     {
         switch (p)
         {
-            case Phases.Leave: return "Idle";
+            case Phases.Leave: return "Leave";
             case Phases.Addressed: return "Addressed";
             case Phases.Selected: return "Selected";
             case Phases.Moved: return "Moved";

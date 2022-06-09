@@ -78,7 +78,7 @@
             "member": "field",
             "name": "OnFocusOff"
           }],
-          "definition": "idle",
+          "definition": "leave",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
       ]
@@ -93,7 +93,7 @@
             "member": "property",
             "name": "OnGrab"
           }],
-          "definition": "grab",
+          "definition": "select",
           "modality":  ["gaze", "touch", "hand", "remote"]
         },
         {
@@ -170,7 +170,7 @@
             "member": "field",
             "name": "OnDeselect"
           }],
-          "definition": "idle",
+          "definition": "leave",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
       ]
@@ -272,7 +272,7 @@
             "member": "property",
             "name": "OnHoverExited"
           }],
-          "definition": "idle",
+          "definition": "leave",
           "modality": ["gaze", "touch", "hand", "remote"]
         }
       ]
@@ -428,7 +428,7 @@
             "member": "field",
             "name": "OnHoverExited"
           }],
-          "definition": "idle",
+          "definition": "leave",
           "modality":  ["gaze", "touch", "hand", "remote"]
         }
       ]

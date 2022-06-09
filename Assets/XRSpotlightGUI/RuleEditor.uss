@@ -118,6 +118,10 @@
      background-image: resource("Assets/XRSpotlightGUI/icons/released.png");
  }
 
+ .leave{
+     background-image: resource("Assets/XRSpotlightGUI/icons/leave.png");
+ }
+
 
 
 
