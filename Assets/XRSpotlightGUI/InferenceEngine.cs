@@ -17,7 +17,7 @@ namespace XRSpotlightGUI
     public class InferenceEngine
     {
         private static InferenceEngine singleton;
-        
+
         private Mapping mapping;
         private Dictionary<string, Element> elementIndex;
 
@@ -30,14 +30,14 @@ namespace XRSpotlightGUI
 
             return singleton;
         }
-        
+
         private InferenceEngine(Toolkits toolkit)
         {
-            
             switch (toolkit)
             {
                 case Toolkits.MRTK:
-                    string json = File.ReadAllText("Assets/XRSpotlightGUI/Configuration/ConfigurationScripts/MRTKconfig.json");
+                    string json =
+                        File.ReadAllText("Assets/XRSpotlightGUI/Configuration/ConfigurationScripts/MRTKconfig.json");
                     this.mapping = JsonUtility.FromJson<Mapping>(json);
                     break;
             }
@@ -52,43 +52,40 @@ namespace XRSpotlightGUI
             List<GameObject> gobjs = new List<GameObject>();
             foreach (var element in this.mapping.elements)
             {
+                Type componentType = ClassForName(element.className);
 
-                Type componentType = ClassForName(element.className);  
-                
-                if(componentType == null)
+                if (componentType == null)
                     continue;
                 elementIndex.Add(element.className, element);
-                
-                if(! element.isComponent)
-                    continue;
-                
-                var objs =  GameObject.FindObjectsOfType(componentType);
 
-                if(objs == null)  
+                if (!element.isComponent)
                     continue;
-                
+
+                var objs = GameObject.FindObjectsOfType(componentType);
+
+                if (objs == null)
+                    continue;
+
                 foreach (var o in objs)
                 {
                     if (o is MonoBehaviour behaviour)
                     {
-                        gobjs.Add(behaviour.gameObject); 
+                        gobjs.Add(behaviour.gameObject);
                     }
                     
                 }
             }
-            
+
             return gobjs.ToArray();
         }
 
         public InferredRule[] InferRuleByGameObject(GameObject gameObject)
         {
-            
-            
             if (elementIndex == null)
             {
                 FindInteractableObjects();
             }
-            
+
             List<InferredRule> rules = new List<InferredRule>();
 
             foreach (var component in gameObject.GetComponents(typeof(Component)))
@@ -97,12 +94,12 @@ namespace XRSpotlightGUI
                 {
                     continue;
                 }
-                if(component.GetType().FullName == null)
+                if (component.GetType().FullName == null)
                     continue;
-                
-                if(! elementIndex.ContainsKey(component.GetType().FullName))
+
+                if (!elementIndex.ContainsKey(component.GetType().FullName))
                     continue;
-                
+
                 var element = elementIndex[component.GetType().FullName];
 
                 // [davide] TEMPORARY WORKAROUND: Receivers are not serialized, they are re-created at each run
@@ -290,12 +287,15 @@ namespace XRSpotlightGUI
             var current = component;
             foreach (var reference in references)
             {
-                Type t = component.GetType(); 
+                Type t = component.GetType();
                 if (reference.member == "field")
                 {
-                    FieldInfo fieldInfo = t.GetField(reference.name); 
-                    current = fieldInfo.GetValue(component);
-                    if (current == null) return null;
+                    FieldInfo fieldInfo = t.GetField(reference.name);
+                    if (fieldInfo != null)
+                    {
+                        current = fieldInfo.GetValue(component);
+                        if (current == null) return null;
+                    }
                 }
 
                 if (reference.member == "property")
@@ -307,12 +307,12 @@ namespace XRSpotlightGUI
                 }
                 // TODO add the descent to other member types
             }
-            return current; 
+
+            return current;
         }
 
         private InferredRule FindRule(string phase, List<InferredRule> rules)
         {
-
             Phases p = this.PhaseFromString(phase);
             if (p == Phases.None) return null;
 
@@ -321,7 +321,7 @@ namespace XRSpotlightGUI
                 if (rule.trigger == p) return rule;
             }
 
-            return null; 
+            return null;
         }
 
         private Phases PhaseFromString(string phase)
@@ -353,37 +353,11 @@ namespace XRSpotlightGUI
         }
     }
 
-    class ReferenceTree
-    {
-        public object current;
-        public List<ReferenceTree> children;
-
-        public ReferenceTree(object current)
-        {
-            this.children = new List<ReferenceTree>();
-            this.current = current;
-        }
-
-        public void GetLeafs(List<object> leafs)
-        {
-            if (this.children.Count == 0)
-            {
-                leafs.Add(this.current);
-            }
-            else
-            {
-                foreach (var tree in children)
-                {
-                    tree.GetLeafs(leafs);
-                }
-            }
-            
-        }
-    }
 
     public enum Toolkits
     {
-        MRTK, SteamVR
+        MRTK,
+        SteamVR
     }
     
 }
