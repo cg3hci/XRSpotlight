@@ -1,19 +1,16 @@
-# ECARules4All
+# XRSpotlight
 
-Code repository for the implementation of the ECARules4All project
+Code repository for the implementation of the XRSpotlight project
 
-ECARules4All is a Unity package that enables users without coding knowledge to setup Virtual Reality worlds through Event-Condition Action rules (ECA), defined in natural language. The solution is based on templates that can be configured for creating the users' own experiences. The rules define the behaviour of each virtual object in the environment in isolation and its interaction with other objects. Once equipped with components supporting the runtime specification of behaviour rules, the XR environments offer a high degree of customization to end-users.
-
-For more information refer to the following link: https://cg3hci.dmi.unica.it/lab/en/projects/ecarules4all
+XRSpotlight is a Unity editor that enables users novice developers by curating a list of the XR interactions defined in a Unity scene and presenting them as rules in natural language. The support provided by XRSpotlight consists of three main features: (1) expressing interactions in natural language, (2) finding examples of similar interactions in the scene, and (3) copy-pasting interactions in a toolkit-agnostic way.
 
 ## Installation
 
 ### Prerequisites
 
-- The following packages installed from the Package manager:
-  - XR Interaction Toolkit;
+- The following packages installed:
+  - An XR Interaction Toolkit (MRTK 2.7 or SteamVR)
   - Universal RP;
-  - Oculus XR Plugin (for using Oculus Headsets).
 
 ### Configuration
 
