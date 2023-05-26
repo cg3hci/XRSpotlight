@@ -1,0 +1,40 @@
+{
+  "configuration": "", 
+  "elements": [
+    {
+      "className": "", 
+      "isComponent": true,
+      "definitionNoEvents": [], 
+      "events": [
+        {
+          "reference": {
+            "name": "",
+            "member": ""
+          },
+          "definition": "",
+          "modality": [
+            ""
+          ],
+          "parameters": [
+            {
+              "name": "",
+              "reference": [
+                {
+                  "name": "",
+                  "member": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "eventReferences": [
+        {
+          "member": "",
+          "name": "",
+          "type": ""
+        }
+      ]
+    }
+  ]
+}

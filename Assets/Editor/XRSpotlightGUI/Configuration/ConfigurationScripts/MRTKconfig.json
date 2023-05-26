@@ -1,0 +1,687 @@
+{
+  "configuration": "MRTK",
+  "elements": [
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.Interactable",
+      "isComponent": true,
+      "definitionNoEvents": ["click"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnClick"
+          }],
+          "definition": "select",
+          "label": ["air tap", "touch", "grab", "click", "trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ],
+      "eventReferences": [
+        {
+          "reference": [
+            {
+              "member": "property",
+              "name": "InteractableEvents",
+              "inspectorProperty": "Events"
+            },
+            {
+              "member": "field",
+              "name": "Receiver",
+              "inspectorProperty": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableAudioReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["click"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnClick",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "select",
+          "label": ["air tap", "touch", "grab", "click", "trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnClickReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["click"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnClick",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "select",
+          "label": ["air tap", "touch", "grab", "click", "trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["focus"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnFocusOn",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "enter",
+          "label": ["gaze", "point", "approach", "hover", "focus"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnFocusOff",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "leave",
+          "label": ["release tap", "release touch", "ungrab", "unclick", "release trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnGrabReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["grab"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnGrab",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "select",
+          "label": ["grab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnRelease",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "release",
+          "label": ["ungrab"],
+          "modality":  ["grab"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnHoldReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["hold"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnHold",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "drag", "near movement", "far movement", "hold"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["press"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnPress",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "select",
+            "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnRelease",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnToggleReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["select"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnSelect",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "select",
+          "label": ["air tap", "touch", "grab", "click", "trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnDeselect",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "leave",
+          "label": ["release tap", "release touch", "ungrab", "unclick", "release trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableOnTouchReceiver",
+      "isComponent": false,
+      "definitionNoEvents": ["touch"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnTouch",
+            "inspectorProperty": "Event"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnTouchEnd",
+            "inspectorProperty": "Settings.Array.data[0].EventValue"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        }
+      ]
+    },
+
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.BoundsControl.BoundsControl",
+      "isComponent": true,
+      "definitionNoEvents": ["rotation", "translation", "scale"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "RotateStarted",
+            "inspectorProperty": "rotateStarted"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "RotationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "select",
+          "label": ["air tap", "grab", "click", "trigger"],
+          "modality":  ["gaze", "grab", "hand", "remote"]
+        },
+        {
+          "subpart": [{
+            "member": "property",
+            "name": "RotationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "near movement", "far movement", "hold"],
+          "modality":  ["gaze", "grab", "hand", "remote"],
+          "defaultAction": "rotate"
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "RotateStopped",
+            "inspectorProperty": "rotateStopped"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "RotationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "release",
+            "label": ["release tap", "ungrab", "unclick", "release trigger"],
+          "modality":  ["gaze", "grab", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "TranslateStarted",
+            "inspectorProperty": "translateStarted"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "TranslationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "select",
+            "label": ["air tap", "grab", "Click", "trigger"],
+          "modality":  ["gaze", "grab" , "hand", "remote"]
+        },
+        {
+          "subpart": [{
+            "member": "property",
+            "name": "TranslationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "near movement", "far movement", "hold"],
+          "modality":  ["gaze", "grab" , "hand", "remote"],
+          "defaultAction": "move"
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "TranslateStopped",
+            "inspectorProperty": "translateStopped"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "TranslationHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "release",
+          "label": ["release tap", "ungrab", "unclick", "release trigger"],
+          "modality": ["gaze", "grab" , "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "ScaleStarted",
+            "inspectorProperty": "scaleStarted"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "ScaleHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "select",
+          "label": ["air tap", "grab", "click", "trigger"],
+          "modality":  ["gaze", "grab" , "hand", "remote"]
+        },
+        {
+          "subpart": [{
+            "member": "property",
+            "name": "ScaleHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "near movement", "far movement", "hold"],
+          "modality":  ["gaze", "grab" , "hand", "remote"],
+          "defaultAction": "scale"
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "ScaleStopped",
+            "inspectorProperty": "scaleStopped"
+          }],
+          "subpart": [{
+            "member": "property",
+            "name": "ScaleHandlesConfig",
+            "nullByDefault": true
+          }],
+          "definition": "release",
+          "label": ["release tap", "ungrab", "unclick", "release trigger"],
+          "modality": ["gaze", "grab" , "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.ObjectManipulator",
+      "isComponent": true,
+      "definitionNoEvents": ["manipulation", "hover"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnManipulationStarted",
+            "inspectorProperty": "onManipulationStarted"
+          }],
+          "definition": "select",
+          "label": ["air tap", "grab", "click", "trigger"],
+          "modality":  ["gaze", "grab" , "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnManipulationEnded",
+            "inspectorProperty": "onManipulationEnded"
+          }],
+          "definition": "release",
+          "label": ["release tap", "ungrab", "unclick", "release trigger"],
+          "modality":  ["gaze", "grab" , "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnHoverEntered",
+            "inspectorProperty": "onHoverEntered"
+          }],
+          "definition": "enter",
+          "label": ["gaze", "approach", "hover", "focus"],
+          "modality":  ["gaze", "grab", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "property",
+            "name": "OnHoverExited",
+            "inspectorProperty": "onHoverExited"
+          }],
+          "definition": "leave",
+            "label": ["release tap", "ungrab", "unclick", "release trigger"],
+          "modality": ["gaze", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PressableButton",
+      "isComponent": true,
+      "definitionNoEvents": ["touch", "press"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "TouchBegin"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "TouchEnd"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "ButtonPressed"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "ButtonReleased"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality": ["touch"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PressableButtonHololens2",
+      "isComponent": true,
+      "definitionNoEvents": ["touch", "press"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "TouchBegin"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "TouchEnd"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference":[{
+            "member": "field",
+            "name": "ButtonPressed"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "ButtonReleased"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality": ["touch"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.HandInteractionPanZoom",
+      "isComponent": true,
+      "definitionNoEvents": ["pan"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "PanStarted"
+          }],
+          "definition": "movement",
+          "label": ["drag", "far movement", "hold"],
+          "modality":  ["touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "PanStopped"
+          }],
+          "definition": "release",
+          "label": ["release touch", "unclick", "release trigger"],
+          "modality":  ["touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "PanUpdated"
+          }],
+          "definition": "movement",
+          "label": ["drag", "far movement", "hold"],
+          "modality":  ["touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.PinchSlider",
+      "isComponent": true,
+      "definitionNoEvents": ["pinch"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnValueUpdated"
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "drag", "far movement", "hold"],
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnInteractionStarted"
+          }],
+          "definition": "movement",
+          "label": ["manipulation", "drag", "far movement", "hold"],
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnInteractionEnded"
+          }],
+          "definition": "release",
+          "label": ["release tap", "release touch", "unclick", "release trigger"],
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnHoverEntered"
+          }],
+          "definition": "enter",
+            "label": ["gaze", "point", "hover", "focus"],
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnHoverExited"
+          }],
+          "definition": "leave",
+          "label": ["release tap", "release touch", "unclick", "release trigger"],
+          "modality":  ["gaze", "touch", "hand", "remote"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.TouchHandler",
+      "isComponent": true,
+      "definitionNoEvents": ["touch"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnTouchStarted"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnTouchCompleted"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnTouchUpdated"
+          }],
+          "definition": "movement",
+          "label": ["drag"],
+          "modality":  ["touch"]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.InteractableToggleCollection",
+      "isComponent": true,
+      "definitionNoEvents": ["select"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "OnSelectionEvents"
+          }],
+          "definition": "select",
+          "label": ["air tap", "touch", "grab", "click", "trigger"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    },
+    
+    {
+      "className": "Microsoft.MixedReality.Toolkit.Input.SpeechInputHandler",
+      "isComponent": true,
+      "definitionNoEvents": ["speech"],
+      "events": [
+        {
+          "reference": [
+            {
+              "name": "Keywords",
+              "member": "property"
+            },
+            {
+              "name": "Response",
+              "member": "property"
+            }
+          ],
+          "definition": "speak",
+          "label": ["speak"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"],
+          "parameters": [
+            {
+              "name": "speechCommand",
+              "reference": [
+                {
+                  "name": "Keywords",
+                  "member": "property"
+                },
+                {
+                  "name": "Keyword",
+                  "member": "property"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchable",
+      "isComponent": true,
+      "definitionNoEvents": ["touch"],
+      "modalitiesNoEvents": ["touch"],
+      "events": []
+    },
+    {
+      "className": "Microsoft.MixedReality.Toolkit.UI.FollowMeToggle",
+      "isComponent": true,
+      "definitionNoEvents": ["follow me"],
+      "events": [
+        {
+          "reference": [{
+            "member": "property",
+            "name": "AutoFollowTriggered",
+            "inspectorProperty": "autoFollowTriggered"
+          }],
+          "definition": "enter",
+          "label": ["gaze", "point", "approach", "hover", "focus"],
+          "modality":  ["gaze", "touch", "grab", "hand", "remote"]
+        }
+      ]
+    }
+  ]
+}
+        
+        

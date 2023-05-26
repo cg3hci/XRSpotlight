@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:VisualElement name="rule">
+        
+            
+        <editor:ToolbarToggle>
+            
+        </editor:ToolbarToggle>
+        <ui:VisualElement class="modality">
+            <ui:Label text="Modality: " style="flex-grow: 4"/>
+            <ui:Label text="Gaze (no)" style="flex-grow: 1"/>
+            <ui:Label text="Touch (no)" style="flex-grow: 1"/>
+            <ui:Label text="Hand Ray (no)" style="flex-grow: 1"/>
+            <ui:Label text="Remote (no)" style="flex-grow: 1"/>
+        </ui:VisualElement>
+        <ui:VisualElement class="step">
+            <ui:VisualElement class="phase-hd">
+                <ui:Image />
+                <ui:Label text="When Pointed"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="phase-actions">
+                
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement> 
+    
+    
+    <ui:Label text="Hello World! From UXML" />
+</ui:UXML>

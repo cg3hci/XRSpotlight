@@ -1,0 +1,246 @@
+{
+  "configuration": "SteamVR",
+  "elements": [
+    {
+      "className": "Valve.VR.InteractionSystem.Interactable",
+      "isComponent": true,
+      "definitionNoEvents": ["select"],
+      "labelNoEvents": ["grab"],
+      "modalitiesNoEvents": ["grab"],
+      "events": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.InteractableHoverEvents",
+      "isComponent": true,
+      "definitionNoEvents": ["hover"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onHandHoverBegin"
+          }],
+          "definition": "enter",
+          "label": ["approach"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onHandHoverEnd"
+          }],
+          "definition": "leave",
+          "label": ["leave"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onAttachedToHand"
+          }],
+          "definition": "select",
+          "label": ["grab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onDetachedFromHand"
+          }],
+          "definition": "release",
+          "label": ["ungrab"],
+          "modality":  ["grab"]
+        }
+      ],
+      "eventReferences": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.Throwable",
+      "isComponent": true,
+      "definitionNoEvents": ["throw"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onPickUp"
+          }],
+          "definition": "select",
+          "label": ["grab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onDetachFromHand"
+          }],
+          "definition": "release",
+          "label": ["ungrab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onHeldUpdate"
+          }],
+          "definition": "movement",
+          "label": ["near movement"],
+          "modality":  ["grab"]
+        }
+      ],
+      "eventReferences": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.ModalThrowable",
+      "isComponent": true,
+      "definitionNoEvents": ["throw"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onPickUp"
+          }],
+          "definition": "select",
+          "label": ["grab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onDetachFromHand"
+          }],
+          "definition": "release",
+          "label": ["ungrab"],
+          "modality":  ["grab"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onHeldUpdate"
+          }],
+          "definition": "movement",
+          "label": ["near movement"],
+          "modality":  ["grab"]
+        }
+      ],
+      "eventReferences": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.Teleport",
+      "isComponent": true,
+      "definitionNoEvents": ["release"],
+      "labelNoEvents": ["release trigger"],
+      "modalitiesNoEvents": ["remote"],
+      "events": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.TeleportArea",
+      "isComponent": true,
+      "definitionNoEvents": ["release"],
+      "labelNoEvents": ["release trigger"],
+      "modalitiesNoEvents": ["remote"],
+      "events": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.HoverButton",
+      "isComponent": true,
+      "definitionNoEvents": ["press"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onButtonDown"
+          }],
+          "definition": "select",
+          "label": ["touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onButtonUp"
+          }],
+          "definition": "release",
+          "label": ["release touch"],
+          "modality":  ["touch"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onButtonIsPressed"
+          }],
+          "definition": "movement",
+          "label": ["drag"],
+          "modality":  ["touch"]
+        }
+      ],
+      "eventReferences": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.Equippable",
+      "isComponent": true,
+      "definitionNoEvents": ["equippable"],
+      "labelNoEvents": ["trigger"],
+      "modalitiesNoEvents": ["remote"],
+      "events": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.CircularDrive",
+      "isComponent": true,
+      "definitionNoEvents": ["movement"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onFrozenDistanceThreshold"
+          }],
+          "definition": "movement",
+          "label": ["hold"],
+          "modality":  ["remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onMinAngle"
+          }],
+          "definition": "movement",
+          "label": ["hold"],
+          "modality":  ["remote"]
+        },
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onMaxAngle"
+          }],
+          "definition": "movement",
+          "label": ["hold"],
+          "modality":  ["remote"]
+        }
+      ],
+      "eventReferences": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.LinearDrive",
+      "isComponent": true,
+      "definitionNoEvents": ["movement"],
+      "labelNoEvents": ["hold"],
+      "modalitiesNoEvents": ["remote"],
+      "events": []
+    },
+    {
+      "className": "Valve.VR.InteractionSystem.HapticRack",
+      "isComponent": true,
+      "definitionNoEvents": ["pulse"],
+      "events": [
+        {
+          "reference": [{
+            "member": "field",
+            "name": "onPulse"
+          }],
+          "definition": "movement",
+          "label": ["hold"],
+          "modality":  ["remote"]
+        }
+      ],
+      "eventReferences": []
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+
+
+ .obj-heading {
+    -unity-font-style: bold;
+     flex-grow: 1;
+     flex-direction: row;
+     height: 20px;
+     -unity-text-align: middle-left;
+     padding-left: 3px;
+}
+ 
+ .obj-heading > Label {
+     
+     
+ }
+
+ .unity-foldout {
+     flex: 0 0 auto;
+ }
+
+
+ .modality {
+     flex-grow: 1;
+     width: 100%;
+     flex-direction: row;
+ }
+ 
+ .prefix {
+     -unity-font-style: bold;
+     font-size: 12px;
+     padding-left: 5px;
+ }
+
+ .flex1 {
+     flex-grow: 1;
+ }
+ 
+ .rule-row{
+     flex-direction: row;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .rule-title{
+     flex-direction: row;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+     margin-top: 8px;
+     background-color: #262626;
+     color: white;
+     -unity-font-style: bold;
+ }
+ 
+ .modalityImage {
+     width: 24px;
+     height: 24px;
+     left: -12px;
+     flex-direction: row;
+     align-content: flex-start;
+     padding: 0px;
+     align-self: flex-start;
+     justify-content: flex-start;
+     align-items: flex-start;
+     margin-right: 8px;
+ }
+ 
+ .gazeIcon {
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/gaze.png");
+ }
+
+ .grabIcon {
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/grab.png");
+ }
+
+ .handIcon {
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/hand.png");
+ }
+
+ .remoteIcon {
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/remote.png");
+ }
+ .touchIcon {
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/touch.png");
+ }
+ 
+ .missingModality {
+     opacity: 0.3;
+ }
+ 
+ 
+ .action-group{
+     flex-grow: 1 ;
+     min-width: 150px;
+     flex-direction: row;
+     
+ }
+ 
+ .spacer-field{
+     height: 12px;
+ }
+ 
+ .spacer-big{
+     margin-top: 50px;
+ }
+ 
+ .indent{
+     padding-left: 15px;
+ }
+ 
+ .action {
+     
+     flex: 2;
+     -unity-text-align: middle-left;
+     flex-direction: row;
+     width: 100%;
+     flex-shrink: 0;
+     
+ }
+ 
+ .actionEvent{
+     flex-grow: 1;
+     flex: 1;
+     -unity-text-align: middle-left;
+     flex-direction: row;
+     width: 100%;
+     flex-shrink: 0;
+ }
+
+ .then{
+     flex-grow: 1;
+ }
+ 
+ .black-bgr{
+     background-color:  #262626;
+ }
+ 
+ .spotlight, .delete, .findButton, .copy-btn, .change-btn{
+     width: 21px;
+     height: 20px;
+     flex-grow: 0;
+     align-content: center;
+     margin: auto auto auto 5px;
+ }
+ .spotlight{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/next.png");
+ }
+
+ .delete{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/delete.png");
+ }
+
+ .findButton{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/search.png");
+ }
+ 
+ .modal{
+     flex-grow: 1;
+     flex-direction: row;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ 
+ .copy-btn{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/copy.png");
+ }
+
+ .change-btn{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/change.png");
+     padding: 5px;
+ }
+ 
+ .paste-btn{
+     flex-grow: 0;
+     align-content: center;
+     margin: auto auto auto 15px;
+ }
+ 
+ .phase {
+     flex-grow: 0;
+     -unity-text-align: middle-left;
+     width: 75px;
+ }
+ 
+.when{
+    flex-grow: 1;
+    -unity-text-align: lower-center;
+    flex-shrink: 0;
+}
+
+.phase-label{
+    flex-grow: 1;
+    -unity-text-align: upper-center;
+    flex-shrink: 0;
+}
+ 
+ .phase-icon {
+     flex-grow: 0;
+     width: 32px;
+     height: 32px;
+     margin: auto;
+     
+ }
+
+ .interactableBtn {
+     flex-grow: 1;
+     flex-shrink: 0;
+     -unity-text-align: middle-center;
+     width: auto;
+     flex-direction: row;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .interactableBtnPressed {
+     border-color: whitesmoke;
+     border-radius: 10px;
+     border-width: 2px;
+     padding: 5px;
+     -unity-font-style: bold;
+     margin: 3px;
+ }
+
+ .properties-container{
+     flex-grow: 1;
+     width: 50%;
+     flex-direction: row;
+     align-self: center;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .properties-row{
+     flex-grow: 1;
+     flex-direction: row;
+     align-items: flex-start;
+     width: 100%;
+     padding: 5px;
+     margin: 3px;
+ }
+ 
+ .properties-icon-col{
+     flex-grow: 1;
+     flex-direction: column;
+     margin: auto;
+     padding: 5px;
+     width: 20%;
+ }
+
+ .properties-label-col{
+     flex-grow: 1;
+     flex-direction: column;
+     -unity-font-style: bold;
+     margin: auto;
+     padding: 5px;
+     width: 40%;
+ }
+
+ .properties-type-col{
+     flex-grow: 1;
+     flex-direction: column;
+     margin: auto;
+     padding: 5px;
+     width: 30%;
+ }
+ 
+ .properties-value-col{
+     padding: 5px;
+ }
+ 
+ .checkedIcon{
+     width: 25px;
+     height: 25px;
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/correct.png");
+     align-content: flex-start;
+
+ }
+
+ .collider-icon{
+     flex-grow: 0.2;
+     padding: 5px;
+     align-content: center;
+     align-items: center;
+     justify-content: center;
+     align-self: center;
+ }
+
+ .uncheckedIcon{
+     width: 25px;
+     height: 25px;
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/multiply.png");
+     align-content: flex-start;
+ }
+
+ .collider-bold-text{
+     -unity-font-style: bold;
+     flex-grow: 0.5;
+     height: 20px;
+     -unity-text-align: middle-center;
+ }
+ 
+ .collider-text{
+     flex-grow: 0.2;
+     height: 20px;
+     -unity-text-align: middle-center;
+ }
+ 
+ 
+ .behaviour-item{
+     flex-grow: initial;
+     flex-direction: column;
+     align-items: center;
+     border-width: 1px;
+     border-color: whitesmoke;
+     border-radius: 10px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .behaviour-box{
+     flex-grow: 1;
+     flex-direction: column;
+     align-items: center;
+     border-width: 1px;
+     border-color: black;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .behaviour-row{
+     flex-grow: 1;
+     flex-direction: row;
+     align-items: center;
+     padding: 5px;
+     margin: 3px;
+ }
+
+ .the-uxml-listview {
+     /* Provide the list view with an explict height for every row
+     so it can calculate how many items to actually display */
+     --unity-item-height: 16;
+     height: 200px;
+ }
+
+ .some-styled-field {
+     -unity-font-style: bold;
+ }
+
+ .some-styled-field .unity-base-field__input {
+     -unity-font-style: italic;
+ }
+
+ .popup-field{
+     position: absolute;
+     flex-grow: 1;
+     flex-direction: row;
+     width: auto;
+ }
+
+ .behaviour-definition-row{
+     flex-grow: 1;
+     flex-direction: row;
+     align-items: center;
+     padding: 5px;
+     margin: 3px;
+ }
+ 
+ .behaviour-label{
+     -unity-font-style: bold;
+     flex-direction: row;
+     -unity-text-align: upper-left;
+ }
+ 
+ .behaviour-value{
+     padding: 4px;
+     -unity-font-style: bold;
+ }
+ 
+ .dropdown{
+     align-self: flex-end;
+     padding: 5px;
+     -unity-font-style: bold;
+ }
+ 
+ .pointed{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/pointed.png");
+ }
+
+ .selected{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/selected.png");
+ }
+
+ .dragged{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/dragged.png");
+ }
+
+ .released{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/released.png");
+ }
+
+ .left{
+     background-image: resource("Assets/Editor/XRSpotlightGUI/icons/leave.png");
+ }
+ 
+ 
+ .active-btn{
+     background-color: darkblue;
+ }
+
+ 
+ .similarityActionLabel{
+     flex-grow: 1;
+ }
+ 
+ .progressBar{
+     width: 120px;
+     margin-right: 20px;
+ }
+ 
