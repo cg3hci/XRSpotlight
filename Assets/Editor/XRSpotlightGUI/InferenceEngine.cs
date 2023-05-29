@@ -8,7 +8,6 @@ using System.Reflection;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities.Gltf.Schema;
 #endif
-using Unity.Plastic.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;

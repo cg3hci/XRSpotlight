@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 #if MRTK
-using Microsoft.MixedReality.OpenXR;
+//using Microsoft.MixedReality.OpenXR;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities.Editor;
 #elif STEAMVR
