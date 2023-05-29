@@ -11,12 +11,12 @@ XRSpotlight is a Unity editor that enables users novice developers by curating a
 - The following packages installed:
   - An XR Interaction Toolkit (MRTK 2.7 or SteamVR)
   - Universal RP;
+  - Unity version 2020.3.35f1
 
 ### Configuration
 
-- Download the ECARules4All prefab from the [Releases](https://github.com/cg3hci/ECARules4All/releases) section of this repository;
-  - You can also download the `documentation.chm` file, which contains the documentation for the components and scripts of the package.
-- Set `Edit > Project Settings > Player > Settings for PC, Mac & Linux Standalone > Expand "Other Settings" > Api Compatibility Level => .NET 4.x`;
-- Check `Edit > Project Settings > XR Plug-In Management > Plug-in Providers > "Oculus"`;
-- Import all the files from the ECARules4All package into your project;
-- Import the ECAKit prefab into your scene (it can be found in `Assets > Prefabs > ECAKit.prefab`).
+- Download the source code of this repository;
+  - The project is already configured with MRTK 
+- In the Unity panel, open `Window > UI Toolkit > XRSpotlight` 
+- Now you can see the current scene information with XRSpotlight;
+- If you witsh to include XRSpotlight in your own project, you can copy the "Editor" folder of the repository. 
